@@ -1,0 +1,222 @@
+@import 'tailwindcss';
+
+/*
+ * ============================================================================
+ *  DESIGN TOKENS
+ * ============================================================================
+ *
+ *  The palette is taken from the Locascoot logo: its deep navy as the primary,
+ *  its gold as the accent reserved almost exclusively for calls to action, and
+ *  warm sand as the neutral so the site never feels cold.
+ *
+ *  Change a value here and it updates across the entire site.
+ */
+@theme {
+  /* Primary — the navy from the logo */
+  --color-sea-50: #f1f5fb;
+  --color-sea-100: #e0e9f5;
+  --color-sea-200: #c5d5ea;
+  --color-sea-300: #9bb6da;
+  --color-sea-400: #6a90c5;
+  --color-sea-500: #4872ae;
+  --color-sea-600: #375a92;
+  --color-sea-700: #2e4877;
+  --color-sea-800: #293e63;
+  --color-sea-900: #1d2e4c;
+  --color-sea-950: #16294a;
+
+  /* Neutral — warm sand rather than grey, so the site never feels cold */
+  --color-sand-50: #faf8f5;
+  --color-sand-100: #f4efe7;
+  --color-sand-200: #e8dfd0;
+  --color-sand-300: #d8c9b2;
+  --color-sand-400: #c2ac8c;
+  --color-sand-500: #ae9370;
+  --color-sand-600: #9a7d5e;
+  --color-sand-700: #80654f;
+  --color-sand-800: #6a5444;
+  --color-sand-900: #57463a;
+  --color-sand-950: #2e241d;
+
+  /* Accent — the gold from the logo. Reserved for calls to action.
+     Gold is a light colour, so buttons pair it with navy text, never white:
+     white on gold fails the contrast minimum for readable text. */
+  --color-gold-50: #fffaeb;
+  --color-gold-100: #fff1c6;
+  --color-gold-200: #ffe188;
+  --color-gold-300: #ffcc4a;
+  --color-gold-400: #fdb913;
+  --color-gold-500: #f5a505;
+  --color-gold-600: #d98002;
+  --color-gold-700: #b45c06;
+  --color-gold-800: #92470c;
+  --color-gold-900: #783b0d;
+  --color-gold-950: #451e02;
+
+  /* WhatsApp brand green — recognisability drives the tap rate */
+  --color-whatsapp: #25d366;
+  --color-whatsapp-dark: #1da851;
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-outfit), var(--font-inter), ui-sans-serif, sans-serif;
+
+  /* Fluid type — scales with the viewport instead of jumping at breakpoints */
+  --text-display: clamp(2.25rem, 1.5rem + 3.4vw, 4rem);
+  --text-h1: clamp(1.875rem, 1.35rem + 2.3vw, 3rem);
+  --text-h2: clamp(1.5rem, 1.2rem + 1.3vw, 2.25rem);
+  --text-h3: clamp(1.25rem, 1.1rem + 0.6vw, 1.5rem);
+
+  --radius-card: 1rem;
+
+  --shadow-soft: 0 1px 2px rgb(22 41 74 / 0.04), 0 8px 24px -8px rgb(22 41 74 / 0.10);
+  --shadow-lift: 0 2px 4px rgb(22 41 74 / 0.05), 0 16px 40px -12px rgb(22 41 74 / 0.18);
+}
+
+/*
+ * Semantic surface colours, so components never hard-code light/dark values.
+ */
+:root {
+  --background: var(--color-sand-50);
+  --surface: #ffffff;
+  --surface-muted: var(--color-sand-100);
+  --border-subtle: var(--color-sand-200);
+  --text-strong: var(--color-sea-950);
+  --text-body: #44403c;
+  --text-muted: #78716c;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0e1a2e;
+    --surface: #152439;
+    --surface-muted: #1b2d47;
+    --border-subtle: #253953;
+    --text-strong: #f5f7fa;
+    --text-body: #cbd3e0;
+    --text-muted: #93a0b5;
+  }
+}
+
+@layer base {
+  * {
+    border-color: var(--border-subtle);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    /* Stops iOS inflating text in landscape */
+    -webkit-text-size-adjust: 100%;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--text-body);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    color: var(--text-strong);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  /* A visible, high-contrast focus ring is both an accessibility requirement
+     and a usability win for keyboard users. */
+  :focus-visible {
+    outline: 2px solid var(--color-sea-500);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  /* Prevent iOS zooming in when a form field is focused */
+  input,
+  select,
+  textarea {
+    font-size: 16px;
+  }
+}
+
+@layer components {
+  .container-page {
+    width: 100%;
+    margin-inline: auto;
+    padding-inline: 1.25rem;
+    max-width: 80rem;
+  }
+
+  @media (min-width: 768px) {
+    .container-page {
+      padding-inline: 2rem;
+    }
+  }
+
+  .surface-card {
+    background-color: var(--surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-card);
+  }
+
+  /* Used for the SEO intro paragraphs and legal pages */
+  .prose-locascoot {
+    color: var(--text-body);
+    line-height: 1.75;
+  }
+
+  .prose-locascoot p + p {
+    margin-top: 1rem;
+  }
+
+  .prose-locascoot h2 {
+    font-size: var(--text-h3);
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .prose-locascoot ul {
+    list-style: disc;
+    padding-left: 1.25rem;
+    margin-top: 0.75rem;
+  }
+
+  .prose-locascoot li + li {
+    margin-top: 0.35rem;
+  }
+}
+
+/* Hides content visually but keeps it available to screen readers. Used for
+   the extra context that helps SEO without cluttering the design. */
+.sr-only-focusable:not(:focus):not(:focus-within) {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
