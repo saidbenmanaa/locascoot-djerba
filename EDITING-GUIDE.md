@@ -204,15 +204,15 @@ Une seule modification met à jour tout le site.
 
 ```js
   contact: {
-    phone: '+21624591155',            ← pour le bouton « Appeler » (sans espaces)
-    phoneDisplay: '+216 24 591 155',  ← ce que voit le client (avec espaces)
-    whatsapp: '21624591155',          ← chiffres uniquement, SANS le "+"
+    phone: '+21656029971',            ← pour le bouton « Appeler » (sans espaces)
+    phoneDisplay: '+216 56 029 971',  ← ce que voit le client (avec espaces)
+    whatsapp: '21656029971',          ← chiffres uniquement, SANS le "+"
     email: 'djerbalocascoot@gmail.com',
   },
 ```
 
 > ⚠️ Le numéro WhatsApp s'écrit **sans le `+` et sans espaces**, indicatif pays compris.
-> Pour +216 24 591 155 → on écrit `21624591155`.
+> Pour +216 56 029 971 → on écrit `21656029971`.
 
 **Les horaires** sont juste en dessous, au format 24 h. Vous êtes ouvert tous les jours aux mêmes
 heures, donc il n'y a qu'une seule ligne à modifier :
