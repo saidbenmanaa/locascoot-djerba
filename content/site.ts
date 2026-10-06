@@ -32,11 +32,11 @@ export const site = {
 
   contact: {
     /** International format, no spaces. Used for click-to-call links. */
-    phone: '+21624591155',
+    phone: '+21656029971',
     /** How the number is displayed to a human. */
-    phoneDisplay: '+216 24 591 155',
+    phoneDisplay: '+216 56 029 971',
     /** Digits only, country code included, no "+". Used for WhatsApp links. */
-    whatsapp: '21624591155',
+    whatsapp: '21656029971',
     email: 'djerbalocascoot@gmail.com',
   },
 
