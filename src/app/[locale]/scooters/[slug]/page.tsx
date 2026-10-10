@@ -2,14 +2,16 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { Check, Truck } from 'lucide-react';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import { getVehicleBySlug, getVehicles } from '@/lib/content';
+import { getVehicleBySlug, getVehicles, getZones } from '@/lib/content';
 import {
   getStartingPrice,
   hasFlatRate,
   t as translate,
   tList,
   categoryKey,
+  zoneSlug,
 } from '@/lib/vehicle-utils';
+import { Link } from '@/i18n/navigation';
 import { buildMetadata, notFoundMetadata, urlFor } from '@/lib/seo';
 import { breadcrumbSchema, vehicleSchema } from '@/lib/schema';
 import { deliveryFee, whatsappHref, toEur } from '@/lib/site';
@@ -50,7 +52,7 @@ export async function generateMetadata({
     pathname: '/scooters/[slug]',
     params: { slug },
     title: t('title', { name: vehicle.name, price }),
-    description: t('description', { name: vehicle.name, price, fee }),
+    description: t('description', { name: vehicle.name, price, fee, cc: vehicle.engineCc }),
     image: `/images/vehicles/${vehicle.images[0]}`,
   });
 }
@@ -80,6 +82,7 @@ export default async function VehiclePage({
   const others = (await getVehicles())
     .filter((item) => item.slug !== vehicle.slug)
     .slice(0, 4);
+  const zones = await getZones();
 
   const whatsappMessage = t('whatsappMessage', { name: vehicle.name });
 
@@ -113,7 +116,18 @@ export default async function VehiclePage({
                 {tCat(categoryKey(vehicle.category))}
               </span>
 
-              <h1 className="mt-3 text-[length:var(--text-h1)]">{vehicle.name}</h1>
+              {/* Reads "Zimota Tapo — scooter 50cc à louer à Djerba": the model
+                  name stays the headline, the rest is set smaller beneath. */}
+              <h1 className="mt-3 text-[length:var(--text-h1)]">
+                {vehicle.name}
+                <span className="sr-only"> — </span>
+                <span
+                  className="mt-1 block text-lg font-semibold md:text-xl"
+                  style={{ color: 'var(--text-muted)' }}
+                >
+                  {t('h1Suffix', { cc: vehicle.engineCc })}
+                </span>
+              </h1>
 
               <p className="mt-2 text-lg" style={{ color: 'var(--text-muted)' }}>
                 {translate(vehicle.tagline, typedLocale)}
@@ -184,6 +198,27 @@ export default async function VehiclePage({
                     {tc('deliveryLine', { fee })}
                   </span>
                 </p>
+              </div>
+
+              {/* Links to every delivery area's page */}
+              <div className="mt-8">
+                <h2 className="text-[length:var(--text-h3)]">{t('zonesTitle')}</h2>
+                <ul className="mt-3 flex flex-wrap gap-2">
+                  {zones.map((zone) => (
+                    <li key={zone.slug}>
+                      <Link
+                        href={{
+                          pathname: '/zones/[zone]',
+                          params: { zone: zoneSlug(zone, typedLocale) },
+                        }}
+                        className="inline-flex min-h-11 items-center rounded-full border px-4 text-sm font-semibold transition-colors hover:border-sea-800 hover:text-sea-800 dark:hover:border-sea-300 dark:hover:text-sea-200"
+                        style={{ color: 'var(--text-body)' }}
+                      >
+                        {translate(zone.name, typedLocale)}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
               </div>
             </div>
           </div>

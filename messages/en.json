@@ -1,40 +1,47 @@
 {
   "meta": {
     "home": {
-      "title": "Locascoot Djerba | Scooter Rental in Djerba",
-      "description": "Scooter rental in Djerba: delivery anywhere on the island for {fee}, helmet and equipment included, from 60 TND a day. Book directly on WhatsApp."
+      "title": "Scooter rental in Djerba – hotel delivery | Locascoot Djerba",
+      "description": "Scooter rental in Djerba: delivery anywhere on the island for {fee}, helmet and equipment included, from 60 TND a day. Book directly on WhatsApp.",
+      "keywords": [
+        "scooter rental Djerba",
+        "rent a scooter Djerba",
+        "scooter rental Houmt Souk",
+        "scooter rental Midoun",
+        "scooter rental Djerba airport"
+      ]
     },
     "scooters": {
-      "title": "Our scooters for rent in Djerba",
-      "description": "A 50cc and a 125cc scooter for rent in Djerba, from 60 TND per day. Helmet and equipment included, delivery on Djerba Island for {fee}."
+      "title": "50cc and 125cc scooters for rent in Djerba",
+      "description": "Our 50cc and 125cc scooters for rent in Djerba, from 60 TND per day. Helmet and equipment included, delivery anywhere on Djerba Island for {fee}."
     },
     "prices": {
       "title": "Scooter rental prices in Djerba",
-      "description": "Our scooter rental prices in Djerba: 60 TND per day for the 50cc, 80 TND for the 125cc. Helmet and equipment included, island delivery: {fee}."
+      "description": "Scooter rental prices in Djerba: 60 TND per day for the 50cc, 80 TND for the 125cc. Helmet and equipment included, delivery on the island: {fee}."
     },
     "conditions": {
-      "title": "Rental conditions — licence, age, documents",
-      "description": "Minimum age, required documents, licence, payment and assistance: everything you need to rent a scooter in Djerba, explained plainly."
+      "title": "Scooter rental conditions in Djerba",
+      "description": "Minimum age, documents, licence, payment and assistance: everything you need to rent a scooter in Djerba with Locascoot Djerba, explained plainly."
     },
     "about": {
-      "title": "About us — scooter rental in Djerba",
-      "description": "Locascoot Djerba is the island’s scooter rental specialist: a modern, maintained fleet, delivery on the island for {fee} and immediate assistance."
+      "title": "About us – scooter rental in Djerba",
+      "description": "Locascoot Djerba, the scooter rental specialist in Djerba: a modern, maintained fleet, delivery on the island for {fee} and immediate assistance."
     },
     "contact": {
       "title": "Contact and WhatsApp booking in Djerba",
       "description": "Contact Locascoot Djerba by WhatsApp, phone or email. Open 7 days a week, 08:00–20:00, with delivery anywhere on Djerba Island for {fee}."
     },
     "book": {
-      "title": "Book a scooter in Djerba",
-      "description": "Book your scooter in Djerba in two minutes. No online payment: your request goes straight to WhatsApp and you pay on delivery."
+      "title": "Book a scooter in Djerba on WhatsApp",
+      "description": "Book your scooter in Djerba in two minutes: the form opens WhatsApp with your request already written. No online payment — you pay on delivery."
     },
     "zone": {
-      "title": "Scooter rental in {zone} — Djerba",
+      "title": "Scooter rental {where}",
       "description": "Scooter rental {where}, Djerba: delivery for {fee}, helmet and equipment included, from 60 TND per day. Book on WhatsApp."
     },
     "vehicle": {
-      "title": "Rent a {name} in Djerba — {price} TND/day",
-      "description": "Rent the {name} in Djerba for {price} TND per day. Helmet and equipment included, immediate assistance, delivery on Djerba Island for {fee}."
+      "title": "{name} rental Djerba – {price} TND/day",
+      "description": "Rent the {name}, a {cc}cc scooter, in Djerba for {price} TND per day. Helmet and equipment included, immediate assistance, island delivery for {fee}."
     },
     "terms": {
       "title": "Rental terms and conditions",
@@ -169,12 +176,14 @@
   },
   "vehicle": {
     "specsTitle": "Specifications",
+    "h1Suffix": "{cc}cc scooter for rent in Djerba",
     "pricingTitle": "Rates by duration",
     "pricingSubtitle": "The longer you rent, the less each day costs.",
     "duration": "Duration",
     "pricePerDayLabel": "Price per day",
     "depositNote": "Deposit of {amount} TND, returned when you bring the vehicle back.",
     "includedTitle": "Included in the price",
+    "zonesTitle": "Delivery areas",
     "galleryAlt": "{name} for rent in Djerba — photo {index}",
     "otherVehicles": "Other scooters available",
     "bookCta": "Book this {name}",
@@ -220,6 +229,7 @@
     "p1": "Locascoot Djerba is your premier scooter rental provider in Djerba. We offer a modern, fully maintained fleet with delivery service anywhere on Djerba island.",
     "p2": "A helmet and all equipment are included with every scooter. In case of any breakdown, we intervene immediately to assist you.",
     "p3": "Enjoy complete freedom to explore Djerba's beaches, souks, and scenic views safely and at your own pace.",
+    "imageAlt": "Locascoot Djerba, scooter rental in Djerba",
     "statsDelivery": "delivery anywhere on Djerba Island",
     "statsHelmetValue": "Helmet",
     "statsHelmet": "included with every scooter",

@@ -40,6 +40,17 @@ function openingHoursSpecification() {
 /** Stable identifier so every other schema can point back to the business. */
 export const BUSINESS_ID = `${site.url}/#business`;
 
+/** Where scooters are delivered: Djerba Island only. The airport is on the
+ *  island; Zarzis town and the mainland are not served. */
+const AREA_SERVED = [
+  { '@type': 'Place', name: 'Djerba' },
+  { '@type': 'Place', name: 'Midoun' },
+  { '@type': 'Place', name: 'Houmt Souk' },
+  { '@type': 'Place', name: 'Aghir' },
+  { '@type': 'Place', name: 'Zone Touristique' },
+  { '@type': 'Airport', name: 'Djerba-Zarzis International Airport', iataCode: 'DJE' },
+];
+
 /**
  * The core local-SEO object. `AutoRental` is the most specific schema.org type
  * for a vehicle rental business, and it inherits from LocalBusiness so it still
@@ -86,10 +97,7 @@ export function localBusinessSchema(locale: Locale) {
     },
     hasMap: site.mapsUrl,
     openingHoursSpecification: openingHoursSpecification(),
-    areaServed: {
-      '@type': 'Place',
-      name: 'Djerba, Tunisia',
-    },
+    areaServed: AREA_SERVED,
     ...(sameAs.length > 0 ? { sameAs } : {}),
     // Only published when there are genuinely reviews to report. Inventing
     // these breaches Google's guidelines and risks losing rich results.
@@ -139,10 +147,8 @@ export function vehicleSchema(vehicle: Vehicle, locale: Locale) {
       absoluteUrl(`/images/vehicles/${file}`),
     ),
     category: vehicle.category,
-    brand: {
-      '@type': 'Brand',
-      name: vehicle.name.split(' ')[0],
-    },
+    // No `brand`: the manufacturer is not stated anywhere on the site, and
+    // structured data must only describe what the page shows.
     offers: {
       '@type': 'Offer',
       url: urlFor('/scooters/[slug]', locale, { slug: vehicle.slug }),
@@ -191,6 +197,7 @@ export function faqSchema(items: FaqItem[], locale: Locale) {
   return {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
+    inLanguage: locale,
     mainEntity: items.map((item) => ({
       '@type': 'Question',
       name: t(item.question, locale),

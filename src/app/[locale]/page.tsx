@@ -30,22 +30,7 @@ export async function generateMetadata({
     pathname: '/',
     title: t('title'),
     description: t('description', { fee: deliveryFee(locale) }),
-    keywords:
-      locale === 'fr'
-        ? [
-            'location scooter Djerba',
-            'louer moto Djerba',
-            'location scooter Houmt Souk',
-            'location moto Tunisie',
-            'louer scooter Midoun',
-          ]
-        : [
-            'scooter rental Djerba',
-            'rent motorcycle Djerba',
-            'scooter hire Houmt Souk',
-            'motorbike rental Tunisia',
-            'rent scooter Midoun',
-          ],
+    keywords: t.raw('keywords') as string[],
   });
 }
 

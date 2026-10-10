@@ -65,10 +65,12 @@ export async function Footer() {
             ) : null}
           </div>
 
+          {/* Column titles are styled labels, not headings, so every page's
+              heading outline holds only its own content. */}
           <nav aria-label={t('navTitle')}>
-            <h2 className="text-sm font-semibold uppercase tracking-wider text-white">
+            <p className="text-sm font-semibold uppercase tracking-wider text-white">
               {t('navTitle')}
-            </h2>
+            </p>
             <ul className="mt-4 space-y-2.5">
               {navLinks.map((link) => (
                 <li key={link.href}>
@@ -84,9 +86,9 @@ export async function Footer() {
           </nav>
 
           <nav aria-label={t('zonesTitle')}>
-            <h2 className="text-sm font-semibold uppercase tracking-wider text-white">
+            <p className="text-sm font-semibold uppercase tracking-wider text-white">
               {t('zonesTitle')}
-            </h2>
+            </p>
             <ul className="mt-4 space-y-2.5">
               {zones.map((zone) => (
                 <li key={zone.slug}>
@@ -102,9 +104,9 @@ export async function Footer() {
           </nav>
 
           <div>
-            <h2 className="text-sm font-semibold uppercase tracking-wider text-white">
+            <p className="text-sm font-semibold uppercase tracking-wider text-white">
               {t('contactTitle')}
-            </h2>
+            </p>
             <ul className="mt-4 space-y-3 text-sm text-sand-300">
               <li className="flex gap-2.5">
                 <MapPin className="mt-0.5 size-4 shrink-0 text-sand-400" aria-hidden />

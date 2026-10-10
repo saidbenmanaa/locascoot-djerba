@@ -4,7 +4,7 @@ import { Eye, ShieldCheck, PhoneCall } from 'lucide-react';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { buildMetadata, urlFor } from '@/lib/seo';
 import { breadcrumbSchema } from '@/lib/schema';
-import { deliveryFee, site } from '@/lib/site';
+import { deliveryFee } from '@/lib/site';
 import type { Locale } from '@/i18n/routing';
 import { Container, Section, SectionHeading } from '@/components/ui/Section';
 import { JsonLd } from '@/components/seo/JsonLd';
@@ -96,7 +96,7 @@ export default async function AboutPage({
             <div className="relative aspect-4/3 overflow-hidden rounded-2xl bg-sand-100 dark:bg-sea-900">
               <Image
                 src="/images/about/about.jpg"
-                alt={`${site.name} — ${site.address.city}, ${site.address.countryName}`}
+                alt={t('imageAlt')}
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover"
