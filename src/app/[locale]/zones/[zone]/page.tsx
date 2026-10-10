@@ -104,7 +104,7 @@ export default async function ZonePage({
               </p>
 
               <div className="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-sm">
-                <span className="inline-flex items-center gap-1.5 font-semibold text-whatsapp-dark dark:text-whatsapp">
+                <span className="inline-flex items-center gap-1.5 font-semibold text-whatsapp-ink dark:text-whatsapp">
                   <MapPin className="size-4" aria-hidden />
                   {t('deliveryFee', { fee })}
                 </span>

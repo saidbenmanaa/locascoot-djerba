@@ -60,7 +60,7 @@ export async function ZonesGrid({
                 </span>
 
                 <span className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs">
-                  <span className="font-semibold text-whatsapp-dark dark:text-whatsapp">
+                  <span className="font-semibold text-whatsapp-ink dark:text-whatsapp">
                     {tz('deliveryFee', { fee })}
                   </span>
                   <span className="inline-flex items-center gap-1" style={{ color: 'var(--text-muted)' }}>

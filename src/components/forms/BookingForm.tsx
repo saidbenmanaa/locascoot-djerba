@@ -398,7 +398,7 @@ export function BookingForm({ vehicles }: { vehicles: BookingVehicleOption[] }) 
             href={directHref}
             target="_blank"
             rel="noopener noreferrer"
-            className="font-semibold text-whatsapp-dark underline underline-offset-4 hover:no-underline dark:text-whatsapp"
+            className="font-semibold text-whatsapp-ink underline underline-offset-4 hover:no-underline dark:text-whatsapp"
           >
             {t('directWhatsapp')}
           </a>

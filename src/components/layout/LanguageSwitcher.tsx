@@ -1,16 +1,17 @@
 'use client';
 
 import { useEffect, useId, useRef, useState } from 'react';
-import { useParams } from 'next/navigation';
+import { usePathname as useRawPathname } from 'next/navigation';
 import { useLocale, useTranslations } from 'next-intl';
 import { Check, ChevronDown, Globe } from 'lucide-react';
-import { Link, usePathname } from '@/i18n/navigation';
+import { getPathname, usePathname } from '@/i18n/navigation';
 import {
   legalLocales,
   legalPathnames,
   localeNames,
   locales,
   pathnames,
+  type AppPathname,
   type Locale,
 } from '@/i18n/routing';
 import { cn } from '@/lib/utils';
@@ -25,31 +26,60 @@ export type ZoneSlugs = Record<string, Record<Locale, string>>;
  * the homepage — sending people back to the homepage is the usual bug here,
  * and it loses them. Pages that do not exist in the target language (the 404,
  * the untranslated legal pages) fall back to its home.
+ *
+ * Returns the final URL (French unprefixed), used on a plain link: switching
+ * language is a full page load, and no link ever goes through a redirect.
  */
 function useAlternateHref(zoneSlugs: ZoneSlugs) {
-  const pathname = usePathname();
-  const params = useParams();
   const current = useLocale() as Locale;
+  const match = matchRoute(useRawPathname() ?? '/');
 
-  return (target: Locale) => {
-    if (!(pathname in pathnames)) return '/';
+  function route(target: Locale) {
+    if (!match) return '/';
+    const { pathname, params } = match;
 
     // The legal pages exist only in some languages for now.
     const isLegal = (legalPathnames as readonly string[]).includes(pathname);
     if (isLegal && !legalLocales.includes(target)) return '/';
 
     if (pathname === '/zones/[zone]') {
-      const slug = String(params.zone ?? '');
-      const slugs = Object.values(zoneSlugs).find((entry) => entry[current] === slug);
+      const slugs = Object.values(zoneSlugs).find((entry) => entry[current] === params.zone);
       return slugs ? { pathname, params: { zone: slugs[target] } } : '/';
     }
 
-    if (pathname === '/scooters/[slug]') {
-      return { pathname, params: { slug: String(params.slug ?? '') } };
-    }
+    if (pathname === '/scooters/[slug]') return { pathname, params };
 
     return pathname;
-  };
+  }
+
+  return (target: Locale) => getPathname({ href: route(target) as never, locale: target });
+}
+
+/**
+ * Finds which page a path belongs to, and its parameters. While pages are
+ * generated the framework reports the internal path ("/de/prices"), in the
+ * browser the public one ("/de/preise"); both resolve to the same page here,
+ * so the links rendered on the server and in the browser are identical.
+ */
+function matchRoute(rawPath: string): { pathname: AppPathname; params: Record<string, string> } | null {
+  const path = rawPath.replace(new RegExp(`^/(${locales.join('|')})(?=/|$)`), '') || '/';
+  const segments = path.split('/').filter(Boolean);
+
+  for (const [key, localized] of Object.entries(pathnames)) {
+    const templates = [key, ...(typeof localized === 'string' ? [localized] : Object.values(localized))];
+    for (const template of templates) {
+      const parts = template.split('/').filter(Boolean);
+      if (parts.length !== segments.length) continue;
+      const params: Record<string, string> = {};
+      const matches = parts.every((part, index) => {
+        const dynamic = part.match(/^\[(\w+)\]$/);
+        if (dynamic) params[dynamic[1]] = decodeURIComponent(segments[index]);
+        return dynamic !== null || part === segments[index];
+      });
+      if (matches) return { pathname: key as AppPathname, params };
+    }
+  }
+  return null;
 }
 
 /** Compact menu for the header bar: the current language, opening the list. */
@@ -125,9 +155,8 @@ export function LanguageMenu({
           const isActive = code === current;
           return (
             <li key={code}>
-              <Link
-                href={hrefFor(code) as never}
-                locale={code}
+              <a
+                href={hrefFor(code)}
                 hrefLang={code}
                 lang={code}
                 aria-current={isActive ? 'true' : undefined}
@@ -138,7 +167,7 @@ export function LanguageMenu({
                 {isActive ? (
                   <Check className="size-4 text-gold-600 dark:text-gold-400" aria-hidden />
                 ) : null}
-              </Link>
+              </a>
             </li>
           );
         })}
@@ -158,9 +187,8 @@ export function LanguageList({ zoneSlugs }: { zoneSlugs: ZoneSlugs }) {
         const isActive = code === current;
         return (
           <li key={code}>
-            <Link
-              href={hrefFor(code) as never}
-              locale={code}
+            <a
+              href={hrefFor(code)}
               hrefLang={code}
               lang={code}
               aria-current={isActive ? 'true' : undefined}
@@ -170,7 +198,7 @@ export function LanguageList({ zoneSlugs }: { zoneSlugs: ZoneSlugs }) {
               )}
             >
               {localeNames[code]}
-            </Link>
+            </a>
           </li>
         );
       })}

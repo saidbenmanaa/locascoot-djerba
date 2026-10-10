@@ -26,11 +26,13 @@ export function Logo({ className }: { className?: string }) {
           className,
         )}
       >
+        {/* Declared at the size it is shown (the file is 600 × 200), so the
+            browser downloads a small version rather than a 1280px one. */}
         <Image
           src={custom}
           alt={site.name}
-          width={600}
-          height={200}
+          width={108}
+          height={36}
           priority
           className="h-8 w-auto md:h-9"
         />

@@ -227,15 +227,17 @@ export default async function VehiclePage({
 
       <Section muted className="pt-0 md:pt-0">
         <Container>
+          {/* min-w-0 lets each card shrink to the screen: the price table then
+              scrolls inside its card on narrow phones instead of widening the page. */}
           <div className="grid gap-10 lg:grid-cols-2 lg:gap-14">
-            <div className="surface-card p-6 md:p-8">
+            <div className="surface-card min-w-0 p-6 md:p-8">
               <h2 className="text-[length:var(--text-h3)]">{t('specsTitle')}</h2>
               <div className="mt-4">
                 <SpecsList vehicle={vehicle} />
               </div>
             </div>
 
-            <div className="surface-card p-6 md:p-8">
+            <div className="surface-card min-w-0 p-6 md:p-8">
               {/* "Rates by duration" only makes sense with more than one band.
                   With a single flat rate it would promise a discount that does
                   not exist. */}
