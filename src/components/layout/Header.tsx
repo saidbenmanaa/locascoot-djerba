@@ -1,15 +1,18 @@
 import { Phone } from 'lucide-react';
 import { getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
+import { locales } from '@/i18n/routing';
+import { getZoneSlugMap } from '@/lib/content';
 import { site, telHref } from '@/lib/site';
 import { ButtonLink } from '@/components/ui/Button';
 import { Logo } from './Logo';
-import { LanguageSwitcher } from './LanguageSwitcher';
+import { LanguageMenu } from './LanguageSwitcher';
 import { MobileMenu, type NavItem } from './MobileMenu';
 
 export async function Header() {
   const t = await getTranslations('nav');
   const tc = await getTranslations('common');
+  const zoneSlugs = await getZoneSlugMap(locales);
 
   const items: NavItem[] = [
     { href: '/scooters', label: t('scooters') },
@@ -31,7 +34,7 @@ export async function Header() {
             <Logo />
           </Link>
 
-          <nav aria-label="Main" className="hidden lg:block">
+          <nav aria-label={t('main')} className="hidden lg:block">
             <ul className="flex items-center gap-1">
               {items.map((item) => (
                 <li key={item.href}>
@@ -46,8 +49,9 @@ export async function Header() {
             </ul>
           </nav>
 
-          <div className="flex items-center gap-2">
-            <LanguageSwitcher className="hidden sm:flex" />
+          <div className="flex items-center gap-1 sm:gap-2">
+            {/* Visible at every width, phones included */}
+            <LanguageMenu zoneSlugs={zoneSlugs} />
 
             <a
               href={telHref}
@@ -61,7 +65,7 @@ export async function Header() {
               {tc('bookNow')}
             </ButtonLink>
 
-            <MobileMenu items={items} />
+            <MobileMenu items={items} zoneSlugs={zoneSlugs} />
           </div>
         </div>
       </div>

@@ -4,7 +4,7 @@ import { NextIntlClientProvider, hasLocale } from 'next-intl';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { routing, type Locale } from '@/i18n/routing';
-import { site } from '@/lib/site';
+import { deliveryFee, site } from '@/lib/site';
 import { absoluteUrl } from '@/lib/seo';
 import { localBusinessSchema, websiteSchema } from '@/lib/schema';
 import { JsonLd } from '@/components/seo/JsonLd';
@@ -53,7 +53,7 @@ export async function generateMetadata({
       default: t('title'),
       template: `%s | ${site.name}`,
     },
-    description: t('description'),
+    description: t('description', { fee: deliveryFee(locale) }),
     applicationName: site.name,
     authors: [{ name: site.name }],
     creator: site.name,

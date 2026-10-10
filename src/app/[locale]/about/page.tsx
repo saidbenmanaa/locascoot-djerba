@@ -2,10 +2,9 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import { Eye, ShieldCheck, PhoneCall } from 'lucide-react';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import { getVehicles, getZones } from '@/lib/content';
 import { buildMetadata, urlFor } from '@/lib/seo';
 import { breadcrumbSchema } from '@/lib/schema';
-import { site } from '@/lib/site';
+import { deliveryFee, site } from '@/lib/site';
 import type { Locale } from '@/i18n/routing';
 import { Container, Section, SectionHeading } from '@/components/ui/Section';
 import { JsonLd } from '@/components/seo/JsonLd';
@@ -24,7 +23,7 @@ export async function generateMetadata({
     locale: locale as Locale,
     pathname: '/about',
     title: t('title'),
-    description: t('description'),
+    description: t('description', { fee: deliveryFee(locale) }),
   });
 }
 
@@ -38,19 +37,19 @@ export default async function AboutPage({
 
   const t = await getTranslations('about');
   const tNav = await getTranslations('nav');
-
-  const vehicles = await getVehicles();
-  const zones = await getZones();
+  const fee = deliveryFee(locale);
 
   const values = [
-    { icon: Eye, title: t('value1Title'), text: t('value1Text') },
+    { icon: Eye, title: t('value1Title'), text: t('value1Text', { fee }) },
     { icon: ShieldCheck, title: t('value2Title'), text: t('value2Text') },
     { icon: PhoneCall, title: t('value3Title'), text: t('value3Text') },
   ];
 
+  // What a visitor actually wants to know at a glance: what delivery costs,
+  // that the helmet is included, and that the agency is open every day.
   const stats = [
-    { value: String(vehicles.length), label: t('statsVehicles') },
-    { value: String(zones.length), label: t('statsZones') },
+    { value: fee, label: t('statsDelivery') },
+    { value: t('statsHelmetValue'), label: t('statsHelmet') },
     { value: '7/7', label: t('statsOpen') },
   ];
 
@@ -82,7 +81,7 @@ export default async function AboutPage({
                   <div key={stat.label}>
                     <dt className="sr-only">{stat.label}</dt>
                     <dd>
-                      <span className="block font-display text-3xl font-bold text-gold-700 dark:text-gold-300">
+                      <span className="block font-display text-2xl font-bold text-gold-700 sm:text-3xl dark:text-gold-300">
                         {stat.value}
                       </span>
                       <span className="mt-1 block text-sm" style={{ color: 'var(--text-muted)' }}>

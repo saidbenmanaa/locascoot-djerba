@@ -1,15 +1,17 @@
 import type { Metadata } from 'next';
-import { Mail, MapPin, Phone, Clock, ExternalLink } from 'lucide-react';
+import { Mail, MapPin, Phone, Clock, ExternalLink, Share2 } from 'lucide-react';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { buildMetadata, urlFor } from '@/lib/seo';
 import { breadcrumbSchema } from '@/lib/schema';
 import {
+  deliveryFee,
   formattedAddress,
   mailtoHref,
   mapEmbedSrc,
   mapsHref,
   openingHoursRange,
   site,
+  socialLinks,
   telHref,
   whatsappHref,
 } from '@/lib/site';
@@ -32,7 +34,7 @@ export async function generateMetadata({
     locale: locale as Locale,
     pathname: '/contact',
     title: t('title'),
-    description: t('description'),
+    description: t('description', { fee: deliveryFee(locale) }),
   });
 }
 
@@ -134,6 +136,27 @@ export default async function ContactPage({
                     <span className="block tabular-nums font-semibold">
                       {openingHoursRange()}
                     </span>
+                  </dd>
+                </div>
+
+                <div className="sm:col-span-2">
+                  <dt className="flex items-center gap-2 text-sm font-semibold" style={{ color: 'var(--text-strong)' }}>
+                    <Share2 className="size-4 text-gold-600 dark:text-gold-400" aria-hidden />
+                    {tc('followUs')}
+                  </dt>
+                  <dd className="mt-1.5 flex flex-wrap gap-x-4 gap-y-1.5 text-sm">
+                    {socialLinks().map((link) => (
+                      <a
+                        key={link.label}
+                        href={link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1 font-medium text-sea-700 hover:underline dark:text-sea-300"
+                      >
+                        {link.label}
+                        <ExternalLink className="size-3.5" aria-hidden />
+                      </a>
+                    ))}
                   </dd>
                 </div>
               </dl>

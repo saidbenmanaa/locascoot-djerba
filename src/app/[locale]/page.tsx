@@ -4,6 +4,7 @@ import { getFaq, getFeaturedVehicles } from '@/lib/content';
 import { t as translate } from '@/lib/vehicle-utils';
 import { buildMetadata } from '@/lib/seo';
 import { faqSchema } from '@/lib/schema';
+import { deliveryFee } from '@/lib/site';
 import type { Locale } from '@/i18n/routing';
 import { Container, Section, SectionHeading } from '@/components/ui/Section';
 import { ButtonLink } from '@/components/ui/Button';
@@ -28,7 +29,7 @@ export async function generateMetadata({
     locale: locale as Locale,
     pathname: '/',
     title: t('title'),
-    description: t('description'),
+    description: t('description', { fee: deliveryFee(locale) }),
     keywords:
       locale === 'fr'
         ? [
@@ -113,7 +114,7 @@ export default async function HomePage({
       <Section>
         <Container>
           <div className="prose-locascoot mx-auto max-w-3xl text-center">
-            <p>{t('intro')}</p>
+            <p>{t('intro', { fee: deliveryFee(locale) })}</p>
           </div>
         </Container>
       </Section>

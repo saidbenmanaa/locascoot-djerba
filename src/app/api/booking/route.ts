@@ -4,12 +4,12 @@ import { site } from '@content/site';
 
 /**
  * ============================================================================
- *  BOOKING & CONTACT FORM HANDLER
+ *  CONTACT FORM HANDLER
  * ============================================================================
  *
- *  Validates the submission and emails it to you. There is no database: the
- *  enquiry lands in your inbox and the conversation continues on WhatsApp,
- *  which is how these bookings actually close.
+ *  Validates the contact form and emails it to you. There is no database: the
+ *  message lands in your inbox. (Bookings do not come through here: the
+ *  booking form opens WhatsApp with the request already written.)
  *
  *  ── To switch email on ──────────────────────────────────────────────────
  *  1. Create a free account at https://resend.com
@@ -20,8 +20,9 @@ import { site } from '@content/site';
  *                                                 the address in site.ts)
  *       BOOKING_EMAIL_FROM=bookings@yourdomain.com
  *
- *  Until then the form still works: submissions are logged on the server and
- *  the visitor is shown the WhatsApp fallback, so no enquiry is ever lost.
+ *  Until then the form still answers the visitor, but messages are only
+ *  written to the server log (Vercel → Logs), not emailed. Set the key in
+ *  production so no message is missed.
  */
 
 const schema = z.object({
@@ -99,7 +100,7 @@ export async function POST(request: Request) {
     `Durée:           ${data.days ? `${data.days} j` : '—'}`,
     `Total estimé:    ${data.total ? `${data.total} DT` : '—'}`,
     `Livraison:       ${data.deliveryPlace || '—'}`,
-    `Langue:          ${data.locale || '—'}`,
+    `Langue du client : ${data.locale ? data.locale.toUpperCase() : '—'}`,
     '',
     'Message:',
     data.message || '—',

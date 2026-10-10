@@ -31,18 +31,18 @@ const vehicle: Vehicle = {
     fr: 'Scooter urbain 50cc, léger et compact, très économique en carburant, facile à conduire et maniable en ville. Confortable et sécurisant, parfait pour vos déplacements quotidiens et pour explorer la ville en toute simplicité.',
     en: 'Lightweight and compact 50cc urban scooter, very fuel-efficient, easy to ride and maneuverable in the city. Comfortable and safe, perfect for your daily trips and exploring the city with ease.',
   },
+  /* Only what the daily price covers. Delivery is not included: the site
+     shows it as its own line, using the fee from `content/site.ts`. */
   included: {
     fr: [
       'Casque fourni',
       'Tout l’équipement inclus',
       'Assistance immédiate en cas de panne',
-      'Livraison gratuite partout à Djerba',
     ],
     en: [
       'Helmet included',
       'All equipment included',
       'Immediate breakdown assistance',
-      'Free delivery anywhere in Djerba',
     ],
   },
 

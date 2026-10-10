@@ -27,18 +27,18 @@ const vehicle: Vehicle = {
     fr: 'Scooter rétro 125cc économique en carburant, avec une assise large et une conduite très confortable. Excellente stabilité sur la route et facile à prendre en main. Un choix idéal pour vos trajets quotidiens et pour découvrir la région avec style.',
     en: 'Fuel-efficient 125cc retro scooter with a wide seat and very comfortable ride. Excellent road stability and easy to handle. An ideal choice for your daily trips and discovering the region in style.',
   },
+  /* Only what the daily price covers. Delivery is not included: the site
+     shows it as its own line, using the fee from `content/site.ts`. */
   included: {
     fr: [
       'Casque fourni',
       'Tout l’équipement inclus',
       'Assistance immédiate en cas de panne',
-      'Livraison gratuite partout à Djerba',
     ],
     en: [
       'Helmet included',
       'All equipment included',
       'Immediate breakdown assistance',
-      'Free delivery anywhere in Djerba',
     ],
   },
 

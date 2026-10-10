@@ -1,4 +1,5 @@
 import type { FaqItem } from '@/types/content';
+import { deliveryFee } from '@/lib/site';
 
 /**
  * ============================================================================
@@ -9,17 +10,22 @@ import type { FaqItem } from '@/types/content';
  *  booking, and they are published as structured data so Google can show them
  *  directly in search results. Adding a question here is one of the cheapest
  *  SEO wins available — write them using the words your customers actually use.
+ *
+ *  Only answer with conditions you actually apply. The delivery fee comes from
+ *  `content/site.ts`.
  */
+const fee = { fr: deliveryFee('fr'), en: deliveryFee('en') };
+
 export const faq: FaqItem[] = [
   {
     topic: 'booking',
     question: {
-      fr: 'Est-ce que la livraison est incluse ?',
-      en: 'Is delivery included?',
+      fr: 'La livraison est-elle incluse dans le prix ?',
+      en: 'Is delivery included in the price?',
     },
     answer: {
-      fr: 'Oui, nous offrons la livraison gratuite de votre scooter partout sur l’île de Djerba.',
-      en: 'Yes, we offer free scooter delivery anywhere on Djerba island.',
+      fr: `Non, la livraison n’est pas comprise dans le prix de location par jour. Nous livrons votre scooter partout sur l’île de Djerba, y compris à l’aéroport international de Djerba-Zarzis, pour ${fee.fr}. Nous ne livrons pas en dehors de l’île.`,
+      en: `No, delivery is not included in the daily rental price. We deliver your scooter anywhere on Djerba Island, including Djerba-Zarzis International Airport, for ${fee.en}. We do not deliver outside the island.`,
     },
   },
   {
@@ -84,8 +90,8 @@ export const faq: FaqItem[] = [
       en: 'Is a helmet provided?',
     },
     answer: {
-      fr: 'Oui. Un casque et tout l’équipement nécessaire sont fournis avec chaque scooter, sans supplément.',
-      en: 'Yes. A helmet and all necessary equipment are supplied with every scooter, at no extra cost.',
+      fr: 'Oui. Un casque et tout l’équipement nécessaire sont inclus avec chaque scooter.',
+      en: 'Yes. A helmet and all necessary equipment are included with every scooter.',
     },
   },
 ];

@@ -2,15 +2,15 @@
   "meta": {
     "home": {
       "title": "Locascoot Djerba | Location de Scooter à Djerba",
-      "description": "Réservez votre scooter à Djerba au meilleur prix. Livraison gratuite partout sur l'île, casque et équipement inclus. Réservation directe via WhatsApp."
+      "description": "Location de scooters à Djerba : livraison partout sur l'île pour {fee}, casque et équipement inclus, à partir de 60 DT par jour. Réservation sur WhatsApp."
     },
     "scooters": {
       "title": "Nos scooters à louer à Djerba",
-      "description": "Scooter 50cc et 125cc en location à Djerba, à partir de 60 DT par jour. Casque et équipement inclus, livraison gratuite partout sur l'île."
+      "description": "Scooter 50cc et 125cc en location à Djerba, à partir de 60 DT par jour. Casque et équipement inclus, livraison sur l'île de Djerba pour {fee}."
     },
     "prices": {
       "title": "Tarifs location scooter à Djerba",
-      "description": "Nos tarifs de location de scooter à Djerba : 60 DT par jour pour le 50cc, 80 DT pour le 125cc. Casque, équipement et livraison gratuite inclus."
+      "description": "Nos tarifs de location de scooter à Djerba : 60 DT par jour pour le 50cc, 80 DT pour le 125cc. Casque et équipement inclus, livraison sur l'île : {fee}."
     },
     "conditions": {
       "title": "Conditions de location — permis, âge, documents",
@@ -18,11 +18,11 @@
     },
     "about": {
       "title": "Qui sommes-nous — location de scooters à Djerba",
-      "description": "Locascoot Djerba est le spécialiste de la location de scooters à Djerba : flotte moderne et entretenue, livraison partout sur l'île, assistance immédiate."
+      "description": "Locascoot Djerba est le spécialiste de la location de scooters à Djerba : flotte moderne et entretenue, livraison sur l'île pour {fee}, assistance immédiate."
     },
     "contact": {
-      "title": "Contact — Locascoot Djerba",
-      "description": "Contactez Locascoot Djerba par WhatsApp, téléphone ou email. Ouvert 7j/7 de 08h00 à 20h00, livraison gratuite partout sur l'île de Djerba."
+      "title": "Contact et réservation WhatsApp à Djerba",
+      "description": "Contactez Locascoot Djerba par WhatsApp, téléphone ou email. Ouvert 7j/7 de 08h00 à 20h00, livraison partout sur l'île de Djerba pour {fee}."
     },
     "book": {
       "title": "Réserver un scooter à Djerba",
@@ -30,11 +30,11 @@
     },
     "zone": {
       "title": "Location scooter {zone} — Djerba",
-      "description": "Location de scooter à {zone}, Djerba. Livraison gratuite, casque et équipement inclus, à partir de 60 DT par jour. Réservation par WhatsApp."
+      "description": "Location de scooter {where}, à Djerba : livraison pour {fee}, casque et équipement inclus, à partir de 60 DT par jour. Réservation sur WhatsApp."
     },
     "vehicle": {
       "title": "Location {name} à Djerba — {price} DT/jour",
-      "description": "Louez un {name} à Djerba pour {price} DT par jour. Casque et équipement inclus, assistance immédiate et livraison gratuite partout sur l'île."
+      "description": "Louez le {name} à Djerba pour {price} DT par jour. Casque et équipement inclus, assistance immédiate, livraison sur l'île de Djerba pour {fee}."
     },
     "terms": {
       "title": "Conditions générales de location",
@@ -62,6 +62,8 @@
     "contact": "Contact",
     "book": "Réserver",
     "zones": "Zones de livraison",
+    "main": "Navigation principale",
+    "menu": "Menu",
     "openMenu": "Ouvrir le menu",
     "closeMenu": "Fermer le menu",
     "skipToContent": "Aller au contenu principal"
@@ -81,11 +83,15 @@
     "seeAllVehicles": "Voir tous nos scooters",
     "seeAllPrices": "Voir tous les tarifs",
     "included": "Inclus dans le prix",
+    "deliveryLine": "Livraison sur l'île de Djerba : {fee}",
     "day": "jour",
     "days": "jours",
     "loading": "Chargement…",
     "required": "obligatoire",
     "language": "Langue",
+    "languageCurrent": "Langue : {name}",
+    "breadcrumb": "Fil d’Ariane",
+    "followUs": "Suivez-nous",
     "backHome": "Retour à l’accueil",
     "readMore": "En savoir plus"
   },
@@ -120,20 +126,20 @@
   },
   "home": {
     "heroTitle": "Location de scooters à Djerba",
-    "heroSubtitle": "Découvrez l'île en toute liberté. Livraison gratuite partout à Djerba, casque et équipement inclus, à partir de 60 DT par jour.",
+    "heroSubtitle": "Découvrez l'île en toute liberté. Livraison partout sur l'île de Djerba pour {fee}, casque et équipement inclus, à partir de 60 DT par jour.",
     "heroPrimaryCta": "Réserver sur WhatsApp",
     "heroSecondaryCta": "Voir nos scooters",
-    "trustDelivery": "Livraison gratuite partout à Djerba",
+    "trustDelivery": "Livraison sur l'île de Djerba : {fee}",
     "trustInsurance": "Casque et équipement inclus",
     "trustNoPrepay": "Aucun paiement en ligne",
     "fleetTitle": "Nos scooters",
     "fleetSubtitle": "Une flotte moderne et régulièrement entretenue.",
     "whyTitle": "Pourquoi louer chez nous",
     "whySubtitle": "Ce qui fait la différence quand vous êtes en vacances.",
-    "why1Title": "Livraison gratuite partout",
-    "why1Text": "À votre hôtel, à l’aéroport Djerba-Zarzis ou à votre location : nous venons à vous, sans supplément, à l’heure que vous choisissez.",
+    "why1Title": "Livraison partout sur l'île",
+    "why1Text": "À votre hôtel, à l’aéroport international de Djerba-Zarzis ou à votre location : nous livrons partout sur l'île de Djerba, tous les jours entre 08:00 et 20:00, pour {fee}.",
     "why2Title": "Prix clair, sans surprise",
-    "why2Text": "Le tarif annoncé comprend le casque et tout l'équipement. Aucun frais ajouté au moment de rendre le scooter.",
+    "why2Text": "Le tarif par jour comprend le casque et tout l'équipement ; la livraison ({fee}) est indiquée à part. Aucun frais ajouté au moment de rendre le scooter.",
     "why3Title": "Assistance immédiate",
     "why3Text": "Nos scooters sont régulièrement entretenus. En cas de panne, nous intervenons immédiatement, partout sur l'île.",
     "why4Title": "Réservation en 2 minutes",
@@ -143,27 +149,23 @@
     "how1Title": "Vous nous écrivez",
     "how1Text": "Envoyez-nous le scooter souhaité et vos dates par WhatsApp ou via le formulaire. Nous confirmons la disponibilité rapidement.",
     "how2Title": "Nous livrons",
-    "how2Text": "Nous vous livrons le scooter là où vous êtes à Djerba, avec le casque et tout l'équipement.",
+    "how2Text": "Nous vous livrons le scooter là où vous êtes sur l'île de Djerba, pour {fee}, avec le casque et tout l'équipement.",
     "how3Title": "Vous partez",
     "how3Text": "Vous réglez en espèces à la livraison, et l'île est à vous. Nous restons joignables pendant toute la location.",
-    "zonesTitle": "Nous livrons partout à Djerba",
-    "zonesSubtitle": "Gratuitement, où que vous logiez sur l’île.",
-    "testimonialsTitle": "Ce que disent nos clients",
+    "zonesTitle": "Nous livrons partout sur l'île de Djerba",
+    "zonesSubtitle": "Où que vous logiez sur l’île, la livraison coûte {fee}.",
     "faqTitle": "Questions fréquentes",
     "faqSubtitle": "Tout ce qu’il faut savoir avant de réserver.",
     "faqCta": "Voir toutes les conditions",
     "ctaTitle": "Prêt à découvrir Djerba ?",
     "ctaText": "Dites-nous vos dates, nous nous occupons du reste. Réponse en quelques minutes.",
-    "intro": "Locascoot Djerba loue des scooters sur toute l'île de Djerba. Que vous logiez à Houmt Souk, à Midoun, dans la zone touristique, à Aghir ou que vous arriviez à l'aéroport Djerba-Zarzis, nous livrons gratuitement votre scooter à l'adresse et à l'heure de votre choix. Casque et équipement complet sont fournis avec chaque location, et nous intervenons immédiatement en cas de panne."
+    "intro": "Locascoot Djerba loue des scooters sur toute l'île de Djerba. Que vous logiez à Houmt Souk, à Midoun, dans la zone touristique ou à Aghir, ou que vous arriviez à l'aéroport international de Djerba-Zarzis, nous livrons votre scooter à l'adresse de votre choix sur l'île, tous les jours entre 08:00 et 20:00, pour {fee}. Casque et équipement complet sont fournis avec chaque location, et nous intervenons immédiatement en cas de panne."
   },
   "scooters": {
     "title": "Nos scooters",
-    "subtitle": "{count} modèles disponibles à la location, livrés gratuitement partout à Djerba.",
+    "subtitle": "{count, plural, one {# modèle disponible} other {# modèles disponibles}} à la location. Livraison partout sur l'île de Djerba : {fee}.",
     "filterLabel": "Filtrer par type",
-    "noResults": "Aucun scooter dans cette catégorie pour le moment.",
-    "showAll": "Voir tous les véhicules",
-    "resultCount": "{count} véhicule",
-    "resultCountPlural": "{count} véhicules"
+    "noResults": "Aucun scooter dans cette catégorie pour le moment."
   },
   "vehicle": {
     "specsTitle": "Caractéristiques",
@@ -171,31 +173,28 @@
     "pricingSubtitle": "Plus la location est longue, moins la journée coûte cher.",
     "duration": "Durée",
     "pricePerDayLabel": "Prix par jour",
-    "totalLabel": "Total",
     "depositNote": "Caution de {amount} DT, restituée au retour du véhicule.",
     "includedTitle": "Compris dans le prix",
     "galleryAlt": "{name} en location à Djerba — photo {index}",
-    "mainImageAlt": "Location {name} à Djerba",
     "otherVehicles": "Autres scooters disponibles",
     "bookCta": "Réserver ce {name}",
     "whatsappMessage": "Bonjour, je souhaite louer le {name} à Djerba. Est-il disponible ?",
     "breadcrumbFleet": "Nos scooters",
     "bookByForm": "Réserver par formulaire",
     "pricingTitleFlat": "Tarif",
-    "pricingSubtitleFlat": "Prix par jour, tout compris.",
+    "pricingSubtitleFlat": "Prix par jour, casque et équipement compris. Livraison sur l'île de Djerba : {fee}.",
     "durationAny": "Toute durée"
   },
   "prices": {
     "title": "Tarifs de location à Djerba",
-    "subtitle": "Prix par jour, tout compris. Casque, équipement complet, assistance et livraison gratuite sont inclus dans chaque location.",
+    "subtitle": "Prix par jour, tout compris sauf la livraison : casque, équipement complet et assistance sont inclus dans chaque location. Livraison sur l'île de Djerba : {fee}.",
     "vehicle": "Véhicule",
     "tableNote": "Prix par jour en dinars tunisiens (DT). Le montant en euros est indicatif et dépend du taux de change du jour.",
-    "includedTitle": "Toujours inclus",
+    "includedTitle": "Inclus",
     "included1": "Casque fourni",
     "included2": "Tout l'équipement inclus",
     "included3": "Assistance immédiate en cas de panne",
-    "included4": "Livraison gratuite partout à Djerba",
-    "included5": "Aucun paiement en ligne",
+    "notIncludedTitle": "Non inclus",
     "depositTitle": "Caution",
     "depositText": "Une caution est demandée à la remise du véhicule et vous est intégralement restituée au retour, si le véhicule est rendu dans l’état où il vous a été confié. Le montant dépend du modèle et figure dans le tableau ci-dessus.",
     "paymentTitle": "Paiement",
@@ -221,15 +220,16 @@
     "p1": "Locascoot Djerba est le spécialiste de la location de scooters à Djerba. Nous proposons une flotte moderne et régulièrement entretenue, avec un service de livraison de votre scooter partout sur l'île de Djerba.",
     "p2": "Casque et tout l'équipement sont fournis avec chaque scooter. En cas de panne, nous intervenons immédiatement pour vous dépanner.",
     "p3": "Profitez d'une liberté totale pour découvrir les plages, les souks et les paysages uniques de l'île en toute sécurité.",
-    "statsVehicles": "modèles de scooters",
-    "statsZones": "zones de livraison",
+    "statsDelivery": "livraison partout sur l'île de Djerba",
+    "statsHelmetValue": "Casque",
+    "statsHelmet": "inclus avec chaque scooter",
+    "statsOpen": "ouvert 7j/7",
     "value1Title": "La transparence",
-    "value1Text": "Le tarif est affiché et comprend tout. Aucun frais n'apparaît au dernier moment.",
+    "value1Text": "Le tarif est affiché clairement : casque et équipement compris, livraison ({fee}) indiquée à part. Aucun frais n'apparaît au dernier moment.",
     "value2Title": "La sécurité",
     "value2Text": "Casque et équipement complet fournis avec chaque scooter, et une flotte régulièrement entretenue.",
     "value3Title": "L'assistance",
     "value3Text": "En cas de panne, nous intervenons immédiatement, partout sur l'île.",
-    "statsOpen": "ouvert 7j/7",
     "valuesTitle": "Ce à quoi nous tenons"
   },
   "contact": {
@@ -248,34 +248,54 @@
     "title": "Réserver votre scooter",
     "subtitle": "Aucun paiement en ligne. Votre demande nous est envoyée sur WhatsApp et nous confirmons rapidement la disponibilité.",
     "vehicle": "Scooter souhaité",
-    "vehiclePlaceholder": "Choisissez un véhicule",
     "vehicleAny": "Peu importe, conseillez-moi",
     "startDate": "Date de début",
     "endDate": "Date de fin",
+    "deliveryTime": "Heure de livraison (facultatif)",
+    "deliveryTimeHint": "Entre {open} et {close}",
+    "riders": "Nombre de personnes (facultatif)",
+    "ridersAny": "—",
+    "ridersOption": "{count, plural, one {# personne} other {# personnes}}",
     "name": "Nom et prénom",
     "namePlaceholder": "Votre nom",
     "phone": "Téléphone / WhatsApp",
     "phonePlaceholder": "+33 6 12 34 56 78",
     "email": "Email",
     "emailPlaceholder": "vous@exemple.com",
-    "deliveryPlace": "Lieu de livraison",
+    "deliveryPlace": "Lieu de livraison sur l'île de Djerba",
     "deliveryPlaceholder": "Nom de votre hôtel, quartier, ou « aéroport »",
     "message": "Message (facultatif)",
-    "messagePlaceholder": "Numéro de vol, heure d’arrivée, questions…",
-    "submit": "Envoyer ma demande",
-    "submitting": "Envoi en cours…",
-    "orWhatsapp": "ou réservez directement sur WhatsApp",
-    "successTitle": "Demande envoyée",
-    "successText": "Merci ! Nous revenons vers vous très vite pour confirmer la disponibilité.",
-    "errorTitle": "L’envoi a échoué",
-    "errorText": "Impossible d’envoyer le formulaire. Écrivez-nous sur WhatsApp, nous répondons immédiatement.",
+    "messagePlaceholder": "Numéro de vol, questions…",
+    "submitWhatsapp": "Réserver sur WhatsApp",
+    "submitHint": "WhatsApp s’ouvre avec votre demande déjà rédigée : il vous suffit d’appuyer sur Envoyer.",
+    "directWhatsapp": "Ou écrivez-nous directement sur WhatsApp, sans remplir le formulaire",
     "summaryTitle": "Récapitulatif",
-    "summaryDays": "{count} jours de location",
+    "summaryDays": "{count, plural, one {# jour} other {# jours}} de location",
     "summaryRate": "{price} DT par jour",
     "summaryTotal": "Total estimé",
+    "summaryDelivery": "Livraison sur l'île de Djerba",
     "summaryDeposit": "Caution (restituée)",
     "summaryNote": "Estimation indicative. Paiement en espèces à la livraison, en euro, dollar ou dinar.",
     "whatsappMessage": "Bonjour, je souhaite réserver un scooter à Djerba.",
+    "wa": {
+      "heading": "🛵 Nouvelle demande de réservation — Locascoot Djerba",
+      "line": "{label} : {value}",
+      "name": "Nom",
+      "phone": "Téléphone / WhatsApp",
+      "email": "Email",
+      "vehicle": "Scooter",
+      "startDate": "Date de début",
+      "endDate": "Date de fin",
+      "duration": "Durée",
+      "days": "{count, plural, one {# jour} other {# jours}}",
+      "total": "Total estimé",
+      "delivery": "Livraison",
+      "deliveryPlace": "Lieu de livraison",
+      "deliveryTime": "Heure de livraison",
+      "riders": "Nombre de personnes",
+      "language": "Langue du client",
+      "message": "Message"
+    },
     "errors": {
       "nameRequired": "Merci d’indiquer votre nom.",
       "phoneRequired": "Un numéro de téléphone est nécessaire pour vous répondre.",
@@ -284,7 +304,8 @@
       "startRequired": "Indiquez la date de début de la location.",
       "endRequired": "Indiquez la date de fin de la location.",
       "endBeforeStart": "La date de fin doit être après la date de début.",
-      "startInPast": "La date de début ne peut pas être dans le passé."
+      "startInPast": "La date de début ne peut pas être dans le passé.",
+      "deliveryTimeRange": "Choisissez une heure entre {open} et {close}."
     }
   },
   "contactForm": {
@@ -292,33 +313,29 @@
     "email": "Email",
     "message": "Message",
     "messagePlaceholder": "Votre question…",
+    "messageRequired": "Écrivez votre message (5 caractères minimum).",
     "submit": "Envoyer",
-    "successText": "Merci, votre message est bien parti. Nous vous répondons rapidement."
+    "submitting": "Envoi en cours…",
+    "successText": "Merci, votre message est bien parti. Nous vous répondons rapidement.",
+    "errorText": "Impossible d’envoyer le formulaire. Écrivez-nous sur WhatsApp, nous répondons immédiatement."
   },
   "zones": {
-    "title": "Location de scooter à {zone}",
-    "listTitle": "Nos zones de livraison",
-    "deliveryFree": "Livraison gratuite",
-    "deliveryFee": "Livraison {fee} DT",
+    "title": "Location de scooter {where}",
+    "deliveryFee": "Livraison : {fee}",
     "driveTime": "à {minutes} min de Houmt Souk",
-    "highlightsTitle": "À voir depuis {zone}",
-    "ctaTitle": "Besoin d’un scooter à {zone} ?",
-    "ctaText": "Dites-nous où et quand, nous livrons gratuitement.",
+    "highlightsTitle": "À voir aux alentours",
+    "ctaTitle": "Besoin d’un scooter {where} ?",
+    "ctaText": "Dites-nous où et quand : nous livrons partout sur l'île de Djerba pour {fee}.",
     "otherZones": "Autres zones desservies",
-    "whatsappMessage": "Bonjour, je souhaite louer un scooter à {zone}, à Djerba.",
-    "fleetTitle": "Scooters disponibles à {zone}"
+    "whatsappMessage": "Bonjour, je souhaite louer un scooter {where}.",
+    "fleetTitle": "Scooters disponibles {where}"
   },
   "footer": {
-    "tagline": "Location de scooters à Djerba. Livraison gratuite partout sur l'île, casque et équipement inclus.",
+    "tagline": "Location de scooters à Djerba. Livraison sur l'île de Djerba pour {fee}, casque et équipement inclus.",
     "navTitle": "Navigation",
     "zonesTitle": "Zones de livraison",
     "contactTitle": "Contact",
-    "legalTitle": "Informations",
-    "terms": "Conditions générales",
-    "privacy": "Confidentialité",
-    "legalNotice": "Mentions légales",
-    "rights": "Tous droits réservés.",
-    "followUs": "Suivez-nous"
+    "rights": "Tous droits réservés."
   },
   "legal": {
     "placeholderNotice": "⚠️ Ce texte est un modèle à compléter. Faites-le relire avant la mise en ligne du site.",

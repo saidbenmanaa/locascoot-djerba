@@ -1,11 +1,11 @@
 import 'server-only';
 
-import type { FaqItem, Vehicle, VehicleCategory, Zone } from '@/types/content';
+import type { FaqItem, Locale, Vehicle, VehicleCategory, Zone } from '@/types/content';
 
 import { vehicles as allVehicles } from '@content/vehicles';
 import { zones as allZones } from '@content/zones';
 import { faq as allFaq } from '@content/faq';
-import { categoryOrder } from './vehicle-utils';
+import { categoryOrder, zoneSlug } from './vehicle-utils';
 
 /**
  * ============================================================================
@@ -75,8 +75,24 @@ export async function getZones(): Promise<Zone[]> {
   return allZones;
 }
 
-export async function getZoneBySlug(slug: string): Promise<Zone | null> {
-  return allZones.find((z) => z.slug === slug) ?? null;
+/** Finds a zone from the slug used in the URL of a given language. */
+export async function getZoneBySlug(slug: string, locale: Locale): Promise<Zone | null> {
+  return allZones.find((z) => zoneSlug(z, locale) === slug) ?? null;
+}
+
+/** Every zone's slug in every language, for the language switcher. */
+export async function getZoneSlugMap(
+  locales: readonly Locale[],
+): Promise<Record<string, Record<Locale, string>>> {
+  return Object.fromEntries(
+    allZones.map((zone) => [
+      zone.slug,
+      Object.fromEntries(locales.map((locale) => [locale, zoneSlug(zone, locale)])) as Record<
+        Locale,
+        string
+      >,
+    ]),
+  );
 }
 
 export async function getFaq(): Promise<FaqItem[]> {

@@ -1,13 +1,15 @@
 import { Truck, Tag, Wrench, MessageCircle } from 'lucide-react';
-import { getTranslations } from 'next-intl/server';
+import { getLocale, getTranslations } from 'next-intl/server';
 import { Container, Section, SectionHeading } from '@/components/ui/Section';
+import { deliveryFee } from '@/lib/site';
 
 export async function WhyUs() {
   const t = await getTranslations('home');
+  const fee = deliveryFee(await getLocale());
 
   const items = [
-    { icon: Truck, title: t('why1Title'), text: t('why1Text') },
-    { icon: Tag, title: t('why2Title'), text: t('why2Text') },
+    { icon: Truck, title: t('why1Title'), text: t('why1Text', { fee }) },
+    { icon: Tag, title: t('why2Title'), text: t('why2Text', { fee }) },
     { icon: Wrench, title: t('why3Title'), text: t('why3Text') },
     { icon: MessageCircle, title: t('why4Title'), text: t('why4Text') },
   ];

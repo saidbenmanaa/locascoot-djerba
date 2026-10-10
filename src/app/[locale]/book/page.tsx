@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import { Check } from 'lucide-react';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { getVehicles } from '@/lib/content';
 import { buildMetadata, urlFor } from '@/lib/seo';
@@ -9,6 +8,7 @@ import { Container, Section } from '@/components/ui/Section';
 import { JsonLd } from '@/components/seo/JsonLd';
 import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
 import { BookingForm } from '@/components/forms/BookingForm';
+import { IncludedList } from '@/components/sections/IncludedList';
 
 export async function generateMetadata({
   params,
@@ -35,7 +35,6 @@ export default async function BookPage({
   setRequestLocale(locale);
 
   const t = await getTranslations('book');
-  const tp = await getTranslations('prices');
   const tNav = await getTranslations('nav');
 
   const vehicles = await getVehicles();
@@ -43,17 +42,10 @@ export default async function BookPage({
   const options = vehicles.map((vehicle) => ({
     slug: vehicle.slug,
     name: vehicle.name,
+    seats: vehicle.seats,
     pricing: vehicle.pricing.map((tier) => ({ ...tier })),
     deposit: vehicle.deposit,
   }));
-
-  const included = [
-    tp('included1'),
-    tp('included2'),
-    tp('included3'),
-    tp('included4'),
-    tp('included5'),
-  ];
 
   return (
     <>
@@ -79,17 +71,7 @@ export default async function BookPage({
 
             <aside className="lg:pt-24">
               <div className="surface-card p-6">
-                <h2 className="text-[length:var(--text-h3)]">{tp('includedTitle')}</h2>
-                <ul className="mt-4 grid gap-2.5">
-                  {included.map((item) => (
-                    <li key={item} className="flex items-start gap-2.5">
-                      <Check className="mt-0.5 size-5 shrink-0 text-whatsapp" aria-hidden />
-                      <span className="text-sm" style={{ color: 'var(--text-body)' }}>
-                        {item}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
+                <IncludedList compact />
               </div>
             </aside>
           </div>

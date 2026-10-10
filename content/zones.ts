@@ -1,4 +1,5 @@
 import type { Zone } from '@/types/content';
+import { deliveryFee } from '@/lib/site';
 
 /**
  * ============================================================================
@@ -9,25 +10,31 @@ import type { Zone } from '@/types/content';
  *  searching for scooter rental in that specific part of the island. Write the
  *  body text as genuinely useful local advice — Google rewards pages that
  *  actually help, and so do customers.
+ *
+ *  Delivery is available on Djerba Island only. The fee below comes from
+ *  `content/site.ts` (`delivery.feeEur`), so these texts never need editing
+ *  when it changes.
  */
+const fee = { fr: deliveryFee('fr'), en: deliveryFee('en') };
+
 export const zones: Zone[] = [
   {
     slug: 'houmt-souk',
-    name: 'Houmt Souk',
-    deliveryFee: 0,
+    name: { fr: 'Houmt Souk', en: 'Houmt Souk' },
+    where: { fr: 'à Houmt Souk', en: 'in Houmt Souk' },
     driveTimeMinutes: 5,
     intro: {
-      fr: "Nous livrons gratuitement votre scooter partout à Houmt Souk, devant votre hôtel, votre riad ou votre location, à l'heure qui vous arrange.",
-      en: 'We deliver your scooter free of charge anywhere in Houmt Souk — to your hotel, riad or rental — at whatever time suits you.',
+      fr: `Nous livrons votre scooter partout à Houmt Souk, à votre hôtel, votre riad ou votre location, pour ${fee.fr}, tous les jours entre 08:00 et 20:00.`,
+      en: `We deliver your scooter anywhere in Houmt Souk — to your hotel, riad or rental — for ${fee.en}, every day between 08:00 and 20:00.`,
     },
     body: {
       fr: [
-        "Houmt Souk est la capitale de Djerba et le meilleur point de départ pour découvrir l'île. Les ruelles du centre historique se parcourent à pied, mais dès que vous voulez rejoindre les plages du nord ou la zone touristique, un deux-roues change tout : vous évitez l'attente des taxis et vous vous garez partout gratuitement.",
-        "La livraison est gratuite dans tout Houmt Souk, y compris au port de plaisance et à la station de louage. Nous vous remettons le scooter avec le casque et tout l'équipement, ainsi qu'un point rapide sur les routes à emprunter.",
+        "Houmt Souk est la capitale de Djerba et le meilleur point de départ pour découvrir l'île. Les ruelles du centre historique se parcourent à pied, mais dès que vous voulez rejoindre les plages du nord ou la zone touristique, un deux-roues change tout : vous n'attendez plus les taxis.",
+        `Nous livrons dans tout Houmt Souk, y compris au port de plaisance et à la station de louage, pour ${fee.fr}. Le scooter vous est remis avec le casque et tout l'équipement.`,
       ],
       en: [
-        "Houmt Souk is Djerba's main town and the best base for exploring the island. The old centre is walkable, but the moment you want the northern beaches or the tourist zone, two wheels change everything: no waiting for taxis, and free parking everywhere.",
-        'Delivery is free anywhere in Houmt Souk, including the marina and the louage station. We hand the scooter over with the helmet and all the equipment, plus a quick briefing on the best roads to take.',
+        "Houmt Souk is Djerba's main town and the best base for exploring the island. The old centre is walkable, but the moment you want the northern beaches or the tourist zone, two wheels change everything: no more waiting for taxis.",
+        `We deliver anywhere in Houmt Souk, including the marina and the louage station, for ${fee.en}. The scooter is handed over with the helmet and all the equipment.`,
       ],
     },
     highlights: {
@@ -47,21 +54,21 @@ export const zones: Zone[] = [
   },
   {
     slug: 'midoun',
-    name: 'Midoun',
-    deliveryFee: 0,
+    name: { fr: 'Midoun', en: 'Midoun' },
+    where: { fr: 'à Midoun', en: 'in Midoun' },
     driveTimeMinutes: 20,
     intro: {
-      fr: "Livraison gratuite à Midoun et dans tous les hôtels alentour, du centre-ville jusqu'à la route de la plage.",
-      en: 'Free delivery in Midoun and every hotel nearby, from the town centre out to the beach road.',
+      fr: `Livraison à Midoun et dans les hôtels alentour, du centre-ville jusqu'à la route de la plage, pour ${fee.fr}.`,
+      en: `Delivery in Midoun and to the hotels nearby, from the town centre out to the beach road, for ${fee.en}.`,
     },
     body: {
       fr: [
         "Midoun est la deuxième ville de l'île et le point de chute de nombreux visiteurs. Son marché du vendredi est le plus animé de Djerba, et un scooter vous permet d'y arriver tôt sans chercher de place de stationnement pendant une demi-heure.",
-        "Depuis Midoun, la route côtière vers Aghir et la plage de Seguia se parcourt en une vingtaine de minutes. Nous livrons directement à votre hôtel : vous signez le contrat sur place et vous partez immédiatement.",
+        'Depuis Midoun, la route côtière vers Aghir et la plage de Seguia se parcourt en une vingtaine de minutes. Nous livrons directement à votre hôtel, tous les jours entre 08:00 et 20:00.',
       ],
       en: [
         "Midoun is the island's second town and where a lot of visitors stay. Its Friday market is the liveliest on Djerba, and a scooter lets you arrive early without spending half an hour hunting for a parking space.",
-        'From Midoun the coast road down to Aghir and Seguia beach takes about twenty minutes. We deliver straight to your hotel: sign the contract on the spot and ride away.',
+        'From Midoun the coast road down to Aghir and Seguia beach takes about twenty minutes. We deliver straight to your hotel, every day between 08:00 and 20:00.',
       ],
     },
     highlights: {
@@ -81,21 +88,21 @@ export const zones: Zone[] = [
   },
   {
     slug: 'zone-touristique',
-    name: 'Zone Touristique',
-    deliveryFee: 0,
+    name: { fr: 'Zone touristique', en: 'Tourist Zone' },
+    where: { fr: 'dans la zone touristique', en: 'in the Tourist Zone' },
     driveTimeMinutes: 15,
     intro: {
-      fr: "Nous livrons gratuitement dans tous les hôtels de la zone touristique, de Sidi Mahrez à la pointe de Taguermess.",
-      en: 'We deliver free of charge to every hotel in the tourist zone, from Sidi Mahrez to Taguermess point.',
+      fr: `Livraison dans les hôtels de la zone touristique, de Sidi Mahrez à la pointe de Taguermess, pour ${fee.fr}.`,
+      en: `Delivery to the hotels of the Tourist Zone, from Sidi Mahrez to Taguermess point, for ${fee.en}.`,
     },
     body: {
       fr: [
         "La zone touristique concentre la majorité des hôtels de l'île le long d'une quinzaine de kilomètres de plage. C'est confortable, mais on s'y sent vite dépendant des navettes et des taxis. Un scooter vous rend totalement autonome pour aller dîner à Houmt Souk ou rejoindre une plage plus tranquille.",
-        "Nous connaissons tous les hôtels du secteur et livrons directement à la réception, au créneau que vous choisissez. Prévoyez une pièce d'identité, et votre permis pour le 125cc : la remise des clés prend moins de dix minutes.",
+        "Nous livrons directement à la réception de votre hôtel, tous les jours entre 08:00 et 20:00. Prévoyez une pièce d'identité, et votre permis pour le 125cc.",
       ],
       en: [
-        "The tourist zone lines up most of the island's hotels along fifteen kilometres of beach. It is comfortable, but you quickly end up dependent on shuttles and taxis. A scooter makes you completely independent, whether for dinner in Houmt Souk or a quieter stretch of sand.",
-        'We know every hotel in the area and deliver straight to reception at a time you choose. Bring your ID, plus your licence for the 125cc — the handover takes under ten minutes.',
+        "The Tourist Zone lines up most of the island's hotels along fifteen kilometres of beach. It is comfortable, but you quickly end up dependent on shuttles and taxis. A scooter makes you completely independent, whether for dinner in Houmt Souk or a quieter stretch of sand.",
+        'We deliver straight to your hotel reception, every day between 08:00 and 20:00. Bring your ID, plus your licence for the 125cc.',
       ],
     },
     highlights: {
@@ -115,21 +122,21 @@ export const zones: Zone[] = [
   },
   {
     slug: 'aghir',
-    name: 'Aghir',
-    deliveryFee: 0,
+    name: { fr: 'Aghir', en: 'Aghir' },
+    where: { fr: 'à Aghir', en: 'in Aghir' },
     driveTimeMinutes: 25,
     intro: {
-      fr: "Livraison gratuite à Aghir et sur toute la côte sud-est, jusqu'à la lagune.",
-      en: 'Free delivery in Aghir and along the whole south-east coast, down to the lagoon.',
+      fr: `Livraison à Aghir et sur toute la côte sud-est, jusqu'à la lagune, pour ${fee.fr}.`,
+      en: `Delivery in Aghir and along the whole south-east coast, down to the lagoon, for ${fee.en}.`,
     },
     body: {
       fr: [
         "Aghir borde la plus belle portion de côte de Djerba, plus calme que la zone touristique et bien plus agréable à parcourir en deux-roues. La route qui longe la mer jusqu'à la chaussée romaine est l'une des plus belles balades de l'île.",
-        "Cette partie de l'île est mal desservie par les transports : c'est précisément là qu'un scooter fait la plus grande différence. Nous livrons gratuitement malgré la distance, sur simple message WhatsApp la veille.",
+        `Cette partie de l'île est mal desservie par les transports : c'est précisément là qu'un scooter fait la plus grande différence. Nous y livrons au même tarif que partout ailleurs sur l'île : ${fee.fr}.`,
       ],
       en: [
         "Aghir fronts the prettiest stretch of coast on Djerba — quieter than the tourist zone and far nicer to ride. The seafront road down to the Roman causeway is one of the best runs on the island.",
-        'This side of the island is poorly served by public transport, which is exactly where a scooter earns its keep. We deliver free despite the distance — one WhatsApp message the day before is enough.',
+        `This side of the island is poorly served by public transport, which is exactly where a scooter earns its keep. We deliver here for the same fee as everywhere else on the island: ${fee.en}.`,
       ],
     },
     highlights: {
@@ -149,36 +156,26 @@ export const zones: Zone[] = [
   },
   {
     slug: 'aeroport-djerba',
-    name: 'Aéroport Djerba-Zarzis',
-    deliveryFee: 0,
+    name: { fr: 'Aéroport de Djerba-Zarzis', en: 'Djerba-Zarzis Airport' },
+    where: { fr: "à l'aéroport de Djerba-Zarzis", en: 'at Djerba-Zarzis Airport' },
     driveTimeMinutes: 10,
     intro: {
-      fr: "Récupérez votre scooter dès l'atterrissage : nous vous attendons à l'aéroport Djerba-Zarzis, casques et contrat prêts.",
-      en: 'Pick your scooter up the moment you land: we meet you at Djerba-Zarzis airport with helmets and contract ready.',
+      fr: `Récupérez votre scooter dès votre arrivée : nous livrons à l'aéroport international de Djerba-Zarzis, situé sur l'île, pour ${fee.fr}, tous les jours entre 08:00 et 20:00.`,
+      en: `Pick up your scooter when you arrive: we deliver to Djerba-Zarzis International Airport, which is on the island, for ${fee.en}, every day between 08:00 and 20:00.`,
     },
     body: {
       fr: [
-        "L'aéroport Djerba-Zarzis (DJE) se trouve à une dizaine de minutes de Houmt Souk. Plutôt que de négocier un taxi avec vos bagages, réservez votre deux-roues à l'avance : nous vous retrouvons à la sortie des arrivées à l'heure de votre vol.",
-        "Indiquez-nous simplement votre numéro de vol lors de la réservation. Si l'avion a du retard, nous ajustons l'heure : nous suivons les arrivées et la livraison reste gratuite.",
+        "L'aéroport international de Djerba-Zarzis (DJE) se trouve sur l'île de Djerba, à une dizaine de minutes de Houmt Souk. Plutôt que de négocier un taxi avec vos bagages, réservez votre deux-roues à l'avance.",
+        `La livraison à l'aéroport coûte ${fee.fr}, comme partout ailleurs sur l'île, et se fait entre 08:00 et 20:00. Indiquez l'heure souhaitée dans votre demande de réservation.`,
       ],
       en: [
-        'Djerba-Zarzis airport (DJE) is about ten minutes from Houmt Souk. Rather than negotiating a taxi with your luggage, book ahead: we meet you outside arrivals at your flight time.',
-        'Just give us your flight number when you book. If the plane is delayed we adjust — we track arrivals, and delivery stays free.',
+        'Djerba-Zarzis International Airport (DJE) is on Djerba Island, about ten minutes from Houmt Souk. Rather than negotiating a taxi with your luggage, book your scooter ahead.',
+        `Airport delivery costs ${fee.en}, as everywhere else on the island, and takes place between 08:00 and 20:00. Add your preferred time to your booking request.`,
       ],
     },
     highlights: {
-      fr: [
-        'Accueil à la sortie des arrivées',
-        'Suivi des vols en cas de retard',
-        'Houmt Souk à 10 min',
-        'Zone touristique à 20 min',
-      ],
-      en: [
-        'Met outside the arrivals hall',
-        'Flight tracking if you are delayed',
-        'Houmt Souk 10 min away',
-        'Tourist zone 20 min away',
-      ],
+      fr: ['Houmt Souk à 10 min', 'Zone touristique à 20 min'],
+      en: ['Houmt Souk 10 min away', 'Tourist Zone 20 min away'],
     },
   },
 ];

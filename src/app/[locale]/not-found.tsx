@@ -1,6 +1,13 @@
-import { getTranslations } from 'next-intl/server';
+import type { Metadata } from 'next';
+import { getLocale, getTranslations } from 'next-intl/server';
+import { notFoundMetadata } from '@/lib/seo';
 import { Container, Section } from '@/components/ui/Section';
 import { ButtonLink } from '@/components/ui/Button';
+
+/** "Page not found" as the title, rather than the homepage's. */
+export async function generateMetadata(): Promise<Metadata> {
+  return notFoundMetadata(await getLocale());
+}
 
 export default async function NotFound() {
   const t = await getTranslations('notFound');

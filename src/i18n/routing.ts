@@ -5,6 +5,12 @@ export type Locale = (typeof locales)[number];
 
 export const defaultLocale: Locale = 'fr';
 
+/** Each language written in itself, as the language switcher shows it. */
+export const localeNames: Record<Locale, string> = {
+  fr: 'Français',
+  en: 'English',
+};
+
 /**
  * Localised URLs. French is the primary market so it lives at the domain root
  * (`/tarifs`), English is prefixed (`/en/prices`). Keeping the slugs in the
@@ -78,4 +84,8 @@ export const routing = defineRouting({
   // French serves from `/`, other locales are prefixed. Keeps the primary
   // market on the cleanest possible URLs.
   localePrefix: 'as-needed',
+  // The URL alone decides the language. Redirecting on the browser's language
+  // would bounce visitors (and shared links) off the page they asked for, and
+  // Google advises against it; the language switcher and hreflang do the job.
+  localeDetection: false,
 });

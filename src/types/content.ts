@@ -83,11 +83,16 @@ export interface Vehicle {
 }
 
 export interface Zone {
-  /** URL segment, e.g. "houmt-souk". */
+  /** URL segment, e.g. "houmt-souk". Also the zone's permanent identifier. */
   slug: string;
-  name: string;
-  /** Delivery charge in TND. Use 0 for free delivery. */
-  deliveryFee: number;
+  /** A different URL segment for some languages, e.g. `{ de: 'touristenzone' }`.
+   *  Languages not listed use `slug`. Lowercase ASCII and hyphens only. */
+  slugs?: Partial<Record<Locale, string>>;
+  /** Name shown on cards, in breadcrumbs and in the footer. */
+  name: Localised;
+  /** The name with its preposition, so titles read naturally in every
+   *  language: "à Houmt Souk", "dans la zone touristique", "at … Airport". */
+  where: Localised;
   /** Approximate driving time from Houmt Souk, in minutes. */
   driveTimeMinutes: number;
   intro: Localised;

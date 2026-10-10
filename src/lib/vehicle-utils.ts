@@ -4,6 +4,7 @@ import type {
   LocalisedList,
   Vehicle,
   VehicleCategory,
+  Zone,
 } from '@/types/content';
 
 /**
@@ -23,6 +24,22 @@ export function t(field: Localised, locale: Locale): string {
 /** Picks the right language out of a translated list field. */
 export function tList(field: LocalisedList, locale: Locale): string[] {
   return field[locale] ?? field.fr;
+}
+
+/** A zone's URL segment in a given language. */
+export function zoneSlug(zone: Zone, locale: Locale): string {
+  return zone.slugs?.[locale] ?? zone.slug;
+}
+
+// ---------------------------------------------------------------------------
+// Pricing display
+// ---------------------------------------------------------------------------
+
+/** True when a vehicle has a single price whatever the rental length. A
+ *  "from" in front of that price would suggest cheaper options that do not
+ *  exist, so it is only shown when there are several duration bands. */
+export function hasFlatRate(vehicle: Vehicle): boolean {
+  return vehicle.pricing.length === 1;
 }
 
 // ---------------------------------------------------------------------------

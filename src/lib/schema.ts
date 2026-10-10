@@ -1,7 +1,7 @@
 import type { FaqItem, Locale, Vehicle, Zone } from '@/types/content';
 import { site } from './site';
 import { absoluteUrl, urlFor } from './seo';
-import { getStartingPrice, t } from './vehicle-utils';
+import { getStartingPrice, t, zoneSlug } from './vehicle-utils';
 
 /**
  * ============================================================================
@@ -46,8 +46,15 @@ export const BUSINESS_ID = `${site.url}/#business`;
  * qualifies for local results.
  */
 export function localBusinessSchema(locale: Locale) {
-  const sameAs = [site.social.facebook, site.social.instagram, site.social.tripadvisor]
-    .filter((url) => url.length > 0);
+  // The business's own profiles, copied exactly from `content/site.ts`.
+  const profiles: string[] = [
+    site.social.facebook,
+    site.social.instagram,
+    site.social.tiktok,
+    site.social.tripadvisor,
+    site.mapsUrl,
+  ];
+  const sameAs = profiles.filter((url) => url.length > 0);
 
   return {
     '@context': 'https://schema.org',
@@ -77,6 +84,7 @@ export function localBusinessSchema(locale: Locale) {
       latitude: site.geo.latitude,
       longitude: site.geo.longitude,
     },
+    hasMap: site.mapsUrl,
     openingHoursSpecification: openingHoursSpecification(),
     areaServed: {
       '@type': 'Place',
@@ -210,21 +218,22 @@ export function breadcrumbSchema(
   };
 }
 
-/** Ties a zone landing page to the area it serves. */
-export function zoneServiceSchema(zone: Zone, locale: Locale) {
+/**
+ * Ties a zone landing page to the area it serves. `serviceType` is the page's
+ * own heading ("Location de scooter à Midoun"), so it is always in the page's
+ * language; the description is the zone introduction, which states the fee.
+ */
+export function zoneServiceSchema(zone: Zone, locale: Locale, serviceType: string) {
   return {
     '@context': 'https://schema.org',
     '@type': 'Service',
-    serviceType:
-      locale === 'fr'
-        ? `Location de scooter à ${zone.name}`
-        : `Scooter rental in ${zone.name}`,
+    serviceType,
     provider: { '@id': BUSINESS_ID },
     areaServed: {
       '@type': 'Place',
-      name: `${zone.name}, Djerba, Tunisia`,
+      name: `${t(zone.name, locale)}, Djerba, Tunisia`,
     },
-    url: urlFor('/zones/[zone]', locale, { zone: zone.slug }),
+    url: urlFor('/zones/[zone]', locale, { zone: zoneSlug(zone, locale) }),
     description: t(zone.intro, locale),
   };
 }

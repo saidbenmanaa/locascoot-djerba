@@ -1,17 +1,18 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { Check } from 'lucide-react';
+import { Check, Truck } from 'lucide-react';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { getVehicleBySlug, getVehicles } from '@/lib/content';
 import {
   getStartingPrice,
+  hasFlatRate,
   t as translate,
   tList,
   categoryKey,
 } from '@/lib/vehicle-utils';
-import { buildMetadata, urlFor } from '@/lib/seo';
+import { buildMetadata, notFoundMetadata, urlFor } from '@/lib/seo';
 import { breadcrumbSchema, vehicleSchema } from '@/lib/schema';
-import { whatsappHref, toEur } from '@/lib/site';
+import { deliveryFee, whatsappHref, toEur } from '@/lib/site';
 import { routing, type Locale } from '@/i18n/routing';
 import { Container, Section, SectionHeading } from '@/components/ui/Section';
 import { ButtonExternal, ButtonLink } from '@/components/ui/Button';
@@ -38,17 +39,18 @@ export async function generateMetadata({
   const { locale, slug } = await params;
   const vehicle = await getVehicleBySlug(slug);
 
-  if (!vehicle) return {};
+  if (!vehicle) return notFoundMetadata(locale);
 
   const t = await getTranslations({ locale, namespace: 'meta.vehicle' });
   const price = getStartingPrice(vehicle);
+  const fee = deliveryFee(locale);
 
   return buildMetadata({
     locale: locale as Locale,
     pathname: '/scooters/[slug]',
     params: { slug },
     title: t('title', { name: vehicle.name, price }),
-    description: t('description', { name: vehicle.name, price }),
+    description: t('description', { name: vehicle.name, price, fee }),
     image: `/images/vehicles/${vehicle.images[0]}`,
   });
 }
@@ -72,7 +74,8 @@ export default async function VehiclePage({
   const typedLocale = locale as Locale;
   const price = getStartingPrice(vehicle);
   const included = tList(vehicle.included, typedLocale);
-  const isFlatRate = vehicle.pricing.length === 1;
+  const isFlatRate = hasFlatRate(vehicle);
+  const fee = deliveryFee(locale);
 
   const others = (await getVehicles())
     .filter((item) => item.slug !== vehicle.slug)
@@ -117,9 +120,13 @@ export default async function VehiclePage({
               </p>
 
               <div className="mt-6 flex items-baseline gap-2">
-                <span className="text-sm" style={{ color: 'var(--text-muted)' }}>
-                  {tc('from')}
-                </span>
+                {/* "From" only when longer rentals are cheaper. With one flat
+                    rate it would hint at a lower price that does not exist. */}
+                {isFlatRate ? null : (
+                  <span className="text-sm" style={{ color: 'var(--text-muted)' }}>
+                    {tc('from')}
+                  </span>
+                )}
                 <span className="font-display text-4xl font-bold text-gold-700 dark:text-gold-300">
                   {price} DT
                 </span>
@@ -144,7 +151,12 @@ export default async function VehiclePage({
                   {t('bookCta', { name: vehicle.name })}
                 </ButtonExternal>
 
-                <ButtonLink href="/book" variant="outline" size="lg">
+                {/* Arrives on the form with this scooter already selected */}
+                <ButtonLink
+                  href={{ pathname: '/book', query: { vehicle: vehicle.slug } }}
+                  variant="outline"
+                  size="lg"
+                >
                   {t('bookByForm')}
                 </ButtonLink>
               </div>
@@ -162,6 +174,16 @@ export default async function VehiclePage({
                     </li>
                   ))}
                 </ul>
+                {/* Delivery is not part of the daily price: its own line. */}
+                <p className="mt-3 flex items-start gap-2.5">
+                  <Truck
+                    className="mt-0.5 size-5 shrink-0 text-gold-600 dark:text-gold-400"
+                    aria-hidden
+                  />
+                  <span style={{ color: 'var(--text-body)' }}>
+                    {tc('deliveryLine', { fee })}
+                  </span>
+                </p>
               </div>
             </div>
           </div>
@@ -186,7 +208,7 @@ export default async function VehiclePage({
                 {isFlatRate ? t('pricingTitleFlat') : t('pricingTitle')}
               </h2>
               <p className="mt-1.5 text-sm" style={{ color: 'var(--text-muted)' }}>
-                {isFlatRate ? t('pricingSubtitleFlat') : t('pricingSubtitle')}
+                {isFlatRate ? t('pricingSubtitleFlat', { fee }) : t('pricingSubtitle')}
               </p>
               <div className="mt-4">
                 <PricingTable vehicle={vehicle} />

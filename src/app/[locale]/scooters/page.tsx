@@ -4,6 +4,7 @@ import { getUsedCategories, getVehicles } from '@/lib/content';
 import { categoryKey } from '@/lib/vehicle-utils';
 import { buildMetadata, urlFor } from '@/lib/seo';
 import { breadcrumbSchema } from '@/lib/schema';
+import { deliveryFee } from '@/lib/site';
 import type { Locale } from '@/i18n/routing';
 import { Container, Section } from '@/components/ui/Section';
 import { JsonLd } from '@/components/seo/JsonLd';
@@ -24,7 +25,7 @@ export async function generateMetadata({
     locale: locale as Locale,
     pathname: '/scooters',
     title: t('title'),
-    description: t('description'),
+    description: t('description', { fee: deliveryFee(locale) }),
   });
 }
 
@@ -70,7 +71,7 @@ export default async function ScootersPage({
           <header className="mb-10 max-w-2xl">
             <h1 className="text-[length:var(--text-h1)]">{t('title')}</h1>
             <p className="mt-4 text-lg" style={{ color: 'var(--text-muted)' }}>
-              {t('subtitle', { count: vehicles.length })}
+              {t('subtitle', { count: vehicles.length, fee: deliveryFee(locale) })}
             </p>
           </header>
 

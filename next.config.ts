@@ -14,6 +14,11 @@ const nextConfig: NextConfig = {
   poweredByHeader: false,
   compress: true,
   async headers() {
+    // Preview deployments and every *.vercel.app address are copies of the
+    // site: keep them out of search results so they never compete with
+    // https://www.locascootdjerba.tn. The production domain is unaffected.
+    const noIndex = { key: 'X-Robots-Tag', value: 'noindex, nofollow' };
+
     return [
       {
         source: '/:path*',
@@ -29,6 +34,14 @@ const nextConfig: NextConfig = {
           { key: 'Cache-Control', value: 'public, max-age=31536000, immutable' },
         ],
       },
+      {
+        source: '/:path*',
+        has: [{ type: 'host', value: '(?<host>.+)\\.vercel\\.app' }],
+        headers: [noIndex],
+      },
+      ...(process.env.VERCEL_ENV === 'preview'
+        ? [{ source: '/:path*', headers: [noIndex] }]
+        : []),
     ];
   },
 };

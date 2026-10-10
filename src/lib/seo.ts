@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
+import { getTranslations } from 'next-intl/server';
 import { getPathname } from '@/i18n/navigation';
-import { locales, type AppPathname, type Locale } from '@/i18n/routing';
+import { defaultLocale, locales, type AppPathname, type Locale } from '@/i18n/routing';
 import { site } from './site';
 
 /**
@@ -40,18 +41,29 @@ export function urlFor(
   return absoluteUrl(path);
 }
 
+/** Open Graph locale codes, one per site language. */
+export const OG_LOCALES: Record<Locale, string> = {
+  fr: 'fr_FR',
+  en: 'en_GB',
+};
+
 interface BuildMetadataOptions {
   locale: Locale;
   /** The internal route, e.g. '/scooters/[slug]'. */
   pathname: AppPathname;
-  /** Route params, e.g. `{ slug: 'honda-pcx-125' }`. */
-  params?: Params;
+  /** Route params, e.g. `{ slug: 'cappuccino-s-125' }` — or a function giving
+   *  them per language, for routes whose slug is translated (zones). */
+  params?: Params | ((locale: Locale) => Params);
   title: string;
   description: string;
   /** Path to a social share image, relative to /public. */
   image?: string;
+  /** Alt text for the share image. Defaults to the title. */
+  imageAlt?: string;
   /** Set for pages that should stay out of search results. */
   noIndex?: boolean;
+  /** Languages the page exists in, when not all of them. */
+  availableLocales?: readonly Locale[];
   /** Extra keywords. Low value for ranking, harmless to include. */
   keywords?: string[];
 }
@@ -63,18 +75,22 @@ export function buildMetadata({
   title,
   description,
   image = OG_IMAGE,
+  imageAlt,
   noIndex = false,
+  availableLocales = locales,
   keywords,
 }: BuildMetadataOptions): Metadata {
-  const canonical = urlFor(pathname, locale, params);
+  const paramsFor = (target: Locale) =>
+    typeof params === 'function' ? params(target) : params;
+  const canonical = urlFor(pathname, locale, paramsFor(locale));
 
   // One entry per language, so Google knows these pages are translations of
-  // each other rather than competing duplicates.
+  // each other rather than competing duplicates. x-default points to French.
   const languages: Record<string, string> = {};
-  for (const alt of locales) {
-    languages[alt] = urlFor(pathname, alt, params);
+  for (const alt of availableLocales) {
+    languages[alt] = urlFor(pathname, alt, paramsFor(alt));
   }
-  languages['x-default'] = urlFor(pathname, 'fr', params);
+  languages['x-default'] = urlFor(pathname, defaultLocale, paramsFor(defaultLocale));
 
   return {
     title,
@@ -100,13 +116,16 @@ export function buildMetadata({
       title,
       description,
       url: canonical,
-      locale: locale === 'fr' ? 'fr_FR' : 'en_GB',
+      locale: OG_LOCALES[locale],
+      alternateLocale: availableLocales
+        .filter((alt) => alt !== locale)
+        .map((alt) => OG_LOCALES[alt]),
       images: [
         {
           url: absoluteUrl(image),
           width: 1200,
           height: 630,
-          alt: title,
+          alt: imageAlt ?? title,
         },
       ],
     },
@@ -119,11 +138,12 @@ export function buildMetadata({
   };
 }
 
-/**
- * Titles are capped so Google does not truncate them in results. Roughly 60
- * characters is the practical limit; the site name is appended by the layout
- * template only when there is room.
- */
-export function pageTitle(title: string): string {
-  return title.length > 60 ? title.slice(0, 57).trimEnd() + '…' : title;
+/** Metadata for a page that does not exist: a clear title, and never indexed. */
+export async function notFoundMetadata(locale: string): Promise<Metadata> {
+  const t = await getTranslations({ locale, namespace: 'meta.notFound' });
+  return {
+    title: t('title'),
+    description: t('description'),
+    robots: { index: false, follow: false },
+  };
 }
