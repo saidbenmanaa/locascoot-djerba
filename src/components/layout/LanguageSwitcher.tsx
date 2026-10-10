@@ -5,7 +5,14 @@ import { useParams } from 'next/navigation';
 import { useLocale, useTranslations } from 'next-intl';
 import { Check, ChevronDown, Globe } from 'lucide-react';
 import { Link, usePathname } from '@/i18n/navigation';
-import { localeNames, locales, pathnames, type Locale } from '@/i18n/routing';
+import {
+  legalLocales,
+  legalPathnames,
+  localeNames,
+  locales,
+  pathnames,
+  type Locale,
+} from '@/i18n/routing';
 import { cn } from '@/lib/utils';
 
 /** Zone identifier → its URL slug in each language, built on the server from
@@ -16,7 +23,8 @@ export type ZoneSlugs = Record<string, Record<Locale, string>>;
  * The address of the page being viewed, in another language. A visitor reading
  * about the Cappuccino S in French lands on the English Cappuccino S page, not
  * the homepage — sending people back to the homepage is the usual bug here,
- * and it loses them. Pages that do not exist (the 404) fall back to the home.
+ * and it loses them. Pages that do not exist in the target language (the 404,
+ * the untranslated legal pages) fall back to its home.
  */
 function useAlternateHref(zoneSlugs: ZoneSlugs) {
   const pathname = usePathname();
@@ -25,6 +33,10 @@ function useAlternateHref(zoneSlugs: ZoneSlugs) {
 
   return (target: Locale) => {
     if (!(pathname in pathnames)) return '/';
+
+    // The legal pages exist only in some languages for now.
+    const isLegal = (legalPathnames as readonly string[]).includes(pathname);
+    if (isLegal && !legalLocales.includes(target)) return '/';
 
     if (pathname === '/zones/[zone]') {
       const slug = String(params.zone ?? '');

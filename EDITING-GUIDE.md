@@ -124,11 +124,11 @@ réservation et dans le plan du site pour Google.
 | `engineCc` | Cylindrée en cm³ |
 | `transmission` | `automatic` ou `manual` |
 | `seats` | Nombre de places |
-| `licence` | Ce que le client doit présenter, en français **et** en anglais |
+| `licence` | Ce que le client doit présenter, dans les quatre langues |
 | `minAge` | Âge minimum du conducteur |
 | `images` | Les noms des fichiers photos |
-| `tagline` | Une phrase courte de présentation, en français **et** en anglais |
-| `description` | Deux ou trois phrases, en français **et** en anglais |
+| `tagline` | Une phrase courte de présentation, dans les quatre langues |
+| `description` | Deux ou trois phrases, dans les quatre langues |
 | `included` | La liste de ce qui est compris dans le prix par jour. **N'y mettez pas la livraison** : elle n'est pas incluse et s'affiche automatiquement sur sa propre ligne (voir section 5) |
 | `pricing` | Le tarif (voir section 1) |
 | `available` | `true` = visible sur le site, `false` = masqué |
@@ -144,14 +144,17 @@ afficher qu'un chiffre inventé :
 | `consumptionPer100km` | Consommation en L/100 km |
 | `deposit` | Caution en DT (vous n'en demandez pas actuellement) |
 
-> Les champs `licence`, `tagline`, `description` et `included` existent en deux langues :
+> Les champs `licence`, `tagline`, `description` et `included` existent en quatre langues
+> (français, anglais, allemand, polonais) :
 > ```js
 > tagline: {
 >   fr: 'Scooter urbain léger, très économique',
 >   en: 'Light urban scooter, very fuel-efficient',
+>   de: 'Leichter Stadtroller, sehr sparsam',
+>   pl: 'Lekki skuter miejski, bardzo oszczędny',
 > },
 > ```
-> **Remplissez toujours les deux**, sinon le site ne se met pas à jour.
+> **Remplissez toujours les quatre** (`fr`, `en`, `de`, `pl`), sinon le site ne se met pas à jour.
 
 ---
 
@@ -306,7 +309,9 @@ recherches du type « location scooter Midoun ». Ce sont vos pages les plus ren
 référencement local.
 
 Vous pouvez modifier les textes, ajouter des lieux à visiter, ou créer une nouvelle zone en
-copiant un bloc existant.
+copiant un bloc existant. Chaque texte existe dans les quatre langues. Le champ `slugs` donne,
+si besoin, une adresse différente en allemand ou en polonais (par exemple `touristenzone`) ;
+sans lui, l'adresse est la même dans toutes les langues.
 
 > 💡 Écrivez des conseils **réellement utiles** sur chaque quartier. Google favorise les pages qui
 > aident vraiment, et vos clients aussi.
@@ -357,7 +362,8 @@ Laissez `count: 0` tant que vous n'en avez pas.
 
 ## Modifier les textes du site
 
-📁 Fichiers : `messages/fr.json` (français) et `messages/en.json` (anglais)
+📁 Fichiers : `messages/fr.json` (français), `messages/en.json` (anglais), `messages/de.json`
+(allemand) et `messages/pl.json` (polonais)
 
 Tous les textes de l'interface s'y trouvent : titres, boutons, page d'accueil, formulaires,
 et les titres que Google affiche dans ses résultats (section `meta`).
@@ -369,7 +375,8 @@ et les titres que Google affiche dans ses résultats (section `meta`).
                 ↑ vous pouvez changer ce texte
 ```
 
-> ⚠️ Si vous modifiez `fr.json`, pensez à modifier **la même ligne** dans `en.json`.
+> ⚠️ Si vous modifiez `fr.json`, pensez à modifier **la même ligne** dans `en.json`, `de.json`
+> et `pl.json`.
 >
 > ⚠️ Ne touchez pas aux éléments entre accolades comme `{price}` ou `{zone}` : ils sont remplacés
 > automatiquement par une valeur.
@@ -397,7 +404,7 @@ Tout l'historique est conservé, rien n'est jamais perdu définitivement.
 | Une photo | `public/images/` |
 | Une question fréquente | `content/faq.ts` |
 | Une zone de livraison | `content/zones.ts` |
-| Un texte de bouton ou de page | `messages/fr.json` et `messages/en.json` |
+| Un texte de bouton ou de page | `messages/<langue>.json` (fr, en, de, pl) |
 
 ---
 

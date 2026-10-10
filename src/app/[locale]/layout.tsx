@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from 'next';
 import { Inter, Outfit } from 'next/font/google';
 import { NextIntlClientProvider, hasLocale } from 'next-intl';
-import { getTranslations, setRequestLocale } from 'next-intl/server';
+import { getMessages, getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { routing, type Locale } from '@/i18n/routing';
 import { deliveryFee, site } from '@/lib/site';
@@ -31,6 +31,9 @@ const outfit = Outfit({
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
+
+/** Message namespaces used by client components. */
+const CLIENT_NAMESPACES = ['common', 'nav', 'book', 'contactForm'] as const;
 
 export const viewport: Viewport = {
   themeColor: '#16294a',
@@ -91,10 +94,17 @@ export default async function LocaleLayout({
 
   const t = await getTranslations('nav');
 
+  // Only the text the interactive components need (menus, language switcher,
+  // forms) is sent to the browser; everything else is already in the HTML.
+  const messages = await getMessages();
+  const clientMessages = Object.fromEntries(
+    CLIENT_NAMESPACES.map((namespace) => [namespace, messages[namespace]]),
+  );
+
   return (
     <html lang={locale} className={`${inter.variable} ${outfit.variable}`}>
       <body className="flex min-h-dvh flex-col">
-        <NextIntlClientProvider>
+        <NextIntlClientProvider messages={clientMessages}>
           <a
             href="#main"
             className="sr-only-focusable absolute left-4 top-4 z-50 rounded-full bg-white px-4 py-2 font-semibold text-sea-950 shadow-lg"

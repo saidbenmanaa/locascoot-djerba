@@ -6,7 +6,9 @@
  * fails with a clear message instead of publishing a broken page.
  */
 
-export type Locale = 'fr' | 'en';
+import type { Locale } from '@/i18n/routing';
+
+export type { Locale };
 
 /** A string that must be provided in every supported language. */
 export type Localised = Record<Locale, string>;

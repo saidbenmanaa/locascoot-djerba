@@ -45,6 +45,8 @@ export function urlFor(
 export const OG_LOCALES: Record<Locale, string> = {
   fr: 'fr_FR',
   en: 'en_GB',
+  de: 'de_DE',
+  pl: 'pl_PL',
 };
 
 interface BuildMetadataOptions {

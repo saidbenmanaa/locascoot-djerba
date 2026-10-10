@@ -2,7 +2,7 @@
 
 Website for Locascoot Djerba — scooter rental in Djerba, Tunisia. Live site: `https://www.locascootdjerba.tn` (the bare domain redirects to www)
 
-Static-rendered, mobile-first, bilingual (French / English), built for local SEO.
+Static-rendered, mobile-first, in four languages (French, English, German, Polish), built for local SEO.
 
 > **Vous voulez modifier les prix, les photos ou les véhicules ?**
 > Tout est expliqué en français dans **[EDITING-GUIDE.md](./EDITING-GUIDE.md)** — aucune connaissance technique nécessaire.
@@ -15,7 +15,7 @@ Static-rendered, mobile-first, bilingual (French / English), built for local SEO
 |---|---|
 | Framework | Next.js 15 (App Router) + TypeScript |
 | Styling | Tailwind CSS v4 |
-| i18n | next-intl, localised URLs (`/tarifs` ↔ `/en/prices`) |
+| i18n | next-intl, localised URLs (`/tarifs` ↔ `/en/prices` ↔ `/de/preise` ↔ `/pl/cennik`) |
 | Palette | Brand navy `#16294a` and gold `#fdb913`, from the logo |
 | Content | Typed files in `content/`, behind a CMS-ready API |
 | Forms | React Hook Form + Zod. Booking → WhatsApp (pre-filled message), contact → Resend |
@@ -53,7 +53,7 @@ content/            ← everything the owner edits
 ├── zones.ts          delivery areas (also generate landing pages)
 └── faq.ts            rental conditions Q&A (published as structured data)
 
-messages/           ← all interface text: fr.json, en.json
+messages/           ← all interface text: fr.json, en.json, de.json, pl.json
 
 src/
 ├── app/[locale]/     pages
@@ -81,14 +81,14 @@ Keep that rule and the migration stays a drop-in.
 
 Built in from the start, not added afterwards:
 
-- **Metadata** generated per page and per language via `buildMetadata()` — canonical URL, full hreflang matrix (`fr`, `en`, `x-default`), Open Graph and Twitter cards.
-- **Localised URLs** — `/tarifs` in French, `/en/prices` in English. French serves from the domain root.
+- **Metadata** generated per page and per language via `buildMetadata()` — canonical URL, full hreflang matrix (`fr`, `en`, `de`, `pl`, `x-default` → French), Open Graph (`fr_FR`, `en_GB`, `de_DE`, `pl_PL`) and Twitter cards.
+- **Localised URLs** — `/tarifs` in French, `/en/prices` in English, `/de/preise` in German, `/pl/cennik` in Polish. French serves from the domain root.
 - **Structured data** (`src/lib/schema.ts`):
   - `AutoRental` + `LocalBusiness` with geo, hours and address → local pack eligibility
   - `Product` + `Offer` per vehicle → daily price can appear in search results
   - `FAQPage` → answers can expand under the result
   - `BreadcrumbList`, `Service` per delivery zone, `WebSite`
-- **Zone landing pages** — `/zones/houmt-souk`, `/midoun`, `/zone-touristique`, `/aghir`, `/aeroport-djerba`, targeting local searches with thin competition.
+- **Zone landing pages** — `/zones/houmt-souk`, `/midoun`, `/zone-touristique`, `/aghir`, `/aeroport-djerba` (German and Polish use translated slugs such as `/de/zonen/touristenzone` and `/pl/strefy/lotnisko-djerba`), targeting local searches with thin competition.
 - **No fabricated signals** — no invented reviews, and `aggregateRating` is only published once `reviews.count` in `content/site.ts` is a real number.
 - **`sitemap.xml`** generated from content, with per-entry language alternates. Add a scooter and it appears automatically.
 - **Images** — descriptive localised `alt` text derived from vehicle data; AVIF/WebP; hero and first cards marked `priority`.
@@ -142,7 +142,10 @@ Outstanding:
 
 - **Legal pages** — templates carrying a visible warning banner. Until the legal details
   (publisher, registration, host) are supplied they are not linked anywhere, are `noindex`
-  and are left out of the sitemap.
+  and are left out of the sitemap. They exist in French and English only; their German and
+  Polish addresses (`/de/agb`, `/pl/regulamin`…) are reserved and answer with the 404 page
+  (`legalLocales` in `src/i18n/routing.ts`).
+- **German and Polish copy** — written for this site; have a native speaker review it.
 - **Licence rules** — the 50cc/125cc requirements are shown as currently written and await
   the owner's confirmation (see `EDITING-GUIDE.md`).
 

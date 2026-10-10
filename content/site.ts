@@ -15,6 +15,8 @@ export const site = {
   tagline: {
     fr: 'Location de scooters premium à Djerba',
     en: 'Premium scooter rental in Djerba',
+    de: 'Premium-Rollervermietung auf Djerba',
+    pl: 'Wynajem skuterów premium na Dżerbie',
   },
 
   /** Your live domain, with no trailing slash. Used for every SEO link.

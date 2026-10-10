@@ -14,6 +14,8 @@ const vehicle: Vehicle = {
   licence: {
     fr: 'Permis de conduire valide',
     en: 'Valid driving licence',
+    de: 'Gültiger Führerschein',
+    pl: 'Ważne prawo jazdy',
   },
   minAge: 18,
 
@@ -22,10 +24,14 @@ const vehicle: Vehicle = {
   tagline: {
     fr: 'Scooter rétro 125cc, confortable et économique',
     en: '125cc retro scooter, comfortable and fuel-efficient',
+    de: '125-cm³-Retro-Roller, bequem und sparsam',
+    pl: 'Skuter retro 125 cm³, wygodny i oszczędny',
   },
   description: {
     fr: 'Scooter rétro 125cc économique en carburant, avec une assise large et une conduite très confortable. Excellente stabilité sur la route et facile à prendre en main. Un choix idéal pour vos trajets quotidiens et pour découvrir la région avec style.',
     en: 'Fuel-efficient 125cc retro scooter with a wide seat and very comfortable ride. Excellent road stability and easy to handle. An ideal choice for your daily trips and discovering the region in style.',
+    de: 'Sparsamer 125-cm³-Retro-Roller mit breiter Sitzbank und sehr komfortablem Fahrverhalten. Ausgezeichnete Straßenlage und einfach zu handhaben. Die ideale Wahl für Ihre täglichen Fahrten und um die Region mit Stil zu entdecken.',
+    pl: 'Oszczędny skuter retro 125 cm³ z szerokim siedziskiem i bardzo komfortową jazdą. Doskonała stabilność na drodze i łatwe prowadzenie. Idealny wybór na codzienne przejazdy i do odkrywania regionu z klasą.',
   },
   /* Only what the daily price covers. Delivery is not included: the site
      shows it as its own line, using the fee from `content/site.ts`. */
@@ -39,6 +45,16 @@ const vehicle: Vehicle = {
       'Helmet included',
       'All equipment included',
       'Immediate breakdown assistance',
+    ],
+    de: [
+      'Helm inklusive',
+      'Gesamte Ausrüstung inklusive',
+      'Sofortige Pannenhilfe',
+    ],
+    pl: [
+      'Kask w cenie',
+      'Całe wyposażenie w cenie',
+      'Natychmiastowa pomoc w razie awarii',
     ],
   },
 
