@@ -1,40 +1,47 @@
 {
   "meta": {
     "home": {
-      "title": "Locascoot Djerba | Scooter Rental in Djerba",
-      "description": "Rent scooters in Djerba at the best prices. Free delivery across the island, helmet and equipment included. Direct booking via WhatsApp."
+      "title": "Scooter rental in Djerba – hotel delivery | Locascoot Djerba",
+      "description": "Scooter rental in Djerba: delivery to the Tourist Zone, Aghir and Midoun for {fee}, helmet and equipment included, from 60 TND a day. Book directly on WhatsApp.",
+      "keywords": [
+        "scooter rental Djerba",
+        "rent a scooter Djerba",
+        "scooter rental Djerba Tourist Zone",
+        "scooter rental Midoun",
+        "scooter rental Aghir"
+      ]
     },
     "scooters": {
-      "title": "Our scooters for rent in Djerba",
-      "description": "A 50cc and a 125cc scooter for hire in Djerba, from 60 TND per day. Helmet and equipment included, free delivery anywhere on the island."
+      "title": "50cc and 125cc scooters for rent in Djerba",
+      "description": "Our 50cc and 125cc scooters for rent in Djerba, from 60 TND per day. Helmet and equipment included, delivery to the Tourist Zone, Aghir and Midoun for {fee}."
     },
     "prices": {
       "title": "Scooter rental prices in Djerba",
-      "description": "Our scooter rental prices in Djerba: 60 TND per day for the 50cc, 80 TND for the 125cc. Helmet, equipment and free delivery included."
+      "description": "Scooter rental prices in Djerba: 60 TND per day for the 50cc, 90 TND for the 125cc. Helmet and equipment included, delivery (Tourist Zone, Aghir, Midoun): {fee}."
     },
     "conditions": {
-      "title": "Rental conditions — licence, age, documents",
-      "description": "Minimum age, required documents, licence, payment and assistance: everything you need to rent a scooter in Djerba, explained plainly."
+      "title": "Scooter rental conditions in Djerba",
+      "description": "Minimum age, documents, licence and payment: everything you need to rent a scooter in Djerba with Locascoot Djerba, explained plainly."
     },
     "about": {
-      "title": "About us — scooter rental in Djerba",
-      "description": "Locascoot Djerba is the island’s scooter rental specialist: a modern, maintained fleet, delivery anywhere in Djerba and immediate assistance."
+      "title": "About us – scooter rental in Djerba",
+      "description": "Locascoot Djerba, the scooter rental specialist in Djerba: a modern, maintained fleet and delivery to the Tourist Zone, Aghir and Midoun for {fee}."
     },
     "contact": {
-      "title": "Contact — Locascoot Djerba",
-      "description": "Contact Locascoot Djerba by WhatsApp, phone or email. Open 7 days a week, 08:00–20:00, with free delivery anywhere on Djerba island."
+      "title": "Contact and WhatsApp booking in Djerba",
+      "description": "Contact Locascoot Djerba by WhatsApp, phone or email. Open 7 days a week, 08:00–20:00, with delivery to the Tourist Zone, Aghir and Midoun for {fee}."
     },
     "book": {
-      "title": "Book a scooter in Djerba",
-      "description": "Book your scooter in Djerba in two minutes. No online payment: your request goes straight to WhatsApp and you pay on delivery."
+      "title": "Book a scooter in Djerba on WhatsApp",
+      "description": "Book your scooter in Djerba in two minutes: the form opens WhatsApp with your request already written. No online payment — you pay on delivery."
     },
     "zone": {
-      "title": "Scooter rental in {zone} — Djerba",
-      "description": "Scooter rental in {zone}, Djerba. Free delivery, helmet and equipment included, from 60 TND per day. Book by WhatsApp."
+      "title": "Scooter rental {where}",
+      "description": "Scooter rental {where}, Djerba: delivery for {fee}, helmet and equipment included, from 60 TND per day. Book on WhatsApp."
     },
     "vehicle": {
-      "title": "Rent a {name} in Djerba — {price} TND/day",
-      "description": "Rent a {name} in Djerba for {price} TND per day. Helmet and equipment included, immediate assistance and free delivery across the island."
+      "title": "{name} rental Djerba – {price} TND/day",
+      "description": "Rent the {name}, a {cc}cc scooter, in Djerba for {price} TND per day. Helmet and equipment included, delivery to the Tourist Zone, Aghir and Midoun for {fee}."
     },
     "terms": {
       "title": "Rental terms and conditions",
@@ -62,32 +69,30 @@
     "contact": "Contact",
     "book": "Book now",
     "zones": "Delivery areas",
+    "main": "Main navigation",
+    "menu": "Menu",
     "openMenu": "Open menu",
     "closeMenu": "Close menu",
     "skipToContent": "Skip to main content"
   },
   "common": {
     "bookNow": "Book now",
-    "bookThis": "Book this scooter",
-    "whatsapp": "WhatsApp",
     "whatsappUs": "Message us on WhatsApp",
     "callUs": "Call us",
     "from": "From",
     "perDay": "/ day",
-    "pricePerDay": "{price} TND / day",
     "approxEur": "≈ €{price}",
-    "deposit": "Deposit",
     "viewDetails": "View details",
     "seeAllVehicles": "See all our scooters",
     "seeAllPrices": "See all prices",
-    "included": "Included in the price",
+    "deliveryLine": "Delivery (Tourist Zone, Aghir, Midoun): {fee}",
     "day": "day",
     "days": "days",
-    "loading": "Loading…",
-    "required": "required",
     "language": "Language",
-    "backHome": "Back to home",
-    "readMore": "Read more"
+    "languageCurrent": "Language: {name}",
+    "breadcrumb": "Breadcrumb",
+    "followUs": "Follow us",
+    "backHome": "Back to home"
   },
   "categories": {
     "all": "All",
@@ -110,8 +115,6 @@
     "consumption": "Consumption",
     "licence": "Licence required",
     "minAge": "Minimum age",
-    "minLicenceYears": "Licence held for",
-    "years": "{count} years",
     "yearsOld": "{count} years",
     "litres": "{value} L",
     "per100": "{value} L/100 km",
@@ -120,22 +123,20 @@
   },
   "home": {
     "heroTitle": "Scooter rental in Djerba",
-    "heroSubtitle": "Explore the island on your own terms. Free delivery anywhere in Djerba, helmet and equipment included, from 60 TND a day.",
+    "heroSubtitle": "Explore the island on your own terms. Delivery to the Tourist Zone, Aghir and Midoun for {fee}, helmet and equipment included, from 60 TND a day.",
     "heroPrimaryCta": "Book on WhatsApp",
     "heroSecondaryCta": "See our scooters",
-    "trustDelivery": "Free delivery anywhere in Djerba",
+    "trustDelivery": "Delivery (Tourist Zone, Aghir, Midoun): {fee}",
     "trustInsurance": "Helmet and equipment included",
     "trustNoPrepay": "No online payment",
     "fleetTitle": "Our scooters",
     "fleetSubtitle": "A modern, regularly maintained fleet.",
     "whyTitle": "Why rent with us",
     "whySubtitle": "The things that actually matter when you are on holiday.",
-    "why1Title": "Free delivery anywhere",
-    "why1Text": "To your hotel, to Djerba-Zarzis airport or to your rental: we come to you at no extra cost, at a time that suits you.",
+    "why1Title": "Delivery to the Tourist Zone, Aghir and Midoun",
+    "why1Text": "To your hotel or your rental: we deliver to the Tourist Zone, Aghir and Midoun, every day between 08:00 and 20:00, for {fee}.",
     "why2Title": "Clear prices, no surprises",
-    "why2Text": "The quoted rate includes the helmet and all equipment. Nothing is added when you hand the scooter back.",
-    "why3Title": "Immediate assistance",
-    "why3Text": "Our scooters are regularly serviced. If anything goes wrong we intervene immediately, anywhere on the island.",
+    "why2Text": "The daily rate includes the helmet and all equipment; delivery ({fee}) is shown separately. Nothing is added when you hand the scooter back.",
     "why4Title": "Book in 2 minutes",
     "why4Text": "One WhatsApp message is enough. No online payment: you pay cash on delivery, in euro, dollar or dinar.",
     "howTitle": "How it works",
@@ -143,59 +144,59 @@
     "how1Title": "You message us",
     "how1Text": "Send us the scooter you want and your dates by WhatsApp or through the form. We confirm availability quickly.",
     "how2Title": "We deliver",
-    "how2Text": "We deliver the scooter to you anywhere in Djerba, with the helmet and all equipment.",
+    "how2Text": "We deliver the scooter to you in the Tourist Zone, Aghir or Midoun, for {fee}, with the helmet and all equipment.",
     "how3Title": "You ride off",
     "how3Text": "You pay cash on delivery, and the island is yours. We stay reachable for the whole rental.",
-    "zonesTitle": "We deliver everywhere in Djerba",
-    "zonesSubtitle": "Free of charge, wherever you are staying on the island.",
-    "testimonialsTitle": "What our customers say",
+    "zonesTitle": "We deliver to the Tourist Zone, Aghir and Midoun",
+    "zonesSubtitle": "In these three areas, delivery costs {fee}.",
     "faqTitle": "Frequently asked questions",
     "faqSubtitle": "Everything worth knowing before you book.",
     "faqCta": "See all rental conditions",
     "ctaTitle": "Ready to explore Djerba?",
     "ctaText": "Tell us your dates and we handle the rest. We reply within minutes.",
-    "intro": "Locascoot Djerba rents scooters across the whole island of Djerba. Whether you are staying in Houmt Souk, Midoun, the tourist zone, Aghir, or arriving at Djerba-Zarzis airport, we deliver your scooter free of charge to the address and time of your choice. A helmet and full equipment come with every rental, and we intervene immediately in case of a breakdown."
+    "intro": "Locascoot Djerba rents scooters in Djerba. Whether you are staying in the Tourist Zone, Aghir or Midoun, we deliver your scooter to the address of your choice, every day between 08:00 and 20:00, for {fee}. A helmet and full equipment come with every rental."
   },
   "scooters": {
     "title": "Our scooters",
-    "subtitle": "{count} models available to rent, delivered free anywhere in Djerba.",
+    "subtitle": "{count, plural, one {# model} other {# models}} available to rent. Delivery (Tourist Zone, Aghir, Midoun): {fee}.",
     "filterLabel": "Filter by type",
-    "noResults": "No scooters in this category at the moment.",
-    "showAll": "Show all vehicles",
-    "resultCount": "{count} vehicle",
-    "resultCountPlural": "{count} vehicles"
+    "noResults": "No scooters in this category at the moment."
   },
   "vehicle": {
     "specsTitle": "Specifications",
+    "h1Suffix": "{cc}cc scooter for rent in Djerba",
     "pricingTitle": "Rates by duration",
     "pricingSubtitle": "The longer you rent, the less each day costs.",
     "duration": "Duration",
     "pricePerDayLabel": "Price per day",
-    "totalLabel": "Total",
     "depositNote": "Deposit of {amount} TND, returned when you bring the vehicle back.",
     "includedTitle": "Included in the price",
+    "tipsTitle": "Practical tips",
+    "tip1": "Park in the shade when you can: the seat heats up fast in the sun.",
+    "tip2": "Take the key with you whenever you park.",
+    "tip3": "Ride slowly on sandy patches near the beaches.",
+    "tip4": "Slow down for speed bumps, common in the villages.",
+    "tip5": "Keep our WhatsApp number at hand during your rental.",
+    "zonesTitle": "Delivery areas",
     "galleryAlt": "{name} for rent in Djerba — photo {index}",
-    "mainImageAlt": "{name} rental in Djerba",
     "otherVehicles": "Other scooters available",
     "bookCta": "Book this {name}",
     "whatsappMessage": "Hello, I would like to rent the {name} in Djerba. Is it available?",
     "breadcrumbFleet": "Our scooters",
     "bookByForm": "Book with the form",
     "pricingTitleFlat": "Rate",
-    "pricingSubtitleFlat": "Price per day, all inclusive.",
+    "pricingSubtitleFlat": "Price per day, helmet and equipment included.",
     "durationAny": "Any duration"
   },
   "prices": {
     "title": "Rental prices in Djerba",
-    "subtitle": "Price per day, all inclusive. Helmet, full equipment, assistance and free delivery come with every rental.",
+    "subtitle": "Price per day, all-inclusive except delivery: the helmet and full equipment come with every rental. Delivery (Tourist Zone, Aghir, Midoun): {fee}.",
     "vehicle": "Vehicle",
     "tableNote": "Price per day in Tunisian dinar (TND). The euro figure is indicative and depends on the day’s exchange rate.",
-    "includedTitle": "Always included",
+    "includedTitle": "Included",
     "included1": "Helmet included",
     "included2": "All equipment included",
-    "included3": "Immediate breakdown assistance",
-    "included4": "Free delivery anywhere in Djerba",
-    "included5": "No online payment",
+    "notIncludedTitle": "Not included",
     "depositTitle": "Security deposit",
     "depositText": "A deposit is taken when the vehicle is handed over and returned in full when you bring it back in the condition you received it. The amount depends on the model and is shown in the table above.",
     "paymentTitle": "Payment",
@@ -203,14 +204,13 @@
     "depositColumn": "Deposit",
     "pricePerDayColumn": "Price per day",
     "documentsTitle": "Required documents",
-    "documentsText": "A national ID card or passport is required for any rental. For the 125cc scooter, a valid driving licence is also required. The minimum age is 18."
+    "documentsText": "For the 125cc scooter, a valid driving licence is required. The minimum age is 18."
   },
   "conditions": {
     "title": "Rental conditions",
     "subtitle": "Everything worth knowing before you take to the road in Djerba.",
     "topicBooking": "Booking",
     "topicRequirements": "Requirements",
-    "topicInsurance": "Equipment and assistance",
     "topicPractical": "Practical",
     "stillQuestions": "Another question?",
     "stillQuestionsText": "Message us on WhatsApp — we reply within minutes."
@@ -218,18 +218,18 @@
   "about": {
     "title": "Locascoot Djerba",
     "subtitle": "The scooter rental specialist in Djerba.",
-    "p1": "Locascoot Djerba is your premier scooter rental provider in Djerba. We offer a modern, fully maintained fleet with delivery service anywhere on Djerba island.",
-    "p2": "A helmet and all equipment are included with every scooter. In case of any breakdown, we intervene immediately to assist you.",
+    "p1": "Locascoot Djerba is your premier scooter rental provider in Djerba. We offer a modern, fully maintained fleet with delivery service to the Tourist Zone, Aghir and Midoun.",
+    "p2": "A helmet and all equipment are included with every scooter.",
     "p3": "Enjoy complete freedom to explore Djerba's beaches, souks, and scenic views safely and at your own pace.",
-    "statsVehicles": "scooter models",
-    "statsZones": "delivery areas",
+    "imageAlt": "Locascoot Djerba, scooter rental in Djerba",
+    "statsDelivery": "delivery (Tourist Zone, Aghir, Midoun)",
+    "statsHelmetValue": "Helmet",
+    "statsHelmet": "included with every scooter",
+    "statsOpen": "open 7 days a week",
     "value1Title": "Transparency",
-    "value1Text": "The published price includes everything. Nothing appears at the last moment.",
+    "value1Text": "Prices are shown clearly: helmet and equipment included, delivery ({fee}) listed separately. Nothing appears at the last moment.",
     "value2Title": "Safety",
     "value2Text": "A helmet and full equipment with every scooter, and a regularly maintained fleet.",
-    "value3Title": "Assistance",
-    "value3Text": "If anything goes wrong we intervene immediately, anywhere on the island.",
-    "statsOpen": "open 7 days a week",
     "valuesTitle": "What we care about"
   },
   "contact": {
@@ -240,7 +240,7 @@
     "phoneTitle": "Phone",
     "emailTitle": "Email",
     "openMaps": "Open in Google Maps",
-    "mapTitle": "Delivery area — Djerba island",
+    "mapTitle": "Locascoot Djerba on the map",
     "formTitle": "Send a message",
     "everyDay": "Monday to Sunday"
   },
@@ -248,34 +248,54 @@
     "title": "Book your scooter",
     "subtitle": "No online payment. Your request is sent to us on WhatsApp and we confirm availability quickly.",
     "vehicle": "Preferred scooter",
-    "vehiclePlaceholder": "Choose a vehicle",
     "vehicleAny": "No preference, please advise",
     "startDate": "Start date",
     "endDate": "End date",
+    "deliveryTime": "Delivery time (optional)",
+    "deliveryTimeHint": "Between {open} and {close}",
+    "riders": "Number of riders (optional)",
+    "ridersAny": "—",
+    "ridersOption": "{count, plural, one {# rider} other {# riders}}",
     "name": "Full name",
     "namePlaceholder": "Your name",
     "phone": "Phone / WhatsApp",
     "phonePlaceholder": "+44 7700 900123",
     "email": "Email",
     "emailPlaceholder": "you@example.com",
-    "deliveryPlace": "Delivery location",
-    "deliveryPlaceholder": "Your hotel name, area, or \"airport\"",
+    "deliveryPlace": "Delivery location (Tourist Zone, Aghir or Midoun)",
+    "deliveryPlaceholder": "Your hotel in the Tourist Zone, Aghir or Midoun",
     "message": "Message (optional)",
-    "messagePlaceholder": "Flight number, arrival time, questions…",
-    "submit": "Send my request",
-    "submitting": "Sending…",
-    "orWhatsapp": "or book directly on WhatsApp",
-    "successTitle": "Request sent",
-    "successText": "Thank you! We will get back to you very shortly to confirm availability.",
-    "errorTitle": "Sending failed",
-    "errorText": "We could not send the form. Message us on WhatsApp instead — we reply immediately.",
+    "messagePlaceholder": "Your questions…",
+    "submitWhatsapp": "Book on WhatsApp",
+    "submitHint": "WhatsApp opens with your request already written — just press Send.",
+    "directWhatsapp": "Or message us directly on WhatsApp, without filling in the form",
     "summaryTitle": "Summary",
-    "summaryDays": "{count} days of rental",
+    "summaryDays": "{count, plural, one {# day} other {# days}} of rental",
     "summaryRate": "{price} TND per day",
     "summaryTotal": "Estimated total",
+    "summaryDelivery": "Delivery (Tourist Zone, Aghir, Midoun)",
     "summaryDeposit": "Deposit (refunded)",
     "summaryNote": "Indicative estimate. Cash payment on delivery, in euro, dollar or dinar.",
     "whatsappMessage": "Hello, I would like to book a scooter in Djerba.",
+    "wa": {
+      "heading": "🛵 New booking request — Locascoot Djerba",
+      "line": "{label}: {value}",
+      "name": "Name",
+      "phone": "Phone / WhatsApp",
+      "email": "Email",
+      "vehicle": "Scooter",
+      "startDate": "Start date",
+      "endDate": "End date",
+      "duration": "Duration",
+      "days": "{count, plural, one {# day} other {# days}}",
+      "total": "Estimated total",
+      "delivery": "Delivery",
+      "deliveryPlace": "Delivery location",
+      "deliveryTime": "Delivery time",
+      "riders": "Number of riders",
+      "language": "Customer language",
+      "message": "Message"
+    },
     "errors": {
       "nameRequired": "Please tell us your name.",
       "phoneRequired": "We need a phone number to reply to you.",
@@ -284,7 +304,8 @@
       "startRequired": "Please give the start date of the rental.",
       "endRequired": "Please give the end date of the rental.",
       "endBeforeStart": "The end date must be after the start date.",
-      "startInPast": "The start date cannot be in the past."
+      "startInPast": "The start date cannot be in the past.",
+      "deliveryTimeRange": "Please choose a time between {open} and {close}."
     }
   },
   "contactForm": {
@@ -292,33 +313,28 @@
     "email": "Email",
     "message": "Message",
     "messagePlaceholder": "Your question…",
+    "messageRequired": "Please write your message (at least 5 characters).",
     "submit": "Send",
-    "successText": "Thank you, your message has been sent. We will reply shortly."
+    "submitting": "Sending…",
+    "successText": "Thank you, your message has been sent. We will reply shortly.",
+    "errorText": "We could not send the form. Message us on WhatsApp instead — we reply immediately."
   },
   "zones": {
-    "title": "Scooter rental in {zone}",
-    "listTitle": "Our delivery areas",
-    "deliveryFree": "Free delivery",
-    "deliveryFee": "Delivery {fee} TND",
-    "driveTime": "{minutes} min from Houmt Souk",
-    "highlightsTitle": "Worth riding to from {zone}",
-    "ctaTitle": "Need a scooter in {zone}?",
-    "ctaText": "Tell us where and when — we deliver free of charge.",
+    "title": "Scooter rental {where}",
+    "deliveryFee": "Delivery: {fee}",
+    "highlightsTitle": "Worth riding to nearby",
+    "ctaTitle": "Need a scooter {where}?",
+    "ctaText": "Tell us where and when: we deliver to the Tourist Zone, Aghir and Midoun for {fee}.",
     "otherZones": "Other areas we serve",
-    "whatsappMessage": "Hello, I would like to rent a scooter in {zone}, Djerba.",
-    "fleetTitle": "Scooters available in {zone}"
+    "whatsappMessage": "Hello, I would like to rent a scooter {where}.",
+    "fleetTitle": "Scooters available {where}"
   },
   "footer": {
-    "tagline": "Scooter rental in Djerba. Free delivery across the island, helmet and equipment included.",
+    "tagline": "Scooter rental in Djerba. Delivery to the Tourist Zone, Aghir and Midoun for {fee}, helmet and equipment included.",
     "navTitle": "Navigation",
     "zonesTitle": "Delivery areas",
     "contactTitle": "Contact",
-    "legalTitle": "Information",
-    "terms": "Terms and conditions",
-    "privacy": "Privacy",
-    "legalNotice": "Legal notice",
-    "rights": "All rights reserved.",
-    "followUs": "Follow us"
+    "rights": "All rights reserved."
   },
   "legal": {
     "placeholderNotice": "⚠️ This text is a template to be completed. Have it reviewed before the site goes live.",

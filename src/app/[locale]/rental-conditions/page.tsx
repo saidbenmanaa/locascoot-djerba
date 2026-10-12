@@ -45,7 +45,6 @@ export default async function ConditionsPage({
   const groups: { key: FaqItem['topic']; title: string }[] = [
     { key: 'requirements', title: t('topicRequirements') },
     { key: 'booking', title: t('topicBooking') },
-    { key: 'insurance', title: t('topicInsurance') },
     { key: 'practical', title: t('topicPractical') },
   ];
 

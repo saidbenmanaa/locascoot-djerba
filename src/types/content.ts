@@ -6,7 +6,9 @@
  * fails with a clear message instead of publishing a broken page.
  */
 
-export type Locale = 'fr' | 'en';
+import type { Locale } from '@/i18n/routing';
+
+export type { Locale };
 
 /** A string that must be provided in every supported language. */
 export type Localised = Record<Locale, string>;
@@ -56,8 +58,9 @@ export interface Vehicle {
   /** Combined consumption, litres per 100 km. Omit if unknown. */
   consumptionPer100km?: number;
 
-  /** What the rider must present, e.g. "ID card or passport". */
-  licence: Localised;
+  /** Driving licence the rider must hold, e.g. "Valid driving licence".
+   *  Omit it and no licence line is shown for this vehicle. */
+  licence?: Localised;
   /** Minimum age of the rider, in years. */
   minAge: number;
 
@@ -83,13 +86,16 @@ export interface Vehicle {
 }
 
 export interface Zone {
-  /** URL segment, e.g. "houmt-souk". */
+  /** URL segment, e.g. "midoun". Also the zone's permanent identifier. */
   slug: string;
-  name: string;
-  /** Delivery charge in TND. Use 0 for free delivery. */
-  deliveryFee: number;
-  /** Approximate driving time from Houmt Souk, in minutes. */
-  driveTimeMinutes: number;
+  /** A different URL segment for some languages, e.g. `{ de: 'touristenzone' }`.
+   *  Languages not listed use `slug`. Lowercase ASCII and hyphens only. */
+  slugs?: Partial<Record<Locale, string>>;
+  /** Name shown on cards, in breadcrumbs and in the footer. */
+  name: Localised;
+  /** The name with its preposition, so titles read naturally in every
+   *  language: "à Midoun", "dans la zone touristique", "in the Tourist Zone". */
+  where: Localised;
   intro: Localised;
   /** Two or three paragraphs of genuinely useful local content. */
   body: LocalisedList;
@@ -101,5 +107,5 @@ export interface FaqItem {
   question: Localised;
   answer: Localised;
   /** Groups questions on the rental conditions page. */
-  topic: 'booking' | 'requirements' | 'insurance' | 'practical';
+  topic: 'booking' | 'requirements' | 'practical';
 }

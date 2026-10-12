@@ -9,6 +9,7 @@ import { CheckCircle2, AlertCircle } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 import { cn } from '@/lib/utils';
 
+/** Questions by email. Bookings go through WhatsApp from the booking form. */
 export function ContactForm() {
   const t = useTranslations('contactForm');
   const tb = useTranslations('book');
@@ -18,7 +19,7 @@ export function ContactForm() {
   const schema = z.object({
     name: z.string().trim().min(2, tb('errors.nameRequired')),
     email: z.string().trim().email(tb('errors.emailInvalid')),
-    message: z.string().trim().min(5),
+    message: z.string().trim().min(5, t('messageRequired')),
     website: z.string().max(0).optional(),
   });
 
@@ -45,6 +46,14 @@ export function ContactForm() {
     }
   }
 
+  /** Links each field to its error, so screen readers announce it in place. */
+  function describe(name: keyof FormValues) {
+    return {
+      'aria-invalid': errors[name] ? true : undefined,
+      'aria-describedby': errors[name] ? `contact-${name}-error` : undefined,
+    } as const;
+  }
+
   if (status === 'success') {
     return (
       <p className="flex items-center gap-3 rounded-xl bg-whatsapp/10 p-5 text-sm font-medium">
@@ -56,6 +65,8 @@ export function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} noValidate className="grid gap-5">
+      {/* Honeypot — invisible, skipped by the keyboard and hidden from screen
+          readers. A filled value means a bot, and the message is discarded. */}
       <div aria-hidden className="hidden">
         <input type="text" tabIndex={-1} autoComplete="off" {...register('website')} />
       </div>
@@ -68,11 +79,13 @@ export function ContactForm() {
           id="contact-name"
           type="text"
           autoComplete="name"
+          aria-required
           className={cn(inputClass, errors.name && 'border-gold-500')}
+          {...describe('name')}
           {...register('name')}
         />
         {errors.name ? (
-          <p role="alert" className={errorTextClass}>
+          <p id="contact-name-error" role="alert" className={errorTextClass}>
             {errors.name.message}
           </p>
         ) : null}
@@ -86,11 +99,13 @@ export function ContactForm() {
           id="contact-email"
           type="email"
           autoComplete="email"
+          aria-required
           className={cn(inputClass, errors.email && 'border-gold-500')}
+          {...describe('email')}
           {...register('email')}
         />
         {errors.email ? (
-          <p role="alert" className={errorTextClass}>
+          <p id="contact-email-error" role="alert" className={errorTextClass}>
             {errors.email.message}
           </p>
         ) : null}
@@ -104,20 +119,27 @@ export function ContactForm() {
           id="contact-message"
           rows={5}
           placeholder={t('messagePlaceholder')}
+          aria-required
           className={cn(inputClass, errors.message && 'border-gold-500')}
+          {...describe('message')}
           {...register('message')}
         />
+        {errors.message ? (
+          <p id="contact-message-error" role="alert" className={errorTextClass}>
+            {errors.message.message}
+          </p>
+        ) : null}
       </div>
 
       {status === 'error' ? (
         <p className="flex items-start gap-2 rounded-lg bg-gold-50 p-3 text-sm text-gold-800 dark:bg-gold-950/40 dark:text-gold-200">
           <AlertCircle className="mt-0.5 size-4 shrink-0" aria-hidden />
-          {tb('errorText')}
+          {t('errorText')}
         </p>
       ) : null}
 
       <Button type="submit" disabled={status === 'submitting'} className="justify-self-start">
-        {status === 'submitting' ? tb('submitting') : t('submit')}
+        {status === 'submitting' ? t('submitting') : t('submit')}
       </Button>
     </form>
   );
@@ -125,5 +147,5 @@ export function ContactForm() {
 
 const labelClass = 'mb-1.5 block text-sm font-semibold text-[var(--text-strong)]';
 const inputClass =
-  'w-full rounded-xl border bg-[var(--surface)] px-4 py-3 text-[var(--text-body)] outline-none transition-colors focus:border-sea-500';
+  'w-full scroll-mt-28 rounded-xl border bg-[var(--surface)] px-4 py-3 text-[var(--text-body)] outline-none transition-colors focus:border-sea-500';
 const errorTextClass = 'mt-1.5 text-sm text-gold-700 dark:text-gold-300';

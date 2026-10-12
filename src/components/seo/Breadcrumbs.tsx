@@ -1,4 +1,5 @@
 import { ChevronRight } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
 import type { StaticPathname } from '@/i18n/routing';
 
@@ -14,8 +15,10 @@ export interface Crumb {
  * URL, which makes the listing easier to scan.
  */
 export function Breadcrumbs({ items }: { items: Crumb[] }) {
+  const t = useTranslations('common');
+
   return (
-    <nav aria-label="Breadcrumb" className="py-4">
+    <nav aria-label={t('breadcrumb')} className="py-4">
       <ol className="flex flex-wrap items-center gap-1.5 text-sm">
         {items.map((item, index) => {
           const isLast = index === items.length - 1;

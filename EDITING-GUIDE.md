@@ -124,12 +124,12 @@ réservation et dans le plan du site pour Google.
 | `engineCc` | Cylindrée en cm³ |
 | `transmission` | `automatic` ou `manual` |
 | `seats` | Nombre de places |
-| `licence` | Ce que le client doit présenter, en français **et** en anglais |
+| `licence` | Le permis exigé, dans les quatre langues. Facultatif : sans ce champ, aucune ligne de permis ne s'affiche |
 | `minAge` | Âge minimum du conducteur |
 | `images` | Les noms des fichiers photos |
-| `tagline` | Une phrase courte de présentation, en français **et** en anglais |
-| `description` | Deux ou trois phrases, en français **et** en anglais |
-| `included` | La liste de ce qui est compris dans le prix |
+| `tagline` | Une phrase courte de présentation, dans les quatre langues |
+| `description` | Deux ou trois phrases, dans les quatre langues |
+| `included` | La liste de ce qui est compris dans le prix par jour. **N'y mettez pas la livraison** : elle n'est pas incluse et s'affiche automatiquement sur sa propre ligne (voir section 5) |
 | `pricing` | Le tarif (voir section 1) |
 | `available` | `true` = visible sur le site, `false` = masqué |
 | `featured` | `true` = mis en avant sur la page d'accueil |
@@ -144,14 +144,17 @@ afficher qu'un chiffre inventé :
 | `consumptionPer100km` | Consommation en L/100 km |
 | `deposit` | Caution en DT (vous n'en demandez pas actuellement) |
 
-> Les champs `licence`, `tagline`, `description` et `included` existent en deux langues :
+> Les champs `licence`, `tagline`, `description` et `included` existent en quatre langues
+> (français, anglais, allemand, polonais) :
 > ```js
 > tagline: {
 >   fr: 'Scooter urbain léger, très économique',
 >   en: 'Light urban scooter, very fuel-efficient',
+>   de: 'Leichter Stadtroller, sehr sparsam',
+>   pl: 'Lekki skuter miejski, bardzo oszczędny',
 > },
 > ```
-> **Remplissez toujours les deux**, sinon le site ne se met pas à jour.
+> **Remplissez toujours les quatre** (`fr`, `en`, `de`, `pl`), sinon le site ne se met pas à jour.
 
 ---
 
@@ -234,6 +237,37 @@ résultats locaux. **Si vous modifiez l'une, modifiez l'autre.**
 faites un clic droit sur votre emplacement, et le premier élément du menu affiche les deux
 nombres à recopier dans `geo`.
 
+### Le prix de la livraison
+
+La livraison est proposée **uniquement dans trois zones** : la zone touristique, Aghir et Midoun
+(les zones de `content/zones.ts`), au même prix dans les trois :
+
+```js
+  delivery: {
+    feeEur: 10,     ← le prix de la livraison, en euros
+  },
+```
+
+Changez ce nombre et tout le site suit : page d'accueil, tarifs, zones, FAQ, fiches des scooters,
+formulaire de réservation et message WhatsApp. La livraison s'affiche toujours **sur sa propre
+ligne** (« Livraison (zone touristique, Aghir, Midoun) : 10 € ») : elle n'est jamais ajoutée au
+total en dinars.
+
+### Vos réseaux sociaux
+
+```js
+  social: {
+    facebook: 'https://www.facebook.com/share/1KL2TXDuWh/',
+    instagram: 'https://www.instagram.com/djerbalocascoot?stkn=NW1oc3czMm9vNnVk',
+    tiktok: 'https://www.tiktok.com/@locascootdjerba',
+    tripadvisor: '',     ← vide = lien masqué
+  },
+```
+
+Collez chaque lien **exactement** tel qu'il vous a été donné. Ils apparaissent dans le pied de
+page, le menu mobile, la page Contact et les données lues par Google, avec votre lien Google Maps
+(`mapsUrl`).
+
 ---
 
 ## 6. Modifier les questions fréquentes
@@ -259,7 +293,7 @@ Pour ajouter une question, copiez un bloc existant :
   },
 ```
 
-`topic` doit être l'un de : `booking`, `requirements`, `insurance`, `practical`.
+`topic` doit être l'un de : `booking`, `requirements`, `practical`.
 
 > 💡 Écrivez les questions **avec les mots de vos clients**, pas avec les vôtres.
 > « Quel permis pour louer un scooter à Djerba ? » fonctionne bien mieux que
@@ -276,14 +310,35 @@ recherches du type « location scooter Midoun ». Ce sont vos pages les plus ren
 référencement local.
 
 Vous pouvez modifier les textes, ajouter des lieux à visiter, ou créer une nouvelle zone en
-copiant un bloc existant.
+copiant un bloc existant. Chaque texte existe dans les quatre langues. Le champ `slugs` donne,
+si besoin, une adresse différente en allemand ou en polonais (par exemple `touristenzone`) ;
+sans lui, l'adresse est la même dans toutes les langues.
 
 > 💡 Écrivez des conseils **réellement utiles** sur chaque quartier. Google favorise les pages qui
 > aident vraiment, et vos clients aussi.
 
 ---
 
-## 8. Ajouter des avis clients
+## 8. Comment arrivent les réservations
+
+Il n'y a **ni email ni paiement** : tout passe par WhatsApp, en deux étapes pour le client.
+
+1. Il remplit le formulaire de la page *Réserver* (le scooter est déjà choisi s'il vient de la
+   fiche d'un scooter).
+2. Il appuie sur **« Réserver sur WhatsApp »** : WhatsApp s'ouvre avec sa demande déjà rédigée —
+   scooter, dates, durée, total estimé, livraison (10 €), lieu, heure, nombre de personnes,
+   coordonnées, langue et message. Il n'a plus qu'à appuyer sur *Envoyer*.
+
+S'il manque une information obligatoire (dates, nom, téléphone), WhatsApp ne s'ouvre pas : le
+formulaire indique ce qui manque. Le client peut aussi écrire directement sur WhatsApp, sans
+formulaire, avec le lien juste en dessous ou n'importe quel bouton WhatsApp du site.
+
+Le formulaire de la page *Contact*, lui, envoie un email (voir `README.md`, variables
+d'environnement).
+
+---
+
+## 9. Ajouter des avis clients
 
 Il n'y a **aucun avis affiché sur le site** pour l'instant, ce qui est volontaire : publier de
 faux avis est contraire aux règles de Google et à la loi européenne sur la consommation — celle
@@ -308,7 +363,8 @@ Laissez `count: 0` tant que vous n'en avez pas.
 
 ## Modifier les textes du site
 
-📁 Fichiers : `messages/fr.json` (français) et `messages/en.json` (anglais)
+📁 Fichiers : `messages/fr.json` (français), `messages/en.json` (anglais), `messages/de.json`
+(allemand) et `messages/pl.json` (polonais)
 
 Tous les textes de l'interface s'y trouvent : titres, boutons, page d'accueil, formulaires,
 et les titres que Google affiche dans ses résultats (section `meta`).
@@ -320,7 +376,8 @@ et les titres que Google affiche dans ses résultats (section `meta`).
                 ↑ vous pouvez changer ce texte
 ```
 
-> ⚠️ Si vous modifiez `fr.json`, pensez à modifier **la même ligne** dans `en.json`.
+> ⚠️ Si vous modifiez `fr.json`, pensez à modifier **la même ligne** dans `en.json`, `de.json`
+> et `pl.json`.
 >
 > ⚠️ Ne touchez pas aux éléments entre accolades comme `{price}` ou `{zone}` : ils sont remplacés
 > automatiquement par une valeur.
@@ -348,14 +405,34 @@ Tout l'historique est conservé, rien n'est jamais perdu définitivement.
 | Une photo | `public/images/` |
 | Une question fréquente | `content/faq.ts` |
 | Une zone de livraison | `content/zones.ts` |
-| Un texte de bouton ou de page | `messages/fr.json` et `messages/en.json` |
+| Un texte de bouton ou de page | `messages/<langue>.json` (fr, en, de, pl) |
+
+---
+
+## En attente de vos informations
+
+**Les règles de permis (50cc et 125cc).** Le site indique uniquement qu'un *permis de conduire
+valide* est requis pour le 125cc ; rien n'est affiché pour le 50cc. Si ces règles changent, le
+texte est à mettre à jour aux endroits suivants (dans chaque langue) :
+
+| Où | Fichier |
+|---|---|
+| Fiche et carte du scooter (`licence`, facultatif) | `content/vehicles/<scooter>.ts` |
+| FAQ « Ai-je besoin d'un permis ? » et « Quels documents ? » | `content/faq.ts` |
+| Bloc « Documents requis » de la page Tarifs (`documentsText`) | `messages/<langue>.json` |
+
+**Les pages légales.** *Conditions générales*, *Confidentialité* et *Mentions légales* restent
+des modèles : elles ne sont liées nulle part et Google ne les indexe pas. Dès que vous fournissez
+les informations légales (raison sociale, éditeur, identifiant RNE, matricule fiscal, hébergeur),
+elles peuvent être complétées et remises dans le pied de page.
 
 ---
 
 ## À faire avant l'ouverture du site
 
-- [ ] Vérifier les prix : 60 DT pour le Zimota Tapo, 80 DT pour le Cappuccino S
-- [ ] Faire relire les pages *Conditions générales*, *Mentions légales* et *Confidentialité*
+- [ ] Vérifier les prix : 60 DT pour le Zimota Tapo, 90 DT pour le Cappuccino S
+- [ ] Confirmer les règles de permis (voir ci-dessus)
+- [ ] Fournir les informations légales, puis faire relire les pages légales
 - [ ] Vérifier que chaque réponse de la FAQ correspond à vos conditions réelles
-- [ ] Créer et compléter votre fiche **Google Business Profile**
+- [ ] Créer et compléter votre fiche **Google Business Profile** (livraison : 10 €, zone touristique, Aghir et Midoun uniquement)
 - [ ] Déclarer le site dans **Google Search Console** et y envoyer le `sitemap.xml`

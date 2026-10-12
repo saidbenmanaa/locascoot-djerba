@@ -1,17 +1,20 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { Check } from 'lucide-react';
+import { Check, Lightbulb, Truck } from 'lucide-react';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import { getVehicleBySlug, getVehicles } from '@/lib/content';
+import { getVehicleBySlug, getVehicles, getZones } from '@/lib/content';
 import {
   getStartingPrice,
+  hasFlatRate,
   t as translate,
   tList,
   categoryKey,
+  zoneSlug,
 } from '@/lib/vehicle-utils';
-import { buildMetadata, urlFor } from '@/lib/seo';
+import { Link } from '@/i18n/navigation';
+import { buildMetadata, notFoundMetadata, urlFor } from '@/lib/seo';
 import { breadcrumbSchema, vehicleSchema } from '@/lib/schema';
-import { whatsappHref, toEur } from '@/lib/site';
+import { deliveryFee, whatsappHref, toEur } from '@/lib/site';
 import { routing, type Locale } from '@/i18n/routing';
 import { Container, Section, SectionHeading } from '@/components/ui/Section';
 import { ButtonExternal, ButtonLink } from '@/components/ui/Button';
@@ -38,17 +41,18 @@ export async function generateMetadata({
   const { locale, slug } = await params;
   const vehicle = await getVehicleBySlug(slug);
 
-  if (!vehicle) return {};
+  if (!vehicle) return notFoundMetadata(locale);
 
   const t = await getTranslations({ locale, namespace: 'meta.vehicle' });
   const price = getStartingPrice(vehicle);
+  const fee = deliveryFee(locale);
 
   return buildMetadata({
     locale: locale as Locale,
     pathname: '/scooters/[slug]',
     params: { slug },
     title: t('title', { name: vehicle.name, price }),
-    description: t('description', { name: vehicle.name, price }),
+    description: t('description', { name: vehicle.name, price, fee, cc: vehicle.engineCc }),
     image: `/images/vehicles/${vehicle.images[0]}`,
   });
 }
@@ -72,11 +76,14 @@ export default async function VehiclePage({
   const typedLocale = locale as Locale;
   const price = getStartingPrice(vehicle);
   const included = tList(vehicle.included, typedLocale);
-  const isFlatRate = vehicle.pricing.length === 1;
+  const tips = [t('tip1'), t('tip2'), t('tip3'), t('tip4'), t('tip5')];
+  const isFlatRate = hasFlatRate(vehicle);
+  const fee = deliveryFee(locale);
 
   const others = (await getVehicles())
     .filter((item) => item.slug !== vehicle.slug)
     .slice(0, 4);
+  const zones = await getZones();
 
   const whatsappMessage = t('whatsappMessage', { name: vehicle.name });
 
@@ -110,16 +117,31 @@ export default async function VehiclePage({
                 {tCat(categoryKey(vehicle.category))}
               </span>
 
-              <h1 className="mt-3 text-[length:var(--text-h1)]">{vehicle.name}</h1>
+              {/* Reads "Zimota Tapo — scooter 50cc à louer à Djerba": the model
+                  name stays the headline, the rest is set smaller beneath. */}
+              <h1 className="mt-3 text-[length:var(--text-h1)]">
+                {vehicle.name}
+                <span className="sr-only"> — </span>
+                <span
+                  className="mt-1 block text-lg font-semibold md:text-xl"
+                  style={{ color: 'var(--text-muted)' }}
+                >
+                  {t('h1Suffix', { cc: vehicle.engineCc })}
+                </span>
+              </h1>
 
               <p className="mt-2 text-lg" style={{ color: 'var(--text-muted)' }}>
                 {translate(vehicle.tagline, typedLocale)}
               </p>
 
               <div className="mt-6 flex items-baseline gap-2">
-                <span className="text-sm" style={{ color: 'var(--text-muted)' }}>
-                  {tc('from')}
-                </span>
+                {/* "From" only when longer rentals are cheaper. With one flat
+                    rate it would hint at a lower price that does not exist. */}
+                {isFlatRate ? null : (
+                  <span className="text-sm" style={{ color: 'var(--text-muted)' }}>
+                    {tc('from')}
+                  </span>
+                )}
                 <span className="font-display text-4xl font-bold text-gold-700 dark:text-gold-300">
                   {price} DT
                 </span>
@@ -144,7 +166,12 @@ export default async function VehiclePage({
                   {t('bookCta', { name: vehicle.name })}
                 </ButtonExternal>
 
-                <ButtonLink href="/book" variant="outline" size="lg">
+                {/* Arrives on the form with this scooter already selected */}
+                <ButtonLink
+                  href={{ pathname: '/book', query: { vehicle: vehicle.slug } }}
+                  variant="outline"
+                  size="lg"
+                >
                   {t('bookByForm')}
                 </ButtonLink>
               </div>
@@ -162,6 +189,52 @@ export default async function VehiclePage({
                     </li>
                   ))}
                 </ul>
+                {/* Delivery is not part of the daily price: its own line. */}
+                <p className="mt-3 flex items-start gap-2.5">
+                  <Truck
+                    className="mt-0.5 size-5 shrink-0 text-gold-600 dark:text-gold-400"
+                    aria-hidden
+                  />
+                  <span style={{ color: 'var(--text-body)' }}>
+                    {tc('deliveryLine', { fee })}
+                  </span>
+                </p>
+              </div>
+
+              <div className="mt-8">
+                <h2 className="text-[length:var(--text-h3)]">{t('tipsTitle')}</h2>
+                <ul className="mt-3 grid gap-2">
+                  {tips.map((tip) => (
+                    <li key={tip} className="flex items-start gap-2.5">
+                      <Lightbulb
+                        className="mt-0.5 size-5 shrink-0 text-gold-600 dark:text-gold-400"
+                        aria-hidden
+                      />
+                      <span style={{ color: 'var(--text-body)' }}>{tip}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Links to every delivery area's page */}
+              <div className="mt-8">
+                <h2 className="text-[length:var(--text-h3)]">{t('zonesTitle')}</h2>
+                <ul className="mt-3 flex flex-wrap gap-2">
+                  {zones.map((zone) => (
+                    <li key={zone.slug}>
+                      <Link
+                        href={{
+                          pathname: '/zones/[zone]',
+                          params: { zone: zoneSlug(zone, typedLocale) },
+                        }}
+                        className="inline-flex min-h-11 items-center rounded-full border px-4 text-sm font-semibold transition-colors hover:border-sea-800 hover:text-sea-800 dark:hover:border-sea-300 dark:hover:text-sea-200"
+                        style={{ color: 'var(--text-body)' }}
+                      >
+                        {translate(zone.name, typedLocale)}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
               </div>
             </div>
           </div>
@@ -170,15 +243,17 @@ export default async function VehiclePage({
 
       <Section muted className="pt-0 md:pt-0">
         <Container>
+          {/* min-w-0 lets each card shrink to the screen: the price table then
+              scrolls inside its card on narrow phones instead of widening the page. */}
           <div className="grid gap-10 lg:grid-cols-2 lg:gap-14">
-            <div className="surface-card p-6 md:p-8">
+            <div className="surface-card min-w-0 p-6 md:p-8">
               <h2 className="text-[length:var(--text-h3)]">{t('specsTitle')}</h2>
               <div className="mt-4">
                 <SpecsList vehicle={vehicle} />
               </div>
             </div>
 
-            <div className="surface-card p-6 md:p-8">
+            <div className="surface-card min-w-0 p-6 md:p-8">
               {/* "Rates by duration" only makes sense with more than one band.
                   With a single flat rate it would promise a discount that does
                   not exist. */}

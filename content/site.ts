@@ -9,17 +9,19 @@
  */
 
 export const site = {
+  /** Always written in full — never "Locascoot" on its own. */
   name: 'Locascoot Djerba',
-  /** Used in page titles, after the page name. */
-  shortName: 'Locascoot',
 
   tagline: {
     fr: 'Location de scooters premium à Djerba',
     en: 'Premium scooter rental in Djerba',
+    de: 'Premium-Rollervermietung auf Djerba',
+    pl: 'Wynajem skuterów premium na Dżerbie',
   },
 
-  /** Your live domain, with no trailing slash. Used for every SEO link. */
-  url: 'https://locascootdjerba.tn',
+  /** Your live domain, with no trailing slash. Used for every SEO link.
+   *  The site is served on www; the bare domain redirects to it. */
+  url: 'https://www.locascootdjerba.tn',
 
   /** Part of the "Groupe Alibaba", as shown on the logo. */
   group: 'Groupe Alibaba',
@@ -62,7 +64,7 @@ export const site = {
   },
 
   /** Your Google Maps listing. Used by the "Open in Google Maps" button. */
-  mapsUrl: 'https://maps.app.goo.gl/GwkPDHPEKyrWEcKg6?g_st=aw',
+  mapsUrl: 'https://maps.app.goo.gl/GwkPDHPEKyrWEcKg6',
 
   /** Open every day, same hours. 24-hour format. */
   openingHours: {
@@ -76,25 +78,34 @@ export const site = {
   currency: {
     code: 'TND',
     symbol: 'DT',
-    approxEurRate: 0.3, // 60 DT ≈ 18 € · 80 DT ≈ 24 €
+    approxEurRate: 0.3, // 60 DT ≈ 18 € · 90 DT ≈ 27 €
   },
 
   /** Cash on delivery, in any of these currencies. No online payment. */
   acceptedCurrencies: ['TND', 'EUR', 'USD'],
 
+  /** Delivery is available in three areas only: the Tourist Zone, Aghir and
+   *  Midoun (see `content/zones.ts`). The fee is in euros and is always shown
+   *  as its own line: it is never part of the daily price, never added to the
+   *  dinar total and never converted. Change the number here and every page,
+   *  the booking form and the WhatsApp message follow. */
+  delivery: {
+    feeEur: 10,
+  },
+
   /** Trust signals shown across the site. */
   highlights: {
-    freeDelivery: true,
     helmetIncluded: true,
-    breakdownAssistance: true,
     minAge: 18,
     minRentalDays: 1,
   },
 
+  /** Copy each link exactly as given, query string included.
+   *  Leave a link as an empty string to hide it. */
   social: {
-    facebook: 'https://www.facebook.com/profile.php?id=61591721947075',
-    instagram: 'https://www.instagram.com/locascootdjerba',
-    /** Leave as an empty string to hide the link. */
+    facebook: 'https://www.facebook.com/share/1KL2TXDuWh/',
+    instagram: 'https://www.instagram.com/djerbalocascoot?stkn=NW1oc3czMm9vNnVk',
+    tiktok: 'https://www.tiktok.com/@locascootdjerba',
     tripadvisor: '',
   },
 

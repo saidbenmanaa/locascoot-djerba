@@ -4,6 +4,7 @@ import { getFaq, getFeaturedVehicles } from '@/lib/content';
 import { t as translate } from '@/lib/vehicle-utils';
 import { buildMetadata } from '@/lib/seo';
 import { faqSchema } from '@/lib/schema';
+import { deliveryFee } from '@/lib/site';
 import type { Locale } from '@/i18n/routing';
 import { Container, Section, SectionHeading } from '@/components/ui/Section';
 import { ButtonLink } from '@/components/ui/Button';
@@ -28,23 +29,8 @@ export async function generateMetadata({
     locale: locale as Locale,
     pathname: '/',
     title: t('title'),
-    description: t('description'),
-    keywords:
-      locale === 'fr'
-        ? [
-            'location scooter Djerba',
-            'louer moto Djerba',
-            'location scooter Houmt Souk',
-            'location moto Tunisie',
-            'louer scooter Midoun',
-          ]
-        : [
-            'scooter rental Djerba',
-            'rent motorcycle Djerba',
-            'scooter hire Houmt Souk',
-            'motorbike rental Tunisia',
-            'rent scooter Midoun',
-          ],
+    description: t('description', { fee: deliveryFee(locale) }),
+    keywords: t.raw('keywords') as string[],
   });
 }
 
@@ -61,7 +47,7 @@ export default async function HomePage({
 
   const featured = await getFeaturedVehicles(4);
   const faq = await getFaq();
-  const previewFaq = faq.slice(0, 5);
+  const previewFaq = faq.slice(0, 4);
 
   return (
     <>
@@ -113,7 +99,7 @@ export default async function HomePage({
       <Section>
         <Container>
           <div className="prose-locascoot mx-auto max-w-3xl text-center">
-            <p>{t('intro')}</p>
+            <p>{t('intro', { fee: deliveryFee(locale) })}</p>
           </div>
         </Container>
       </Section>

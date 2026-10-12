@@ -1,15 +1,16 @@
 import Image from 'next/image';
 import { Check } from 'lucide-react';
-import { getTranslations } from 'next-intl/server';
+import { getLocale, getTranslations } from 'next-intl/server';
 import { ButtonExternal, ButtonLink } from '@/components/ui/Button';
 import { Container } from '@/components/ui/Section';
-import { whatsappHref } from '@/lib/site';
+import { deliveryFee, whatsappHref } from '@/lib/site';
 
 export async function Hero() {
   const t = await getTranslations('home');
   const tb = await getTranslations('book');
+  const fee = deliveryFee(await getLocale());
 
-  const trust = [t('trustDelivery'), t('trustInsurance'), t('trustNoPrepay')];
+  const trust = [t('trustDelivery', { fee }), t('trustInsurance'), t('trustNoPrepay')];
 
   return (
     <section className="relative isolate overflow-hidden bg-sea-950">
@@ -36,7 +37,7 @@ export async function Hero() {
           </h1>
 
           <p className="mt-5 max-w-xl text-lg leading-relaxed text-sand-100 md:text-xl">
-            {t('heroSubtitle')}
+            {t('heroSubtitle', { fee })}
           </p>
 
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">

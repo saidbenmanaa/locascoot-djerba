@@ -1,7 +1,7 @@
 import type { FaqItem, Locale, Vehicle, Zone } from '@/types/content';
 import { site } from './site';
 import { absoluteUrl, urlFor } from './seo';
-import { getStartingPrice, t } from './vehicle-utils';
+import { getStartingPrice, t, zoneSlug } from './vehicle-utils';
 
 /**
  * ============================================================================
@@ -40,14 +40,29 @@ function openingHoursSpecification() {
 /** Stable identifier so every other schema can point back to the business. */
 export const BUSINESS_ID = `${site.url}/#business`;
 
+/** Where scooters are delivered: these three areas of Djerba only. Keep it in
+ *  step with `content/zones.ts`. */
+const AREA_SERVED = [
+  { '@type': 'Place', name: 'Zone Touristique' },
+  { '@type': 'Place', name: 'Aghir' },
+  { '@type': 'Place', name: 'Midoun' },
+];
+
 /**
  * The core local-SEO object. `AutoRental` is the most specific schema.org type
  * for a vehicle rental business, and it inherits from LocalBusiness so it still
  * qualifies for local results.
  */
 export function localBusinessSchema(locale: Locale) {
-  const sameAs = [site.social.facebook, site.social.instagram, site.social.tripadvisor]
-    .filter((url) => url.length > 0);
+  // The business's own profiles, copied exactly from `content/site.ts`.
+  const profiles: string[] = [
+    site.social.facebook,
+    site.social.instagram,
+    site.social.tiktok,
+    site.social.tripadvisor,
+    site.mapsUrl,
+  ];
+  const sameAs = profiles.filter((url) => url.length > 0);
 
   return {
     '@context': 'https://schema.org',
@@ -61,7 +76,7 @@ export function localBusinessSchema(locale: Locale) {
     ...(site.logo ? { logo: absoluteUrl(site.logo) } : {}),
     telephone: site.contact.phone,
     email: site.contact.email,
-    priceRange: 'DT60–DT80',
+    priceRange: 'DT60–DT90',
     currenciesAccepted: 'TND, EUR, USD',
     paymentAccepted: 'Cash (TND, EUR, USD)',
     address: {
@@ -77,11 +92,9 @@ export function localBusinessSchema(locale: Locale) {
       latitude: site.geo.latitude,
       longitude: site.geo.longitude,
     },
+    hasMap: site.mapsUrl,
     openingHoursSpecification: openingHoursSpecification(),
-    areaServed: {
-      '@type': 'Place',
-      name: 'Djerba, Tunisia',
-    },
+    areaServed: AREA_SERVED,
     ...(sameAs.length > 0 ? { sameAs } : {}),
     // Only published when there are genuinely reviews to report. Inventing
     // these breaches Google's guidelines and risks losing rich results.
@@ -131,10 +144,8 @@ export function vehicleSchema(vehicle: Vehicle, locale: Locale) {
       absoluteUrl(`/images/vehicles/${file}`),
     ),
     category: vehicle.category,
-    brand: {
-      '@type': 'Brand',
-      name: vehicle.name.split(' ')[0],
-    },
+    // No `brand`: the manufacturer is not stated anywhere on the site, and
+    // structured data must only describe what the page shows.
     offers: {
       '@type': 'Offer',
       url: urlFor('/scooters/[slug]', locale, { slug: vehicle.slug }),
@@ -183,6 +194,7 @@ export function faqSchema(items: FaqItem[], locale: Locale) {
   return {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
+    inLanguage: locale,
     mainEntity: items.map((item) => ({
       '@type': 'Question',
       name: t(item.question, locale),
@@ -210,21 +222,22 @@ export function breadcrumbSchema(
   };
 }
 
-/** Ties a zone landing page to the area it serves. */
-export function zoneServiceSchema(zone: Zone, locale: Locale) {
+/**
+ * Ties a zone landing page to the area it serves. `serviceType` is the page's
+ * own heading ("Location de scooter à Midoun"), so it is always in the page's
+ * language; the description is the zone introduction, which states the fee.
+ */
+export function zoneServiceSchema(zone: Zone, locale: Locale, serviceType: string) {
   return {
     '@context': 'https://schema.org',
     '@type': 'Service',
-    serviceType:
-      locale === 'fr'
-        ? `Location de scooter à ${zone.name}`
-        : `Scooter rental in ${zone.name}`,
+    serviceType,
     provider: { '@id': BUSINESS_ID },
     areaServed: {
       '@type': 'Place',
-      name: `${zone.name}, Djerba, Tunisia`,
+      name: `${t(zone.name, locale)}, Djerba, Tunisia`,
     },
-    url: urlFor('/zones/[zone]', locale, { zone: zone.slug }),
+    url: urlFor('/zones/[zone]', locale, { zone: zoneSlug(zone, locale) }),
     description: t(zone.intro, locale),
   };
 }

@@ -3,7 +3,12 @@ import { Users, Gauge, IdCard } from 'lucide-react';
 import { getTranslations, getLocale } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
 import type { Vehicle } from '@/types/content';
-import { getStartingPrice, t as translate, categoryKey } from '@/lib/vehicle-utils';
+import {
+  getStartingPrice,
+  hasFlatRate,
+  t as translate,
+  categoryKey,
+} from '@/lib/vehicle-utils';
 import { toEur } from '@/lib/site';
 import type { Locale } from '@/i18n/routing';
 
@@ -74,17 +79,23 @@ export async function VehicleCard({
             <Users className="size-3.5" aria-hidden />
             {tSpecs('seatsValue', { count: vehicle.seats })}
           </li>
-          <li className="inline-flex items-center gap-1.5">
-            <IdCard className="size-3.5" aria-hidden />
-            {translate(vehicle.licence, locale)}
-          </li>
+          {vehicle.licence ? (
+            <li className="inline-flex items-center gap-1.5">
+              <IdCard className="size-3.5" aria-hidden />
+              {translate(vehicle.licence, locale)}
+            </li>
+          ) : null}
         </ul>
 
         <div className="mt-5 flex items-end justify-between gap-3 border-t pt-4">
           <div>
-            <span className="block text-xs" style={{ color: 'var(--text-muted)' }}>
-              {t('from')}
-            </span>
+            {/* "From" only when longer rentals are cheaper; a single flat
+                rate is simply the price. */}
+            {hasFlatRate(vehicle) ? null : (
+              <span className="block text-xs" style={{ color: 'var(--text-muted)' }}>
+                {t('from')}
+              </span>
+            )}
             <span className="font-display text-2xl font-bold text-gold-700 dark:text-gold-300">
               {price} DT
             </span>

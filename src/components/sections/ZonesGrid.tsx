@@ -1,8 +1,9 @@
-import { MapPin, Clock } from 'lucide-react';
+import { MapPin } from 'lucide-react';
 import { getLocale, getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
 import { getZones } from '@/lib/content';
-import { t as translate } from '@/lib/vehicle-utils';
+import { deliveryFee } from '@/lib/site';
+import { t as translate, zoneSlug } from '@/lib/vehicle-utils';
 import { Container, Section, SectionHeading } from '@/components/ui/Section';
 import type { Locale } from '@/i18n/routing';
 
@@ -26,6 +27,7 @@ export async function ZonesGrid({
   const t = await getTranslations('home');
   const tz = await getTranslations('zones');
   const locale = (await getLocale()) as Locale;
+  const fee = deliveryFee(locale);
   const zones = (await getZones()).filter((zone) => zone.slug !== excludeSlug);
 
   return (
@@ -33,20 +35,20 @@ export async function ZonesGrid({
       <Container>
         <SectionHeading
           title={title ?? t('zonesTitle')}
-          subtitle={subtitle ?? t('zonesSubtitle')}
+          subtitle={subtitle ?? t('zonesSubtitle', { fee })}
         />
 
         <ul className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {zones.map((zone) => (
             <li key={zone.slug}>
               <Link
-                href={{ pathname: '/zones/[zone]', params: { zone: zone.slug } }}
+                href={{ pathname: '/zones/[zone]', params: { zone: zoneSlug(zone, locale) } }}
                 className="surface-card flex h-full flex-col p-6 transition-shadow hover:shadow-[var(--shadow-lift)]"
               >
                 <span className="flex items-center gap-2">
                   <MapPin className="size-5 text-gold-600 dark:text-gold-400" aria-hidden />
                   <span className="font-display text-lg font-bold" style={{ color: 'var(--text-strong)' }}>
-                    {zone.name}
+                    {translate(zone.name, locale)}
                   </span>
                 </span>
 
@@ -58,14 +60,8 @@ export async function ZonesGrid({
                 </span>
 
                 <span className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs">
-                  <span className="font-semibold text-whatsapp-dark dark:text-whatsapp">
-                    {zone.deliveryFee === 0
-                      ? tz('deliveryFree')
-                      : tz('deliveryFee', { fee: zone.deliveryFee })}
-                  </span>
-                  <span className="inline-flex items-center gap-1" style={{ color: 'var(--text-muted)' }}>
-                    <Clock className="size-3.5" aria-hidden />
-                    {tz('driveTime', { minutes: zone.driveTimeMinutes })}
+                  <span className="font-semibold text-whatsapp-ink dark:text-whatsapp">
+                    {tz('deliveryFee', { fee })}
                   </span>
                 </span>
               </Link>

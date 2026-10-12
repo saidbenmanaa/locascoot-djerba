@@ -25,77 +25,102 @@ export function whatsappHref(message?: string): string {
   return message ? `${base}?text=${encodeURIComponent(message)}` : base;
 }
 
+/**
+ * The delivery fee as it is written in each language: "€10" in English,
+ * "10 €" everywhere else. The non-breaking space keeps the amount and the
+ * symbol on the same line.
+ */
+export function deliveryFee(locale: string): string {
+  const amount = site.delivery.feeEur;
+  return locale === 'en' ? `€${amount}` : `${amount} €`;
+}
+
+/** Social profiles and the Google Maps listing, in display order. Empty
+ *  links in `content/site.ts` are left out. */
+export function socialLinks(): { label: string; href: string }[] {
+  const links: { label: string; href: string }[] = [
+    { label: 'Facebook', href: site.social.facebook },
+    { label: 'Instagram', href: site.social.instagram },
+    { label: 'TikTok', href: site.social.tiktok },
+    { label: 'Google Maps', href: site.mapsUrl },
+    { label: 'Tripadvisor', href: site.social.tripadvisor },
+  ];
+  return links.filter((link) => link.href.length > 0);
+}
+
+/** Everything the visitor typed in the booking form, already worded for the
+ *  message (the duration and total arrive formatted in their language). */
 export interface BookingDetails {
   name?: string;
   phone?: string;
+  email?: string;
   vehicle?: string;
   startDate?: string;
   endDate?: string;
-  days?: number;
-  total?: number;
-  place?: string;
+  duration?: string;
+  total?: string;
+  deliveryPlace?: string;
+  deliveryTime?: string;
+  riders?: string;
+  message?: string;
+}
+
+/** The message labels, taken from the visitor's language file. */
+export interface BookingMessageLabels {
+  heading: string;
+  /** Joins a label and its value with the punctuation of the language. */
+  line: (label: string, value: string) => string;
+  name: string;
+  phone: string;
+  email: string;
+  vehicle: string;
+  startDate: string;
+  endDate: string;
+  duration: string;
+  total: string;
+  delivery: string;
+  deliveryPlace: string;
+  deliveryTime: string;
+  riders: string;
+  language: string;
+  message: string;
 }
 
 /**
- * Formats a booking enquiry as a readable WhatsApp message.
+ * Formats a booking request as a readable WhatsApp message.
  *
  * Laid out as labelled lines rather than a sentence so that, on a busy day, you
  * can read the essentials off a notification without opening the chat. Fields
  * the customer has not filled in are left out entirely rather than shown empty.
+ * The delivery fee is its own line and is never added to the dinar total.
  */
 export function bookingWhatsappMessage(
   details: BookingDetails,
-  locale: string = 'fr',
+  labels: BookingMessageLabels,
+  locale: string,
 ): string {
-  const fr = locale !== 'en';
-
-  const heading = fr
-    ? '🛵 Nouvelle demande de réservation — Locascoot Djerba'
-    : '🛵 New booking request — Locascoot Djerba';
-
-  const labels = fr
-    ? {
-        name: 'Nom',
-        phone: 'Téléphone / WhatsApp',
-        vehicle: 'Scooter',
-        start: 'Date de début',
-        end: 'Date de fin',
-        duration: 'Durée',
-        total: 'Total estimé',
-        place: 'Lieu de livraison',
-        days: (n: number) => `${n} ${n === 1 ? 'jour' : 'jours'}`,
-      }
-    : {
-        name: 'Name',
-        phone: 'Phone / WhatsApp',
-        vehicle: 'Scooter',
-        start: 'Start date',
-        end: 'End date',
-        duration: 'Duration',
-        total: 'Estimated total',
-        place: 'Delivery location',
-        days: (n: number) => `${n} ${n === 1 ? 'day' : 'days'}`,
-      };
-
-  const lines: string[] = [heading, ''];
-  // French puts a space before a colon; English does not.
-  const separator = fr ? ' : ' : ': ';
+  const lines: string[] = [labels.heading, ''];
   const add = (label: string, value?: string) => {
-    if (value) lines.push(`${label}${separator}${value}`);
+    const text = value?.trim();
+    if (text) lines.push(labels.line(label, text));
   };
 
   add(labels.name, details.name);
   add(labels.phone, details.phone);
+  add(labels.email, details.email);
   add(labels.vehicle, details.vehicle);
-  add(labels.start, details.startDate);
-  add(labels.end, details.endDate);
-  if (details.days && details.days > 0) {
-    add(labels.duration, labels.days(details.days));
-  }
-  if (details.total && details.total > 0) {
-    add(labels.total, `${details.total} DT (≈ ${toEur(details.total)} €)`);
-  }
-  add(labels.place, details.place);
+  add(labels.startDate, details.startDate);
+  add(labels.endDate, details.endDate);
+  add(labels.duration, details.duration);
+  add(labels.total, details.total);
+  add(labels.delivery, deliveryFee(locale));
+  add(labels.deliveryPlace, details.deliveryPlace);
+  add(labels.deliveryTime, details.deliveryTime);
+  add(labels.riders, details.riders);
+  add(labels.language, locale.toUpperCase());
+
+  const message = details.message?.trim();
+  if (message) lines.push('', labels.line(labels.message, message));
 
   return lines.join('\n');
 }

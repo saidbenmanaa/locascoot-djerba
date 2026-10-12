@@ -1,9 +1,8 @@
 import type { Metadata } from 'next';
-import { Check } from 'lucide-react';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { getVehicles } from '@/lib/content';
 import { tierLabel, categoryKey } from '@/lib/vehicle-utils';
-import { toEur } from '@/lib/site';
+import { deliveryFee, toEur } from '@/lib/site';
 import { buildMetadata, urlFor } from '@/lib/seo';
 import { breadcrumbSchema } from '@/lib/schema';
 import { Link } from '@/i18n/navigation';
@@ -12,6 +11,7 @@ import { Container, Section } from '@/components/ui/Section';
 import { JsonLd } from '@/components/seo/JsonLd';
 import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
 import { CtaBand } from '@/components/sections/CtaBand';
+import { IncludedList } from '@/components/sections/IncludedList';
 
 export async function generateMetadata({
   params,
@@ -25,7 +25,7 @@ export async function generateMetadata({
     locale: locale as Locale,
     pathname: '/prices',
     title: t('title'),
-    description: t('description'),
+    description: t('description', { fee: deliveryFee(locale) }),
   });
 }
 
@@ -53,14 +53,6 @@ export default async function PricesPage({
   // Only show a deposit column if a deposit is actually taken on something.
   const showDeposit = vehicles.some((vehicle) => Boolean(vehicle.deposit));
 
-  const included = [
-    t('included1'),
-    t('included2'),
-    t('included3'),
-    t('included4'),
-    t('included5'),
-  ];
-
   return (
     <>
       <Container>
@@ -74,7 +66,7 @@ export default async function PricesPage({
           <header className="mb-10 max-w-2xl">
             <h1 className="text-[length:var(--text-h1)]">{t('title')}</h1>
             <p className="mt-4 text-lg" style={{ color: 'var(--text-muted)' }}>
-              {t('subtitle')}
+              {t('subtitle', { fee: deliveryFee(locale) })}
             </p>
           </header>
 
@@ -166,15 +158,7 @@ export default async function PricesPage({
 
           <div className="mt-12 grid gap-8 lg:grid-cols-3">
             <div className="surface-card p-6 lg:col-span-1">
-              <h2 className="text-[length:var(--text-h3)]">{t('includedTitle')}</h2>
-              <ul className="mt-4 grid gap-2.5">
-                {included.map((item) => (
-                  <li key={item} className="flex items-start gap-2.5">
-                    <Check className="mt-0.5 size-5 shrink-0 text-whatsapp" aria-hidden />
-                    <span style={{ color: 'var(--text-body)' }}>{item}</span>
-                  </li>
-                ))}
-              </ul>
+              <IncludedList />
             </div>
 
             {showDeposit ? (

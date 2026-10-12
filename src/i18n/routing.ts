@@ -1,14 +1,23 @@
 import { defineRouting } from 'next-intl/routing';
 
-export const locales = ['fr', 'en'] as const;
+export const locales = ['fr', 'en', 'de', 'pl'] as const;
 export type Locale = (typeof locales)[number];
 
 export const defaultLocale: Locale = 'fr';
 
+/** Each language written in itself, as the language switcher shows it. */
+export const localeNames: Record<Locale, string> = {
+  fr: 'Français',
+  en: 'English',
+  de: 'Deutsch',
+  pl: 'Polski',
+};
+
 /**
  * Localised URLs. French is the primary market so it lives at the domain root
- * (`/tarifs`), English is prefixed (`/en/prices`). Keeping the slugs in the
- * visitor's own language is a real ranking factor for local search terms.
+ * (`/tarifs`), the other languages are prefixed (`/en/prices`, `/de/preise`,
+ * `/pl/cennik`). Keeping the slugs in the visitor's own language is a real
+ * ranking factor for local search terms. Slugs are ASCII only.
  *
  * To add a language later: add it to `locales` above, add a `messages/xx.json`
  * file, and add its slugs to each entry below. Nothing else needs to change.
@@ -18,46 +27,68 @@ export const pathnames = {
   '/scooters': {
     fr: '/scooters',
     en: '/scooters',
+    de: '/roller',
+    pl: '/skutery',
   },
   '/scooters/[slug]': {
     fr: '/scooters/[slug]',
     en: '/scooters/[slug]',
+    de: '/roller/[slug]',
+    pl: '/skutery/[slug]',
   },
   '/prices': {
     fr: '/tarifs',
     en: '/prices',
+    de: '/preise',
+    pl: '/cennik',
   },
   '/rental-conditions': {
     fr: '/conditions-de-location',
     en: '/rental-conditions',
+    de: '/mietbedingungen',
+    pl: '/warunki-wynajmu',
   },
   '/about': {
     fr: '/a-propos',
     en: '/about',
+    de: '/ueber-uns',
+    pl: '/o-nas',
   },
   '/contact': {
     fr: '/contact',
     en: '/contact',
+    de: '/kontakt',
+    pl: '/kontakt',
   },
   '/book': {
     fr: '/reservation',
     en: '/book',
+    de: '/reservierung',
+    pl: '/rezerwacja',
   },
   '/zones/[zone]': {
     fr: '/zones/[zone]',
     en: '/areas/[zone]',
+    de: '/zonen/[zone]',
+    pl: '/strefy/[zone]',
   },
   '/terms': {
     fr: '/conditions-generales',
     en: '/terms',
+    de: '/agb',
+    pl: '/regulamin',
   },
   '/privacy': {
     fr: '/confidentialite',
     en: '/privacy',
+    de: '/datenschutz',
+    pl: '/polityka-prywatnosci',
   },
   '/legal-notice': {
     fr: '/mentions-legales',
     en: '/legal-notice',
+    de: '/impressum',
+    pl: '/nota-prawna',
   },
 } as const;
 
@@ -71,6 +102,16 @@ export type AppPathname = keyof typeof pathnames;
  */
 export type StaticPathname = Exclude<AppPathname, `${string}[${string}`>;
 
+/** The legal pages (terms, privacy, legal notice). */
+export const legalPathnames = ['/terms', '/privacy', '/legal-notice'] as const;
+
+/**
+ * Languages the legal pages exist in. They are templates awaiting the owner's
+ * legal details, so they are not translated yet: in German and Polish their
+ * addresses are reserved but answer with the 404 page.
+ */
+export const legalLocales: readonly Locale[] = ['fr', 'en'];
+
 export const routing = defineRouting({
   locales,
   defaultLocale,
@@ -78,4 +119,8 @@ export const routing = defineRouting({
   // French serves from `/`, other locales are prefixed. Keeps the primary
   // market on the cleanest possible URLs.
   localePrefix: 'as-needed',
+  // The URL alone decides the language. Redirecting on the browser's language
+  // would bounce visitors (and shared links) off the page they asked for, and
+  // Google advises against it; the language switcher and hreflang do the job.
+  localeDetection: false,
 });

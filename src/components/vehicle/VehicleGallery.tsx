@@ -33,6 +33,9 @@ export function VehicleGallery({
             fill
             priority={index === 0}
             sizes="(max-width: 1024px) 100vw, 55vw"
+            // Photos stacked behind the visible one are only faded out, so
+            // they are hidden from screen readers as well.
+            aria-hidden={index === active ? undefined : true}
             className={cn(
               'object-cover transition-opacity duration-300',
               index === active ? 'opacity-100' : 'opacity-0',

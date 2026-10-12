@@ -14,35 +14,47 @@ const vehicle: Vehicle = {
   licence: {
     fr: 'Permis de conduire valide',
     en: 'Valid driving licence',
+    de: 'Gültiger Führerschein',
+    pl: 'Ważne prawo jazdy',
   },
   minAge: 18,
 
   images: ['cappuccino-s-125-1.jpg', 'cappuccino-s-125-2.jpg'],
 
   tagline: {
-    fr: 'Scooter rétro 125cc, confortable et économique',
-    en: '125cc retro scooter, comfortable and fuel-efficient',
+    fr: 'Scooter rétro 125cc, assise large',
+    en: '125cc retro scooter with a wide seat',
+    de: '125-cm³-Retro-Roller mit breiter Sitzbank',
+    pl: 'Skuter retro 125 cm³ z szerokim siedziskiem',
   },
   description: {
-    fr: 'Scooter rétro 125cc économique en carburant, avec une assise large et une conduite très confortable. Excellente stabilité sur la route et facile à prendre en main. Un choix idéal pour vos trajets quotidiens et pour découvrir la région avec style.',
-    en: 'Fuel-efficient 125cc retro scooter with a wide seat and very comfortable ride. Excellent road stability and easy to handle. An ideal choice for your daily trips and discovering the region in style.',
+    fr: 'Scooter rétro 125cc avec une assise large, facile à prendre en main.',
+    en: '125cc retro scooter with a wide seat, easy to handle.',
+    de: '125-cm³-Retro-Roller mit breiter Sitzbank, einfach zu handhaben.',
+    pl: 'Skuter retro 125 cm³ z szerokim siedziskiem, łatwy w prowadzeniu.',
   },
+  /* Only what the daily price covers. Delivery is not included: the site
+     shows it as its own line, using the fee from `content/site.ts`. */
   included: {
     fr: [
       'Casque fourni',
       'Tout l’équipement inclus',
-      'Assistance immédiate en cas de panne',
-      'Livraison gratuite partout à Djerba',
     ],
     en: [
       'Helmet included',
       'All equipment included',
-      'Immediate breakdown assistance',
-      'Free delivery anywhere in Djerba',
+    ],
+    de: [
+      'Helm inklusive',
+      'Gesamte Ausrüstung inklusive',
+    ],
+    pl: [
+      'Kask w cenie',
+      'Całe wyposażenie w cenie',
     ],
   },
 
-  pricing: [{ minDays: 1, maxDays: null, pricePerDay: 80 }],
+  pricing: [{ minDays: 1, maxDays: null, pricePerDay: 90 }],
 
   available: true,
   featured: true,

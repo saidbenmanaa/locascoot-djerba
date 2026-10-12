@@ -1,12 +1,14 @@
-import { getTranslations } from 'next-intl/server';
+import { getLocale, getTranslations } from 'next-intl/server';
 import { Container, Section, SectionHeading } from '@/components/ui/Section';
+import { deliveryFee } from '@/lib/site';
 
 export async function HowItWorks() {
   const t = await getTranslations('home');
+  const fee = deliveryFee(await getLocale());
 
   const steps = [
     { title: t('how1Title'), text: t('how1Text') },
-    { title: t('how2Title'), text: t('how2Text') },
+    { title: t('how2Title'), text: t('how2Text', { fee }) },
     { title: t('how3Title'), text: t('how3Text') },
   ];
 

@@ -1,14 +1,18 @@
 import { Mail, MapPin, Phone } from 'lucide-react';
-import { getTranslations } from 'next-intl/server';
+import { getLocale, getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
+import type { Locale } from '@/i18n/routing';
 import { getZones } from '@/lib/content';
-import { formattedAddress, mailtoHref, site, telHref } from '@/lib/site';
+import { deliveryFee, formattedAddress, mailtoHref, site, socialLinks, telHref } from '@/lib/site';
+import { t as translate, zoneSlug } from '@/lib/vehicle-utils';
 import { Container } from '@/components/ui/Section';
 import { Logo } from './Logo';
 
 export async function Footer() {
   const t = await getTranslations('footer');
+  const tc = await getTranslations('common');
   const tNav = await getTranslations('nav');
+  const locale = (await getLocale()) as Locale;
   const zones = await getZones();
   const year = new Date().getFullYear();
 
@@ -21,17 +25,11 @@ export async function Footer() {
     { href: '/book', label: tNav('book') },
   ] as const;
 
-  const legalLinks = [
-    { href: '/terms', label: t('terms') },
-    { href: '/privacy', label: t('privacy') },
-    { href: '/legal-notice', label: t('legalNotice') },
-  ] as const;
+  /* The legal pages (terms, privacy, legal notice) are not linked until their
+     final text — publisher, registration and host details — is supplied. They
+     stay reachable by URL and are kept out of search results. */
 
-  const socials = [
-    { href: site.social.facebook, label: 'Facebook' },
-    { href: site.social.instagram, label: 'Instagram' },
-    { href: site.social.tripadvisor, label: 'Tripadvisor' },
-  ].filter((s) => s.href.length > 0);
+  const socials = socialLinks();
 
   return (
     <footer className="mt-auto bg-sea-950 text-sand-200">
@@ -42,15 +40,15 @@ export async function Footer() {
               <Logo />
             </div>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-sand-300">
-              {t('tagline')}
+              {t('tagline', { fee: deliveryFee(locale) })}
             </p>
 
             {socials.length > 0 ? (
               <div className="mt-5">
                 <p className="text-xs font-semibold uppercase tracking-wider text-sand-400">
-                  {t('followUs')}
+                  {tc('followUs')}
                 </p>
-                <div className="mt-2 flex gap-3">
+                <div className="mt-2 flex flex-wrap gap-x-3 gap-y-1.5">
                   {socials.map((social) => (
                     <a
                       key={social.label}
@@ -67,10 +65,12 @@ export async function Footer() {
             ) : null}
           </div>
 
+          {/* Column titles are styled labels, not headings, so every page's
+              heading outline holds only its own content. */}
           <nav aria-label={t('navTitle')}>
-            <h2 className="text-sm font-semibold uppercase tracking-wider text-white">
+            <p className="text-sm font-semibold uppercase tracking-wider text-white">
               {t('navTitle')}
-            </h2>
+            </p>
             <ul className="mt-4 space-y-2.5">
               {navLinks.map((link) => (
                 <li key={link.href}>
@@ -86,17 +86,17 @@ export async function Footer() {
           </nav>
 
           <nav aria-label={t('zonesTitle')}>
-            <h2 className="text-sm font-semibold uppercase tracking-wider text-white">
+            <p className="text-sm font-semibold uppercase tracking-wider text-white">
               {t('zonesTitle')}
-            </h2>
+            </p>
             <ul className="mt-4 space-y-2.5">
               {zones.map((zone) => (
                 <li key={zone.slug}>
                   <Link
-                    href={{ pathname: '/zones/[zone]', params: { zone: zone.slug } }}
+                    href={{ pathname: '/zones/[zone]', params: { zone: zoneSlug(zone, locale) } }}
                     className="text-sm text-sand-300 underline-offset-4 hover:text-white hover:underline"
                   >
-                    {zone.name}
+                    {translate(zone.name, locale)}
                   </Link>
                 </li>
               ))}
@@ -104,9 +104,9 @@ export async function Footer() {
           </nav>
 
           <div>
-            <h2 className="text-sm font-semibold uppercase tracking-wider text-white">
+            <p className="text-sm font-semibold uppercase tracking-wider text-white">
               {t('contactTitle')}
-            </h2>
+            </p>
             <ul className="mt-4 space-y-3 text-sm text-sand-300">
               <li className="flex gap-2.5">
                 <MapPin className="mt-0.5 size-4 shrink-0 text-sand-400" aria-hidden />
@@ -132,15 +132,6 @@ export async function Footer() {
           <p>
             © {year} {site.name}. {t('rights')}
           </p>
-          <ul className="flex flex-wrap gap-x-5 gap-y-2">
-            {legalLinks.map((link) => (
-              <li key={link.href}>
-                <Link href={link.href} className="hover:text-white hover:underline">
-                  {link.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
         </div>
       </Container>
     </footer>
