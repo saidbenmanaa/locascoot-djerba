@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
-import { Eye, ShieldCheck, PhoneCall } from 'lucide-react';
+import { Eye, ShieldCheck } from 'lucide-react';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { buildMetadata, urlFor } from '@/lib/seo';
 import { breadcrumbSchema } from '@/lib/schema';
@@ -42,7 +42,6 @@ export default async function AboutPage({
   const values = [
     { icon: Eye, title: t('value1Title'), text: t('value1Text', { fee }) },
     { icon: ShieldCheck, title: t('value2Title'), text: t('value2Text') },
-    { icon: PhoneCall, title: t('value3Title'), text: t('value3Text') },
   ];
 
   // What a visitor actually wants to know at a glance: what delivery costs,
@@ -109,7 +108,7 @@ export default async function AboutPage({
       <Section muted>
         <Container>
           <SectionHeading title={t('valuesTitle')} />
-          <ul className="grid gap-6 md:grid-cols-3">
+          <ul className="grid gap-6 md:grid-cols-2">
             {values.map(({ icon: Icon, title, text }) => (
               <li key={title} className="surface-card p-6">
                 <span className="inline-flex size-12 items-center justify-center rounded-xl bg-sea-800 text-white">

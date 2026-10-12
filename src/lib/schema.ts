@@ -40,15 +40,12 @@ function openingHoursSpecification() {
 /** Stable identifier so every other schema can point back to the business. */
 export const BUSINESS_ID = `${site.url}/#business`;
 
-/** Where scooters are delivered: Djerba Island only. The airport is on the
- *  island; Zarzis town and the mainland are not served. */
+/** Where scooters are delivered: these three areas of Djerba only. Keep it in
+ *  step with `content/zones.ts`. */
 const AREA_SERVED = [
-  { '@type': 'Place', name: 'Djerba' },
-  { '@type': 'Place', name: 'Midoun' },
-  { '@type': 'Place', name: 'Houmt Souk' },
-  { '@type': 'Place', name: 'Aghir' },
   { '@type': 'Place', name: 'Zone Touristique' },
-  { '@type': 'Airport', name: 'Djerba-Zarzis International Airport', iataCode: 'DJE' },
+  { '@type': 'Place', name: 'Aghir' },
+  { '@type': 'Place', name: 'Midoun' },
 ];
 
 /**
@@ -79,7 +76,7 @@ export function localBusinessSchema(locale: Locale) {
     ...(site.logo ? { logo: absoluteUrl(site.logo) } : {}),
     telephone: site.contact.phone,
     email: site.contact.email,
-    priceRange: 'DT60–DT80',
+    priceRange: 'DT60–DT90',
     currenciesAccepted: 'TND, EUR, USD',
     paymentAccepted: 'Cash (TND, EUR, USD)',
     address: {

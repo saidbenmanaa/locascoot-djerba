@@ -47,7 +47,7 @@ export default async function HomePage({
 
   const featured = await getFeaturedVehicles(4);
   const faq = await getFaq();
-  const previewFaq = faq.slice(0, 5);
+  const previewFaq = faq.slice(0, 4);
 
   return (
     <>

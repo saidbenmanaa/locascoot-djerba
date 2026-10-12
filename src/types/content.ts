@@ -58,8 +58,9 @@ export interface Vehicle {
   /** Combined consumption, litres per 100 km. Omit if unknown. */
   consumptionPer100km?: number;
 
-  /** What the rider must present, e.g. "ID card or passport". */
-  licence: Localised;
+  /** Driving licence the rider must hold, e.g. "Valid driving licence".
+   *  Omit it and no licence line is shown for this vehicle. */
+  licence?: Localised;
   /** Minimum age of the rider, in years. */
   minAge: number;
 
@@ -85,7 +86,7 @@ export interface Vehicle {
 }
 
 export interface Zone {
-  /** URL segment, e.g. "houmt-souk". Also the zone's permanent identifier. */
+  /** URL segment, e.g. "midoun". Also the zone's permanent identifier. */
   slug: string;
   /** A different URL segment for some languages, e.g. `{ de: 'touristenzone' }`.
    *  Languages not listed use `slug`. Lowercase ASCII and hyphens only. */
@@ -93,10 +94,8 @@ export interface Zone {
   /** Name shown on cards, in breadcrumbs and in the footer. */
   name: Localised;
   /** The name with its preposition, so titles read naturally in every
-   *  language: "à Houmt Souk", "dans la zone touristique", "at … Airport". */
+   *  language: "à Midoun", "dans la zone touristique", "in the Tourist Zone". */
   where: Localised;
-  /** Approximate driving time from Houmt Souk, in minutes. */
-  driveTimeMinutes: number;
   intro: Localised;
   /** Two or three paragraphs of genuinely useful local content. */
   body: LocalisedList;
@@ -108,5 +107,5 @@ export interface FaqItem {
   question: Localised;
   answer: Localised;
   /** Groups questions on the rental conditions page. */
-  topic: 'booking' | 'requirements' | 'insurance' | 'practical';
+  topic: 'booking' | 'requirements' | 'practical';
 }

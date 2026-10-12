@@ -2,34 +2,34 @@
   "meta": {
     "home": {
       "title": "Roller mieten auf Djerba – Lieferung ins Hotel | Locascoot Djerba",
-      "description": "Rollervermietung auf Djerba: Lieferung überall auf der Insel für {fee}, Helm und Ausrüstung inklusive, ab 60 DT pro Tag. Per WhatsApp buchen.",
+      "description": "Rollervermietung auf Djerba: Lieferung in die Touristenzone, nach Aghir und Midoun für {fee}, Helm und Ausrüstung inklusive, ab 60 DT pro Tag. Per WhatsApp buchen.",
       "keywords": [
         "Roller mieten Djerba",
         "Rollervermietung Djerba",
-        "Roller mieten Houmt Souk",
+        "Roller mieten Touristenzone Djerba",
         "Roller mieten Midoun",
-        "Roller mieten Flughafen Djerba"
+        "Roller mieten Aghir"
       ]
     },
     "scooters": {
       "title": "50- und 125-cm³-Roller mieten auf Djerba",
-      "description": "Unsere 50- und 125-cm³-Roller zum Mieten auf Djerba, ab 60 DT pro Tag. Helm und Ausrüstung inklusive, Lieferung überall auf der Insel Djerba für {fee}."
+      "description": "Unsere 50- und 125-cm³-Roller zum Mieten auf Djerba, ab 60 DT pro Tag. Helm und Ausrüstung inklusive, Lieferung in die Touristenzone, nach Aghir und Midoun für {fee}."
     },
     "prices": {
       "title": "Preise für die Rollermiete auf Djerba",
-      "description": "Preise für die Rollermiete auf Djerba: 60 DT pro Tag für den 50-cm³-Roller, 80 DT für den 125-cm³-Roller. Helm und Ausrüstung inklusive, Lieferung: {fee}."
+      "description": "Preise für die Rollermiete auf Djerba: 60 DT pro Tag für den 50-cm³-Roller, 90 DT für den 125-cm³-Roller. Helm und Ausrüstung inklusive, Lieferung: {fee}."
     },
     "conditions": {
       "title": "Mietbedingungen für Roller auf Djerba",
-      "description": "Mindestalter, Dokumente, Führerschein, Zahlung und Pannenhilfe: alle Bedingungen, um auf Djerba einen Roller bei Locascoot Djerba zu mieten, einfach erklärt."
+      "description": "Mindestalter, Dokumente, Führerschein und Zahlung: alle Bedingungen, um auf Djerba einen Roller bei Locascoot Djerba zu mieten, einfach erklärt."
     },
     "about": {
       "title": "Über uns – Rollervermietung auf Djerba",
-      "description": "Locascoot Djerba, Ihr Spezialist für Rollervermietung auf Djerba: moderne, gepflegte Flotte, Lieferung auf der Insel für {fee} und sofortige Pannenhilfe."
+      "description": "Locascoot Djerba, Ihr Spezialist für Rollervermietung auf Djerba: moderne, gepflegte Flotte und Lieferung in die Touristenzone, nach Aghir und Midoun für {fee}."
     },
     "contact": {
       "title": "Kontakt und Buchung per WhatsApp auf Djerba",
-      "description": "Kontaktieren Sie Locascoot Djerba per WhatsApp, Telefon oder E-Mail. Täglich von 08:00 bis 20:00 geöffnet, Lieferung überall auf der Insel für {fee}."
+      "description": "Kontaktieren Sie Locascoot Djerba per WhatsApp, Telefon oder E-Mail. Täglich 08:00–20:00 geöffnet, Lieferung in die Touristenzone, nach Aghir und Midoun für {fee}."
     },
     "book": {
       "title": "Roller auf Djerba per WhatsApp reservieren",
@@ -41,7 +41,7 @@
     },
     "vehicle": {
       "title": "{name} mieten auf Djerba – {price} DT/Tag",
-      "description": "Mieten Sie den {name}, einen {cc}-cm³-Roller, auf Djerba für {price} DT pro Tag. Helm und Ausrüstung inklusive, Pannenhilfe, Lieferung für {fee}."
+      "description": "Mieten Sie den {name}, einen {cc}-cm³-Roller, auf Djerba für {price} DT pro Tag. Helm und Ausrüstung inklusive, Lieferung für {fee}."
     },
     "notFound": {
       "title": "Seite nicht gefunden",
@@ -73,7 +73,7 @@
     "viewDetails": "Details ansehen",
     "seeAllVehicles": "Alle Roller ansehen",
     "seeAllPrices": "Alle Preise ansehen",
-    "deliveryLine": "Lieferung auf Djerba: {fee}",
+    "deliveryLine": "Lieferung (Touristenzone, Aghir, Midoun): {fee}",
     "day": "Tag",
     "days": "Tage",
     "language": "Sprache",
@@ -111,22 +111,20 @@
   },
   "home": {
     "heroTitle": "Roller mieten auf Djerba",
-    "heroSubtitle": "Lieferung überall auf der Insel Djerba für {fee}, Helm und Ausrüstung inklusive, ab 60 DT pro Tag.",
+    "heroSubtitle": "Lieferung in die Touristenzone, nach Aghir und Midoun für {fee}, Helm und Ausrüstung inklusive, ab 60 DT pro Tag.",
     "heroPrimaryCta": "Per WhatsApp buchen",
     "heroSecondaryCta": "Unsere Roller ansehen",
-    "trustDelivery": "Lieferung auf Djerba: {fee}",
+    "trustDelivery": "Lieferung (Touristenzone, Aghir, Midoun): {fee}",
     "trustInsurance": "Helm und Ausrüstung inklusive",
     "trustNoPrepay": "Keine Online-Zahlung",
     "fleetTitle": "Unsere Roller",
     "fleetSubtitle": "Eine moderne, regelmäßig gewartete Flotte.",
     "whyTitle": "Warum bei uns mieten",
     "whySubtitle": "Was im Urlaub wirklich zählt.",
-    "why1Title": "Lieferung überall auf der Insel",
-    "why1Text": "Zu Ihrem Hotel, zum Internationalen Flughafen Djerba-Zarzis oder zu Ihrer Unterkunft: Wir liefern überall auf der Insel Djerba, täglich zwischen 08:00 und 20:00, für {fee}.",
+    "why1Title": "Lieferung in Touristenzone, Aghir und Midoun",
+    "why1Text": "Zu Ihrem Hotel oder zu Ihrer Unterkunft: Wir liefern in die Touristenzone, nach Aghir und Midoun, täglich zwischen 08:00 und 20:00, für {fee}.",
     "why2Title": "Klare Preise, keine Überraschungen",
     "why2Text": "Der Tagespreis umfasst Helm und gesamte Ausrüstung; die Lieferung ({fee}) wird separat angegeben. Bei der Rückgabe des Rollers kommt nichts hinzu.",
-    "why3Title": "Sofortige Pannenhilfe",
-    "why3Text": "Unsere Roller werden regelmäßig gewartet. Bei einer Panne sind wir sofort zur Stelle, überall auf der Insel.",
     "why4Title": "In 2 Minuten gebucht",
     "why4Text": "Eine WhatsApp-Nachricht genügt. Keine Online-Zahlung: Sie zahlen bar bei Lieferung, in Euro, Dollar oder Dinar.",
     "howTitle": "So funktioniert’s",
@@ -134,21 +132,21 @@
     "how1Title": "Sie schreiben uns",
     "how1Text": "Schicken Sie uns den gewünschten Roller und Ihren Mietzeitraum per WhatsApp oder über das Formular. Wir bestätigen die Verfügbarkeit schnell.",
     "how2Title": "Wir liefern",
-    "how2Text": "Wir liefern den Roller dorthin, wo Sie auf der Insel Djerba sind, für {fee}, mit Helm und gesamter Ausrüstung.",
+    "how2Text": "Wir liefern den Roller zu Ihnen in die Touristenzone, nach Aghir oder Midoun, für {fee}, mit Helm und gesamter Ausrüstung.",
     "how3Title": "Sie fahren los",
     "how3Text": "Sie zahlen bar bei Lieferung, und die Insel gehört Ihnen. Während der gesamten Miete sind wir für Sie erreichbar.",
-    "zonesTitle": "Wir liefern überall auf der Insel Djerba",
-    "zonesSubtitle": "Wo auch immer Sie auf der Insel wohnen, die Lieferung kostet {fee}.",
+    "zonesTitle": "Wir liefern in die Touristenzone, nach Aghir und Midoun",
+    "zonesSubtitle": "In diesen drei Gebieten kostet die Lieferung {fee}.",
     "faqTitle": "Häufige Fragen",
     "faqSubtitle": "Alles, was Sie vor der Buchung wissen sollten.",
     "faqCta": "Alle Mietbedingungen ansehen",
     "ctaTitle": "Bereit, Djerba zu entdecken?",
     "ctaText": "Nennen Sie uns Ihren Zeitraum, um den Rest kümmern wir uns. Antwort innerhalb weniger Minuten.",
-    "intro": "Locascoot Djerba vermietet Roller auf der ganzen Insel Djerba. Ob Sie in Houmt Souk, Midoun, der Touristenzone oder Aghir wohnen oder am Internationalen Flughafen Djerba-Zarzis ankommen: Wir liefern Ihren Roller an die Adresse Ihrer Wahl auf der Insel, täglich zwischen 08:00 und 20:00, für {fee}. Helm und komplette Ausrüstung gehören zu jeder Miete, und bei einer Panne sind wir sofort zur Stelle."
+    "intro": "Locascoot Djerba vermietet Roller auf Djerba. Ob Sie in der Touristenzone, in Aghir oder in Midoun wohnen: Wir liefern Ihren Roller an die Adresse Ihrer Wahl, täglich zwischen 08:00 und 20:00, für {fee}. Helm und komplette Ausrüstung gehören zu jeder Miete."
   },
   "scooters": {
     "title": "Unsere Roller",
-    "subtitle": "{count, plural, one {# Modell} other {# Modelle}} zur Miete. Lieferung überall auf der Insel Djerba: {fee}.",
+    "subtitle": "{count, plural, one {# Modell} other {# Modelle}} zur Miete. Lieferung (Touristenzone, Aghir, Midoun): {fee}.",
     "filterLabel": "Nach Typ filtern",
     "noResults": "Derzeit keine Roller in dieser Kategorie."
   },
@@ -161,6 +159,12 @@
     "pricePerDayLabel": "Preis pro Tag",
     "depositNote": "Kaution von {amount} DT, die bei Rückgabe des Fahrzeugs erstattet wird.",
     "includedTitle": "Im Preis inbegriffen",
+    "tipsTitle": "Praktische Tipps",
+    "tip1": "Parken Sie möglichst im Schatten: Die Sitzbank wird in der Sonne schnell heiß.",
+    "tip2": "Nehmen Sie den Schlüssel mit, wann immer Sie parken.",
+    "tip3": "Fahren Sie auf sandigen Abschnitten nahe den Stränden langsam.",
+    "tip4": "Bremsen Sie vor Bodenschwellen ab, die es in den Dörfern häufig gibt.",
+    "tip5": "Halten Sie unsere WhatsApp-Nummer während der Miete griffbereit.",
     "zonesTitle": "Liefergebiete",
     "galleryAlt": "{name} zu vermieten auf Djerba – Foto {index}",
     "otherVehicles": "Weitere verfügbare Roller",
@@ -169,18 +173,17 @@
     "breadcrumbFleet": "Unsere Roller",
     "bookByForm": "Über das Formular buchen",
     "pricingTitleFlat": "Preis",
-    "pricingSubtitleFlat": "Preis pro Tag, Helm und Ausrüstung inklusive. Lieferung auf Djerba: {fee}.",
+    "pricingSubtitleFlat": "Preis pro Tag, Helm und Ausrüstung inklusive.",
     "durationAny": "Beliebige Dauer"
   },
   "prices": {
     "title": "Mietpreise auf Djerba",
-    "subtitle": "Preis pro Tag, alles inklusive außer der Lieferung: Helm, komplette Ausrüstung und Pannenhilfe gehören zu jeder Miete. Lieferung auf Djerba: {fee}.",
+    "subtitle": "Preis pro Tag, alles inklusive außer der Lieferung: Helm und komplette Ausrüstung gehören zu jeder Miete. Lieferung (Touristenzone, Aghir, Midoun): {fee}.",
     "vehicle": "Fahrzeug",
     "tableNote": "Preis pro Tag in Tunesischen Dinar (DT). Der Euro-Betrag ist ein Richtwert und hängt vom Tageskurs ab.",
     "includedTitle": "Inklusive",
     "included1": "Helm inklusive",
     "included2": "Gesamte Ausrüstung inklusive",
-    "included3": "Sofortige Pannenhilfe",
     "notIncludedTitle": "Nicht inklusive",
     "depositTitle": "Kaution",
     "depositText": "Bei der Übergabe des Fahrzeugs wird eine Kaution hinterlegt, die Sie bei der Rückgabe vollständig zurückerhalten, wenn das Fahrzeug im Zustand der Übergabe zurückgegeben wird. Der Betrag hängt vom Modell ab und steht in der Tabelle oben.",
@@ -189,14 +192,13 @@
     "depositColumn": "Kaution",
     "pricePerDayColumn": "Preis pro Tag",
     "documentsTitle": "Erforderliche Dokumente",
-    "documentsText": "Für jede Miete ist ein Personalausweis oder Reisepass erforderlich. Für den 125-cm³-Roller ist zusätzlich ein gültiger Führerschein erforderlich. Das Mindestalter beträgt 18 Jahre."
+    "documentsText": "Für den 125-cm³-Roller ist ein gültiger Führerschein erforderlich. Das Mindestalter beträgt 18 Jahre."
   },
   "conditions": {
     "title": "Mietbedingungen",
     "subtitle": "Alles, was Sie wissen sollten, bevor Sie auf Djerba losfahren.",
     "topicBooking": "Buchung",
     "topicRequirements": "Voraussetzungen",
-    "topicInsurance": "Ausrüstung und Pannenhilfe",
     "topicPractical": "Praktisches",
     "stillQuestions": "Noch eine Frage?",
     "stillQuestionsText": "Schreiben Sie uns per WhatsApp – wir antworten innerhalb weniger Minuten."
@@ -204,11 +206,11 @@
   "about": {
     "title": "Locascoot Djerba",
     "subtitle": "Ihr Spezialist für Rollervermietung auf Djerba.",
-    "p1": "Locascoot Djerba ist Ihr Spezialist für Rollervermietung auf Djerba. Wir bieten eine moderne, regelmäßig gewartete Flotte und liefern Ihren Roller überall auf der Insel Djerba.",
-    "p2": "Helm und gesamte Ausrüstung sind bei jedem Roller dabei. Bei einer Panne sind wir sofort zur Stelle, um Ihnen zu helfen.",
+    "p1": "Locascoot Djerba ist Ihr Spezialist für Rollervermietung auf Djerba. Wir bieten eine moderne, regelmäßig gewartete Flotte und liefern Ihren Roller in die Touristenzone, nach Aghir und Midoun.",
+    "p2": "Helm und gesamte Ausrüstung sind bei jedem Roller dabei.",
     "p3": "Genießen Sie die volle Freiheit, die Strände, Souks und einzigartigen Landschaften der Insel sicher zu entdecken.",
     "imageAlt": "Locascoot Djerba, Rollervermietung auf Djerba",
-    "statsDelivery": "Lieferung überall auf der Insel Djerba",
+    "statsDelivery": "Lieferung (Touristenzone, Aghir, Midoun)",
     "statsHelmetValue": "Helm",
     "statsHelmet": "bei jedem Roller inklusive",
     "statsOpen": "7 Tage die Woche geöffnet",
@@ -216,8 +218,6 @@
     "value1Text": "Die Preise sind klar angegeben: Helm und Ausrüstung inklusive, die Lieferung ({fee}) separat ausgewiesen. Nichts kommt im letzten Moment hinzu.",
     "value2Title": "Sicherheit",
     "value2Text": "Helm und komplette Ausrüstung bei jedem Roller und eine regelmäßig gewartete Flotte.",
-    "value3Title": "Pannenhilfe",
-    "value3Text": "Bei einer Panne sind wir sofort zur Stelle, überall auf der Insel.",
     "valuesTitle": "Was uns wichtig ist"
   },
   "contact": {
@@ -228,7 +228,7 @@
     "phoneTitle": "Telefon",
     "emailTitle": "E-Mail",
     "openMaps": "In Google Maps öffnen",
-    "mapTitle": "Liefergebiet – Insel Djerba",
+    "mapTitle": "Locascoot Djerba auf der Karte",
     "formTitle": "Nachricht senden",
     "everyDay": "Montag bis Sonntag"
   },
@@ -250,10 +250,10 @@
     "phonePlaceholder": "+49 151 23456789",
     "email": "E-Mail",
     "emailPlaceholder": "sie@beispiel.de",
-    "deliveryPlace": "Lieferort auf der Insel Djerba",
-    "deliveryPlaceholder": "Name Ihres Hotels, Ort oder „Flughafen“",
+    "deliveryPlace": "Lieferort (Touristenzone, Aghir oder Midoun)",
+    "deliveryPlaceholder": "Ihr Hotel in der Touristenzone, in Aghir oder in Midoun",
     "message": "Nachricht (optional)",
-    "messagePlaceholder": "Flugnummer, Fragen …",
+    "messagePlaceholder": "Ihre Fragen …",
     "submitWhatsapp": "Per WhatsApp buchen",
     "submitHint": "WhatsApp öffnet sich mit Ihrer fertigen Anfrage – Sie müssen nur noch auf Senden tippen.",
     "directWhatsapp": "Oder schreiben Sie uns direkt per WhatsApp, ohne das Formular auszufüllen",
@@ -261,7 +261,7 @@
     "summaryDays": "{count, plural, one {# Miettag} other {# Miettage}}",
     "summaryRate": "{price} DT pro Tag",
     "summaryTotal": "Geschätzter Gesamtpreis",
-    "summaryDelivery": "Lieferung auf Djerba",
+    "summaryDelivery": "Lieferung (Touristenzone, Aghir, Midoun)",
     "summaryDeposit": "Kaution (wird erstattet)",
     "summaryNote": "Unverbindliche Schätzung. Barzahlung bei Lieferung, in Euro, Dollar oder Dinar.",
     "whatsappMessage": "Hallo, ich möchte auf Djerba einen Roller reservieren.",
@@ -310,16 +310,15 @@
   "zones": {
     "title": "Roller mieten {where}",
     "deliveryFee": "Lieferung: {fee}",
-    "driveTime": "{minutes} Min. von Houmt Souk",
     "highlightsTitle": "Sehenswertes in der Nähe",
     "ctaTitle": "Brauchen Sie einen Roller {where}?",
-    "ctaText": "Sagen Sie uns, wo und wann: Wir liefern überall auf der Insel Djerba für {fee}.",
+    "ctaText": "Sagen Sie uns, wo und wann: Wir liefern in die Touristenzone, nach Aghir und Midoun für {fee}.",
     "otherZones": "Weitere Liefergebiete",
     "whatsappMessage": "Hallo, ich möchte einen Roller {where} mieten.",
     "fleetTitle": "Verfügbare Roller {where}"
   },
   "footer": {
-    "tagline": "Rollervermietung auf Djerba. Lieferung auf der Insel Djerba für {fee}, Helm und Ausrüstung inklusive.",
+    "tagline": "Rollervermietung auf Djerba. Lieferung in die Touristenzone, nach Aghir und Midoun für {fee}, Helm und Ausrüstung inklusive.",
     "navTitle": "Navigation",
     "zonesTitle": "Liefergebiete",
     "contactTitle": "Kontakt",

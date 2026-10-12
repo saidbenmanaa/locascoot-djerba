@@ -31,10 +31,10 @@ export const faq: FaqItem[] = [
       pl: 'Czy dostawa jest wliczona w cenę?',
     },
     answer: {
-      fr: `Non, la livraison n’est pas comprise dans le prix de location par jour. Nous livrons votre scooter partout sur l’île de Djerba, y compris à l’aéroport international de Djerba-Zarzis, pour ${fee.fr}. Nous ne livrons pas en dehors de l’île.`,
-      en: `No, delivery is not included in the daily rental price. We deliver your scooter anywhere on Djerba Island, including Djerba-Zarzis International Airport, for ${fee.en}. We do not deliver outside the island.`,
-      de: `Nein, die Lieferung ist nicht im Tagesmietpreis enthalten. Wir liefern Ihren Roller überall auf der Insel Djerba, auch zum Internationalen Flughafen Djerba-Zarzis, für ${fee.de}. Außerhalb der Insel liefern wir nicht.`,
-      pl: `Nie, dostawa nie jest wliczona w cenę wynajmu za dzień. Dostarczamy skuter w dowolne miejsce na wyspie Dżerba, także na Międzynarodowe lotnisko Dżerba-Zarzis, za ${fee.pl}. Nie dostarczamy poza wyspę.`,
+      fr: `Non, la livraison n’est pas comprise dans le prix de location par jour. Nous livrons votre scooter dans la zone touristique, à Aghir et à Midoun, pour ${fee.fr}. Nous livrons uniquement dans ces trois zones.`,
+      en: `No, delivery is not included in the daily rental price. We deliver your scooter to the Tourist Zone, Aghir and Midoun for ${fee.en}. We only deliver to these three areas.`,
+      de: `Nein, die Lieferung ist nicht im Tagesmietpreis enthalten. Wir liefern Ihren Roller in die Touristenzone, nach Aghir und nach Midoun, für ${fee.de}. Wir liefern ausschließlich in diese drei Zonen.`,
+      pl: `Nie, dostawa nie jest wliczona w cenę wynajmu za dzień. Dostarczamy skuter do strefy turystycznej, do Aghir i do Midoun, za ${fee.pl}. Dostarczamy wyłącznie do tych trzech stref.`,
     },
   },
   {
@@ -46,10 +46,10 @@ export const faq: FaqItem[] = [
       pl: 'Czy potrzebuję prawa jazdy?',
     },
     answer: {
-      fr: 'Un permis de conduire valide est requis pour le scooter 125cc. Pour le scooter 50cc, une carte d’identité ou un passeport suffit.',
-      en: 'A valid driver’s licence is required for the 125cc scooter. For the 50cc scooter, a standard ID or passport is sufficient.',
-      de: 'Für den 125-cm³-Roller ist ein gültiger Führerschein erforderlich. Für den 50-cm³-Roller genügt ein Personalausweis oder Reisepass.',
-      pl: 'Do skutera 125 cm³ wymagane jest ważne prawo jazdy. Do skutera 50 cm³ wystarczy dowód osobisty lub paszport.',
+      fr: 'Un permis de conduire valide est requis pour le scooter 125cc.',
+      en: 'A valid driver’s licence is required for the 125cc scooter.',
+      de: 'Für den 125-cm³-Roller ist ein gültiger Führerschein erforderlich.',
+      pl: 'Do skutera 125 cm³ wymagane jest ważne prawo jazdy.',
     },
   },
   {
@@ -65,21 +65,6 @@ export const faq: FaqItem[] = [
       en: 'No online payment is required. Complete the reservation form on our site, which sends the details to our WhatsApp. You pay in cash (Euro, Dollar or Tunisian Dinar) upon scooter delivery.',
       de: 'Es ist keine Online-Zahlung nötig. Füllen Sie das Buchungsformular auf unserer Website aus, das die Angaben an unser WhatsApp sendet. Sie zahlen bar (Euro, Dollar oder Tunesischer Dinar) bei Lieferung des Rollers.',
       pl: 'Płatność online nie jest wymagana. Wypełnij formularz rezerwacji na naszej stronie, który przesyła dane na nasz WhatsApp. Płacisz gotówką (w euro, dolarach lub dinarach tunezyjskich) przy dostawie skutera.',
-    },
-  },
-  {
-    topic: 'practical',
-    question: {
-      fr: 'Que se passe-t-il en cas de panne du scooter ?',
-      en: 'What happens if the scooter breaks down?',
-      de: 'Was passiert, wenn der Roller eine Panne hat?',
-      pl: 'Co się stanie, jeśli skuter się zepsuje?',
-    },
-    answer: {
-      fr: 'Nous fournissons une assistance immédiate en cas de panne. Contactez-nous et nous intervenons immédiatement.',
-      en: 'We provide immediate breakdown assistance. Contact us and we intervene right away.',
-      de: 'Wir bieten sofortige Pannenhilfe. Kontaktieren Sie uns, und wir sind sofort zur Stelle.',
-      pl: 'Zapewniamy natychmiastową pomoc w razie awarii. Skontaktuj się z nami, a od razu przyjedziemy z pomocą.',
     },
   },
   {
@@ -106,10 +91,10 @@ export const faq: FaqItem[] = [
       pl: 'Jakie dokumenty muszę przedstawić?',
     },
     answer: {
-      fr: 'Une carte d’identité nationale ou un passeport, ainsi qu’un permis de conduire valide pour le scooter 125cc.',
-      en: 'A national ID card or passport, plus a valid driving licence for the 125cc scooter.',
-      de: 'Einen Personalausweis oder Reisepass sowie für den 125-cm³-Roller einen gültigen Führerschein.',
-      pl: 'Dowód osobisty lub paszport, a w przypadku skutera 125 cm³ także ważne prawo jazdy.',
+      fr: 'Un permis de conduire valide pour le scooter 125cc.',
+      en: 'A valid driving licence for the 125cc scooter.',
+      de: 'Für den 125-cm³-Roller einen gültigen Führerschein.',
+      pl: 'W przypadku skutera 125 cm³ ważne prawo jazdy.',
     },
   },
   {

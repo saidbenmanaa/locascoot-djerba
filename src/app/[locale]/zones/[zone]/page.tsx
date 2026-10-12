@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { MapPin, Clock, Check } from 'lucide-react';
+import { MapPin, Check } from 'lucide-react';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { getFeaturedVehicles, getZoneBySlug, getZones } from '@/lib/content';
 import { t as translate, tList, zoneSlug } from '@/lib/vehicle-utils';
@@ -20,7 +20,7 @@ import { CtaBand } from '@/components/sections/CtaBand';
  * Local SEO landing pages.
  *
  * These target searches your competitors largely ignore — "location scooter
- * Midoun", "scooter rental Djerba airport" — where intent is high and
+ * Midoun", "scooter rental Aghir" — where intent is high and
  * competition is thin. Each page is genuinely useful local content rather than
  * a keyword-swapped clone, which is what keeps it ranking.
  */
@@ -107,13 +107,6 @@ export default async function ZonePage({
                 <span className="inline-flex items-center gap-1.5 font-semibold text-whatsapp-ink dark:text-whatsapp">
                   <MapPin className="size-4" aria-hidden />
                   {t('deliveryFee', { fee })}
-                </span>
-                <span
-                  className="inline-flex items-center gap-1.5"
-                  style={{ color: 'var(--text-muted)' }}
-                >
-                  <Clock className="size-4" aria-hidden />
-                  {t('driveTime', { minutes: zone.driveTimeMinutes })}
                 </span>
               </div>
 

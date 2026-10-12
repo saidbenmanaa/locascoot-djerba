@@ -13,7 +13,7 @@ export async function IncludedList({ compact = false }: { compact?: boolean }) {
   const tc = await getTranslations('common');
   const fee = deliveryFee(await getLocale());
 
-  const included = [t('included1'), t('included2'), t('included3')];
+  const included = [t('included1'), t('included2')];
   const textClass = cn(compact && 'text-sm');
 
   return (

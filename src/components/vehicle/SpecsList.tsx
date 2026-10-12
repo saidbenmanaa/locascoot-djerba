@@ -29,10 +29,11 @@ export async function SpecsList({ vehicle }: { vehicle: Vehicle }) {
     });
   }
 
-  rows.push(
-    { label: t('licence'), value: translate(vehicle.licence, locale) },
-    { label: t('minAge'), value: t('yearsOld', { count: vehicle.minAge }) },
-  );
+  if (vehicle.licence) {
+    rows.push({ label: t('licence'), value: translate(vehicle.licence, locale) });
+  }
+
+  rows.push({ label: t('minAge'), value: t('yearsOld', { count: vehicle.minAge }) });
 
   return (
     <dl className="grid gap-x-8 sm:grid-cols-2">

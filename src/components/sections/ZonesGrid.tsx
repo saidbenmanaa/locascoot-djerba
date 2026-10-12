@@ -1,4 +1,4 @@
-import { MapPin, Clock } from 'lucide-react';
+import { MapPin } from 'lucide-react';
 import { getLocale, getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
 import { getZones } from '@/lib/content';
@@ -62,10 +62,6 @@ export async function ZonesGrid({
                 <span className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs">
                   <span className="font-semibold text-whatsapp-ink dark:text-whatsapp">
                     {tz('deliveryFee', { fee })}
-                  </span>
-                  <span className="inline-flex items-center gap-1" style={{ color: 'var(--text-muted)' }}>
-                    <Clock className="size-3.5" aria-hidden />
-                    {tz('driveTime', { minutes: zone.driveTimeMinutes })}
                   </span>
                 </span>
               </Link>

@@ -15,27 +15,21 @@ const vehicle: Vehicle = {
   transmission: 'automatic',
   seats: 2,
 
-  licence: {
-    fr: 'Carte d’identité ou passeport',
-    en: 'ID card or passport',
-    de: 'Personalausweis oder Reisepass',
-    pl: 'Dowód osobisty lub paszport',
-  },
   minAge: 18,
 
   images: ['zimota-tapo-50-1.jpg', 'zimota-tapo-50-2.jpg'],
 
   tagline: {
-    fr: 'Scooter urbain 50cc, léger et très économique en carburant',
-    en: '50cc urban scooter, light and very fuel-efficient',
-    de: '50-cm³-Stadtroller, leicht und sehr sparsam',
-    pl: 'Miejski skuter 50 cm³, lekki i bardzo oszczędny',
+    fr: 'Scooter urbain 50cc, léger et maniable',
+    en: '50cc urban scooter, light and easy to handle',
+    de: '50-cm³-Stadtroller, leicht und wendig',
+    pl: 'Miejski skuter 50 cm³, lekki i zwrotny',
   },
   description: {
-    fr: 'Scooter urbain 50cc, léger et compact, très économique en carburant, facile à conduire et maniable en ville. Confortable et sécurisant, parfait pour vos déplacements quotidiens et pour explorer la ville en toute simplicité.',
-    en: 'Lightweight and compact 50cc urban scooter, very fuel-efficient, easy to ride and maneuverable in the city. Comfortable and safe, perfect for your daily trips and exploring the city with ease.',
-    de: 'Leichter und kompakter 50-cm³-Stadtroller, sehr sparsam im Verbrauch, einfach zu fahren und wendig in der Stadt. Bequem und sicher, ideal für Ihre täglichen Fahrten und um die Stadt ganz einfach zu erkunden.',
-    pl: 'Lekki i kompaktowy miejski skuter 50 cm³, bardzo oszczędny, łatwy w prowadzeniu i zwrotny w mieście. Wygodny i bezpieczny, idealny na codzienne przejazdy i do łatwego zwiedzania miasta.',
+    fr: 'Scooter urbain 50cc, léger et compact, facile à conduire et maniable en ville.',
+    en: 'Lightweight and compact 50cc urban scooter, easy to ride and maneuverable in the city.',
+    de: 'Leichter und kompakter 50-cm³-Stadtroller, einfach zu fahren und wendig in der Stadt.',
+    pl: 'Lekki i kompaktowy miejski skuter 50 cm³, łatwy w prowadzeniu i zwrotny w mieście.',
   },
   /* Only what the daily price covers. Delivery is not included: the site
      shows it as its own line, using the fee from `content/site.ts`. */
@@ -43,22 +37,18 @@ const vehicle: Vehicle = {
     fr: [
       'Casque fourni',
       'Tout l’équipement inclus',
-      'Assistance immédiate en cas de panne',
     ],
     en: [
       'Helmet included',
       'All equipment included',
-      'Immediate breakdown assistance',
     ],
     de: [
       'Helm inklusive',
       'Gesamte Ausrüstung inklusive',
-      'Sofortige Pannenhilfe',
     ],
     pl: [
       'Kask w cenie',
       'Całe wyposażenie w cenie',
-      'Natychmiastowa pomoc w razie awarii',
     ],
   },
 

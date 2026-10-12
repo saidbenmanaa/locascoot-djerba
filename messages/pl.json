@@ -2,34 +2,34 @@
   "meta": {
     "home": {
       "title": "Wynajem skuterów na Dżerbie – dostawa do hotelu | Locascoot Djerba",
-      "description": "Wynajem skuterów na Dżerbie: dostawa w dowolne miejsce na wyspie za {fee}, kask i wyposażenie w cenie, od 60 DT za dzień. Zarezerwuj przez WhatsApp.",
+      "description": "Wynajem skuterów na Dżerbie: dostawa do strefy turystycznej, Aghir i Midoun za {fee}, kask i wyposażenie w cenie, od 60 DT za dzień. Zarezerwuj przez WhatsApp.",
       "keywords": [
         "wynajem skuterów Dżerba",
         "wynajem skutera Dżerba",
-        "wynajem skutera Houmt Souk",
+        "wynajem skutera strefa turystyczna Dżerba",
         "wynajem skutera Midoun",
-        "wynajem skutera lotnisko Dżerba"
+        "wynajem skutera Aghir"
       ]
     },
     "scooters": {
       "title": "Skutery 50 i 125 cm³ do wynajęcia na Dżerbie",
-      "description": "Nasze skutery 50 cm³ i 125 cm³ do wynajęcia na Dżerbie, od 60 DT za dzień. Kask i wyposażenie w cenie, dostawa w dowolne miejsce na Dżerbie za {fee}."
+      "description": "Nasze skutery 50 cm³ i 125 cm³ do wynajęcia na Dżerbie, od 60 DT za dzień. Kask i wyposażenie w cenie, dostawa do strefy turystycznej, Aghir i Midoun za {fee}."
     },
     "prices": {
       "title": "Cennik wynajmu skuterów na Dżerbie",
-      "description": "Cennik wynajmu skuterów na Dżerbie: skuter 50 cm³ za 60 DT za dzień, skuter 125 cm³ za 80 DT. Kask i wyposażenie w cenie, dostawa na Dżerbie: {fee}."
+      "description": "Cennik wynajmu skuterów na Dżerbie: 50 cm³ za 60 DT za dzień, 125 cm³ za 90 DT. Kask i wyposażenie w cenie, dostawa (strefa turystyczna, Aghir, Midoun): {fee}."
     },
     "conditions": {
       "title": "Warunki wynajmu skutera na Dżerbie",
-      "description": "Minimalny wiek, dokumenty, prawo jazdy, płatność i pomoc w razie awarii: wszystkie warunki wynajmu skutera na Dżerbie w Locascoot Djerba, prosto wyjaśnione."
+      "description": "Minimalny wiek, dokumenty, prawo jazdy i płatność: wszystkie warunki wynajmu skutera na Dżerbie w Locascoot Djerba, prosto wyjaśnione."
     },
     "about": {
       "title": "O nas – wynajem skuterów na Dżerbie",
-      "description": "Locascoot Djerba, specjalista od wynajmu skuterów na Dżerbie: nowoczesna, zadbana flota, dostawa na wyspie za {fee} i natychmiastowa pomoc w razie awarii."
+      "description": "Locascoot Djerba, specjalista od wynajmu skuterów na Dżerbie: nowoczesna, zadbana flota i dostawa do strefy turystycznej, Aghir i Midoun za {fee}."
     },
     "contact": {
       "title": "Kontakt i rezerwacja przez WhatsApp – Dżerba",
-      "description": "Skontaktuj się z Locascoot Djerba przez WhatsApp, telefon lub e-mail. Otwarte 7 dni w tygodniu, 08:00–20:00, dostawa w dowolne miejsce na Dżerbie za {fee}."
+      "description": "Skontaktuj się z Locascoot Djerba przez WhatsApp, telefon lub e-mail. Otwarte 7 dni w tygodniu, 08:00–20:00, dostawa do strefy turystycznej, Aghir i Midoun za {fee}."
     },
     "book": {
       "title": "Zarezerwuj skuter na Dżerbie przez WhatsApp",
@@ -41,7 +41,7 @@
     },
     "vehicle": {
       "title": "Wynajem {name} na Dżerbie – {price} DT/dzień",
-      "description": "Wynajmij {name}, skuter {cc} cm³, na Dżerbie za {price} DT za dzień. Kask i wyposażenie w cenie, pomoc w razie awarii, dostawa na wyspie za {fee}."
+      "description": "Wynajmij {name}, skuter {cc} cm³, na Dżerbie za {price} DT za dzień. Kask i wyposażenie w cenie, dostawa do strefy turystycznej, Aghir i Midoun za {fee}."
     },
     "notFound": {
       "title": "Nie znaleziono strony",
@@ -73,7 +73,7 @@
     "viewDetails": "Zobacz szczegóły",
     "seeAllVehicles": "Zobacz wszystkie skutery",
     "seeAllPrices": "Zobacz cały cennik",
-    "deliveryLine": "Dostawa na Dżerbie: {fee}",
+    "deliveryLine": "Dostawa (strefa turystyczna, Aghir, Midoun): {fee}",
     "day": "dzień",
     "days": "dni",
     "language": "Język",
@@ -111,22 +111,20 @@
   },
   "home": {
     "heroTitle": "Wynajem skuterów na Dżerbie",
-    "heroSubtitle": "Dostawa w dowolne miejsce na Dżerbie za {fee}, kask i wyposażenie w cenie, od 60 DT za dzień.",
+    "heroSubtitle": "Dostawa do strefy turystycznej, Aghir i Midoun za {fee}, kask i wyposażenie w cenie, od 60 DT za dzień.",
     "heroPrimaryCta": "Zarezerwuj przez WhatsApp",
     "heroSecondaryCta": "Zobacz nasze skutery",
-    "trustDelivery": "Dostawa na Dżerbie: {fee}",
+    "trustDelivery": "Dostawa (strefa turystyczna, Aghir, Midoun): {fee}",
     "trustInsurance": "Kask i wyposażenie w cenie",
     "trustNoPrepay": "Bez płatności online",
     "fleetTitle": "Nasze skutery",
     "fleetSubtitle": "Nowoczesna, regularnie serwisowana flota.",
     "whyTitle": "Dlaczego warto wynająć u nas",
     "whySubtitle": "To, co naprawdę liczy się na wakacjach.",
-    "why1Title": "Dostawa w dowolne miejsce na wyspie",
-    "why1Text": "Do hotelu, na Międzynarodowe lotnisko Dżerba-Zarzis lub do apartamentu: dostarczamy skuter w dowolne miejsce na Dżerbie, codziennie od 08:00 do 20:00, za {fee}.",
+    "why1Title": "Dostawa do strefy turystycznej, Aghir i Midoun",
+    "why1Text": "Do hotelu lub do apartamentu: dostarczamy skuter do strefy turystycznej, Aghir i Midoun, codziennie od 08:00 do 20:00, za {fee}.",
     "why2Title": "Jasne ceny, bez niespodzianek",
     "why2Text": "Cena za dzień obejmuje kask i całe wyposażenie; dostawa ({fee}) jest podana osobno. Przy zwrocie skutera nic nie jest doliczane.",
-    "why3Title": "Natychmiastowa pomoc w razie awarii",
-    "why3Text": "Nasze skutery są regularnie serwisowane. W razie awarii pomagamy natychmiast, w każdym miejscu na wyspie.",
     "why4Title": "Rezerwacja w 2 minuty",
     "why4Text": "Wystarczy jedna wiadomość na WhatsApp. Bez płatności online: płacisz gotówką przy dostawie, w euro, dolarach lub dinarach.",
     "howTitle": "Jak to działa",
@@ -134,21 +132,21 @@
     "how1Title": "Piszesz do nas",
     "how1Text": "Wyślij nam wybrany skuter i termin wynajmu przez WhatsApp lub formularz. Szybko potwierdzimy dostępność.",
     "how2Title": "Dostarczamy",
-    "how2Text": "Dostarczamy skuter tam, gdzie jesteś na Dżerbie, za {fee}, razem z kaskiem i całym wyposażeniem.",
+    "how2Text": "Dostarczamy skuter do ciebie w strefie turystycznej, w Aghir lub w Midoun, za {fee}, razem z kaskiem i całym wyposażeniem.",
     "how3Title": "Ruszasz w drogę",
     "how3Text": "Płacisz gotówką przy dostawie i wyspa należy do ciebie. Przez cały okres wynajmu jesteśmy w kontakcie.",
-    "zonesTitle": "Dostarczamy w dowolne miejsce na Dżerbie",
-    "zonesSubtitle": "Gdziekolwiek mieszkasz na wyspie, dostawa kosztuje {fee}.",
+    "zonesTitle": "Dostarczamy do strefy turystycznej, Aghir i Midoun",
+    "zonesSubtitle": "W tych trzech strefach dostawa kosztuje {fee}.",
     "faqTitle": "Najczęstsze pytania",
     "faqSubtitle": "Wszystko, co warto wiedzieć przed rezerwacją.",
     "faqCta": "Zobacz wszystkie warunki wynajmu",
     "ctaTitle": "Chcesz odkryć Dżerbę?",
     "ctaText": "Podaj nam termin, a resztą zajmiemy się my. Odpowiadamy w ciągu kilku minut.",
-    "intro": "Locascoot Djerba wynajmuje skutery na całej wyspie Dżerba. Niezależnie od tego, czy mieszkasz w Houmt Souk, Midoun, strefie turystycznej czy w Aghir, czy przylatujesz na Międzynarodowe lotnisko Dżerba-Zarzis, dostarczymy skuter pod wskazany adres na wyspie, codziennie od 08:00 do 20:00, za {fee}. Kask i pełne wyposażenie są w cenie każdego wynajmu, a w razie awarii pomagamy natychmiast."
+    "intro": "Locascoot Djerba wynajmuje skutery na Dżerbie. Niezależnie od tego, czy mieszkasz w strefie turystycznej, w Aghir czy w Midoun, dostarczymy skuter pod wskazany adres, codziennie od 08:00 do 20:00, za {fee}. Kask i pełne wyposażenie są w cenie każdego wynajmu."
   },
   "scooters": {
     "title": "Nasze skutery",
-    "subtitle": "{count, plural, one {# model} few {# modele} many {# modeli} other {# modelu}} do wynajęcia. Dostawa w dowolne miejsce na Dżerbie: {fee}.",
+    "subtitle": "{count, plural, one {# model} few {# modele} many {# modeli} other {# modelu}} do wynajęcia. Dostawa (strefa turystyczna, Aghir, Midoun): {fee}.",
     "filterLabel": "Filtruj według typu",
     "noResults": "Obecnie brak skuterów w tej kategorii."
   },
@@ -161,6 +159,12 @@
     "pricePerDayLabel": "Cena za dzień",
     "depositNote": "Kaucja {amount} DT, zwracana przy oddaniu pojazdu.",
     "includedTitle": "W cenie",
+    "tipsTitle": "Praktyczne wskazówki",
+    "tip1": "Parkuj w cieniu, gdy to możliwe: siedzenie szybko nagrzewa się na słońcu.",
+    "tip2": "Zabieraj kluczyk za każdym razem, gdy parkujesz.",
+    "tip3": "Jedź powoli po piaszczystych odcinkach w pobliżu plaż.",
+    "tip4": "Zwalniaj przed progami zwalniającymi, częstymi w wioskach.",
+    "tip5": "Miej nasz numer WhatsApp pod ręką przez cały okres wynajmu.",
     "zonesTitle": "Strefy dostawy",
     "galleryAlt": "{name} do wynajęcia na Dżerbie – zdjęcie {index}",
     "otherVehicles": "Inne dostępne skutery",
@@ -169,18 +173,17 @@
     "breadcrumbFleet": "Nasze skutery",
     "bookByForm": "Zarezerwuj przez formularz",
     "pricingTitleFlat": "Cena",
-    "pricingSubtitleFlat": "Cena za dzień, kask i wyposażenie w cenie. Dostawa na Dżerbie: {fee}.",
+    "pricingSubtitleFlat": "Cena za dzień, kask i wyposażenie w cenie.",
     "durationAny": "Dowolny okres"
   },
   "prices": {
     "title": "Cennik wynajmu na Dżerbie",
-    "subtitle": "Cena za dzień, wszystko w cenie oprócz dostawy: kask, pełne wyposażenie i pomoc w razie awarii przy każdym wynajmie. Dostawa na Dżerbie: {fee}.",
+    "subtitle": "Cena za dzień, wszystko w cenie oprócz dostawy: kask i pełne wyposażenie przy każdym wynajmie. Dostawa (strefa turystyczna, Aghir, Midoun): {fee}.",
     "vehicle": "Pojazd",
     "tableNote": "Cena za dzień w dinarach tunezyjskich (DT). Kwota w euro jest orientacyjna i zależy od bieżącego kursu.",
     "includedTitle": "W cenie",
     "included1": "Kask w cenie",
     "included2": "Całe wyposażenie w cenie",
-    "included3": "Natychmiastowa pomoc w razie awarii",
     "notIncludedTitle": "Niewliczone w cenę",
     "depositTitle": "Kaucja",
     "depositText": "Przy przekazaniu pojazdu pobierana jest kaucja, w całości zwracana przy oddaniu, jeśli pojazd wróci w stanie, w jakim został wydany. Kwota zależy od modelu i jest podana w tabeli powyżej.",
@@ -189,14 +192,13 @@
     "depositColumn": "Kaucja",
     "pricePerDayColumn": "Cena za dzień",
     "documentsTitle": "Wymagane dokumenty",
-    "documentsText": "Do każdego wynajmu wymagany jest dowód osobisty lub paszport. W przypadku skutera 125 cm³ wymagane jest również ważne prawo jazdy. Minimalny wiek to 18 lat."
+    "documentsText": "W przypadku skutera 125 cm³ wymagane jest ważne prawo jazdy. Minimalny wiek to 18 lat."
   },
   "conditions": {
     "title": "Warunki wynajmu",
     "subtitle": "Wszystko, co warto wiedzieć, zanim ruszysz w drogę po Dżerbie.",
     "topicBooking": "Rezerwacja",
     "topicRequirements": "Wymagania",
-    "topicInsurance": "Wyposażenie i pomoc",
     "topicPractical": "Informacje praktyczne",
     "stillQuestions": "Masz inne pytanie?",
     "stillQuestionsText": "Napisz do nas na WhatsApp – odpowiadamy w ciągu kilku minut."
@@ -204,11 +206,11 @@
   "about": {
     "title": "Locascoot Djerba",
     "subtitle": "Specjalista od wynajmu skuterów na Dżerbie.",
-    "p1": "Locascoot Djerba to specjalista od wynajmu skuterów na Dżerbie. Oferujemy nowoczesną, regularnie serwisowaną flotę i dostarczamy skuter w dowolne miejsce na wyspie Dżerba.",
-    "p2": "Kask i całe wyposażenie są w cenie każdego skutera. W razie awarii natychmiast przyjeżdżamy z pomocą.",
+    "p1": "Locascoot Djerba to specjalista od wynajmu skuterów na Dżerbie. Oferujemy nowoczesną, regularnie serwisowaną flotę i dostarczamy skuter do strefy turystycznej, Aghir i Midoun.",
+    "p2": "Kask i całe wyposażenie są w cenie każdego skutera.",
     "p3": "Ciesz się pełną swobodą i bezpiecznie odkrywaj plaże, suki i wyjątkowe krajobrazy wyspy.",
     "imageAlt": "Locascoot Djerba, wynajem skuterów na Dżerbie",
-    "statsDelivery": "dostawa w dowolne miejsce na Dżerbie",
+    "statsDelivery": "dostawa (strefa turystyczna, Aghir, Midoun)",
     "statsHelmetValue": "Kask",
     "statsHelmet": "w cenie każdego skutera",
     "statsOpen": "otwarte 7 dni w tygodniu",
@@ -216,8 +218,6 @@
     "value1Text": "Ceny są jasno podane: kask i wyposażenie w cenie, dostawa ({fee}) wyszczególniona osobno. Nic nie pojawia się w ostatniej chwili.",
     "value2Title": "Bezpieczeństwo",
     "value2Text": "Kask i pełne wyposażenie przy każdym skuterze oraz regularnie serwisowana flota.",
-    "value3Title": "Pomoc w razie awarii",
-    "value3Text": "W razie awarii pomagamy natychmiast, w każdym miejscu na wyspie.",
     "valuesTitle": "Na czym nam zależy"
   },
   "contact": {
@@ -228,7 +228,7 @@
     "phoneTitle": "Telefon",
     "emailTitle": "E-mail",
     "openMaps": "Otwórz w Google Maps",
-    "mapTitle": "Strefa dostawy – wyspa Dżerba",
+    "mapTitle": "Locascoot Djerba na mapie",
     "formTitle": "Wyślij wiadomość",
     "everyDay": "Od poniedziałku do niedzieli"
   },
@@ -250,10 +250,10 @@
     "phonePlaceholder": "+48 600 123 456",
     "email": "E-mail",
     "emailPlaceholder": "ty@przyklad.pl",
-    "deliveryPlace": "Miejsce dostawy na Dżerbie",
-    "deliveryPlaceholder": "Nazwa hotelu, okolica lub „lotnisko”",
+    "deliveryPlace": "Miejsce dostawy (strefa turystyczna, Aghir lub Midoun)",
+    "deliveryPlaceholder": "Twój hotel w strefie turystycznej, w Aghir lub w Midoun",
     "message": "Wiadomość (opcjonalnie)",
-    "messagePlaceholder": "Numer lotu, pytania…",
+    "messagePlaceholder": "Twoje pytania…",
     "submitWhatsapp": "Zarezerwuj przez WhatsApp",
     "submitHint": "WhatsApp otworzy się z gotową wiadomością – wystarczy nacisnąć Wyślij.",
     "directWhatsapp": "Albo napisz do nas bezpośrednio na WhatsApp, bez wypełniania formularza",
@@ -261,7 +261,7 @@
     "summaryDays": "{count, plural, one {# dzień} few {# dni} many {# dni} other {# dnia}} wynajmu",
     "summaryRate": "{price} DT za dzień",
     "summaryTotal": "Szacowana kwota",
-    "summaryDelivery": "Dostawa na Dżerbie",
+    "summaryDelivery": "Dostawa (strefa turystyczna, Aghir, Midoun)",
     "summaryDeposit": "Kaucja (zwrotna)",
     "summaryNote": "Orientacyjna wycena. Płatność gotówką przy dostawie, w euro, dolarach lub dinarach.",
     "whatsappMessage": "Dzień dobry, chcę zarezerwować skuter na Dżerbie.",
@@ -310,16 +310,15 @@
   "zones": {
     "title": "Wynajem skuterów {where}",
     "deliveryFee": "Dostawa: {fee}",
-    "driveTime": "{minutes} min od Houmt Souk",
     "highlightsTitle": "Warto zobaczyć w okolicy",
     "ctaTitle": "Potrzebujesz skutera {where}?",
-    "ctaText": "Napisz, gdzie i kiedy: dostarczamy w dowolne miejsce na Dżerbie za {fee}.",
+    "ctaText": "Napisz, gdzie i kiedy: dostarczamy do strefy turystycznej, Aghir i Midoun za {fee}.",
     "otherZones": "Inne strefy dostawy",
     "whatsappMessage": "Dzień dobry, chcę wynająć skuter {where}.",
     "fleetTitle": "Skutery dostępne {where}"
   },
   "footer": {
-    "tagline": "Wynajem skuterów na Dżerbie. Dostawa na wyspie za {fee}, kask i wyposażenie w cenie.",
+    "tagline": "Wynajem skuterów na Dżerbie. Dostawa do strefy turystycznej, Aghir i Midoun za {fee}, kask i wyposażenie w cenie.",
     "navTitle": "Nawigacja",
     "zonesTitle": "Strefy dostawy",
     "contactTitle": "Kontakt",

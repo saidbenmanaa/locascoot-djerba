@@ -78,14 +78,14 @@ export const site = {
   currency: {
     code: 'TND',
     symbol: 'DT',
-    approxEurRate: 0.3, // 60 DT ≈ 18 € · 80 DT ≈ 24 €
+    approxEurRate: 0.3, // 60 DT ≈ 18 € · 90 DT ≈ 27 €
   },
 
   /** Cash on delivery, in any of these currencies. No online payment. */
   acceptedCurrencies: ['TND', 'EUR', 'USD'],
 
-  /** Delivery is available on Djerba Island only — Djerba-Zarzis airport is
-   *  on the island, so it is included. The fee is in euros and is always shown
+  /** Delivery is available in three areas only: the Tourist Zone, Aghir and
+   *  Midoun (see `content/zones.ts`). The fee is in euros and is always shown
    *  as its own line: it is never part of the daily price, never added to the
    *  dinar total and never converted. Change the number here and every page,
    *  the booking form and the WhatsApp message follow. */
@@ -96,7 +96,6 @@ export const site = {
   /** Trust signals shown across the site. */
   highlights: {
     helmetIncluded: true,
-    breakdownAssistance: true,
     minAge: 18,
     minRentalDays: 1,
   },

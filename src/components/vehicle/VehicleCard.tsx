@@ -79,10 +79,12 @@ export async function VehicleCard({
             <Users className="size-3.5" aria-hidden />
             {tSpecs('seatsValue', { count: vehicle.seats })}
           </li>
-          <li className="inline-flex items-center gap-1.5">
-            <IdCard className="size-3.5" aria-hidden />
-            {translate(vehicle.licence, locale)}
-          </li>
+          {vehicle.licence ? (
+            <li className="inline-flex items-center gap-1.5">
+              <IdCard className="size-3.5" aria-hidden />
+              {translate(vehicle.licence, locale)}
+            </li>
+          ) : null}
         </ul>
 
         <div className="mt-5 flex items-end justify-between gap-3 border-t pt-4">

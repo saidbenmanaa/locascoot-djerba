@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { Check, Truck } from 'lucide-react';
+import { Check, Lightbulb, Truck } from 'lucide-react';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { getVehicleBySlug, getVehicles, getZones } from '@/lib/content';
 import {
@@ -76,6 +76,7 @@ export default async function VehiclePage({
   const typedLocale = locale as Locale;
   const price = getStartingPrice(vehicle);
   const included = tList(vehicle.included, typedLocale);
+  const tips = [t('tip1'), t('tip2'), t('tip3'), t('tip4'), t('tip5')];
   const isFlatRate = hasFlatRate(vehicle);
   const fee = deliveryFee(locale);
 
@@ -200,6 +201,21 @@ export default async function VehiclePage({
                 </p>
               </div>
 
+              <div className="mt-8">
+                <h2 className="text-[length:var(--text-h3)]">{t('tipsTitle')}</h2>
+                <ul className="mt-3 grid gap-2">
+                  {tips.map((tip) => (
+                    <li key={tip} className="flex items-start gap-2.5">
+                      <Lightbulb
+                        className="mt-0.5 size-5 shrink-0 text-gold-600 dark:text-gold-400"
+                        aria-hidden
+                      />
+                      <span style={{ color: 'var(--text-body)' }}>{tip}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
               {/* Links to every delivery area's page */}
               <div className="mt-8">
                 <h2 className="text-[length:var(--text-h3)]">{t('zonesTitle')}</h2>
@@ -245,7 +261,7 @@ export default async function VehiclePage({
                 {isFlatRate ? t('pricingTitleFlat') : t('pricingTitle')}
               </h2>
               <p className="mt-1.5 text-sm" style={{ color: 'var(--text-muted)' }}>
-                {isFlatRate ? t('pricingSubtitleFlat', { fee }) : t('pricingSubtitle')}
+                {isFlatRate ? t('pricingSubtitleFlat') : t('pricingSubtitle')}
               </p>
               <div className="mt-4">
                 <PricingTable vehicle={vehicle} />
