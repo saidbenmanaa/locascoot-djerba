@@ -88,7 +88,7 @@ Built in from the start, not added afterwards:
   - `Product` + `Offer` per vehicle → daily price can appear in search results
   - `FAQPage` → answers can expand under the result
   - `BreadcrumbList`, `Service` per delivery zone, `WebSite`
-- **Zone landing pages** — `/zones/houmt-souk`, `/midoun`, `/zone-touristique`, `/aghir`, `/aeroport-djerba` (German and Polish use translated slugs such as `/de/zonen/touristenzone` and `/pl/strefy/lotnisko-djerba`), targeting local searches with thin competition.
+- **Zone landing pages** — `/zones/zone-touristique`, `/aghir`, `/midoun`, the three delivery areas (German and Polish use translated slugs such as `/de/zonen/touristenzone` and `/pl/strefy/strefa-turystyczna`), targeting local searches with thin competition.
 - **No fabricated signals** — no invented reviews, and `aggregateRating` is only published once `reviews.count` in `content/site.ts` is a real number.
 - **`sitemap.xml`** generated from content, with per-entry language alternates. Add a scooter and it appears automatically.
 - **Images** — descriptive localised `alt` text derived from vehicle data; AVIF/WebP; hero and first cards marked `priority`.
@@ -146,13 +146,12 @@ Outstanding:
   Polish addresses (`/de/agb`, `/pl/regulamin`…) are reserved and answer with the 404 page
   (`legalLocales` in `src/i18n/routing.ts`).
 - **German and Polish copy** — written for this site; have a native speaker review it.
-- **Licence rules** — the 50cc/125cc requirements are shown as currently written and await
-  the owner's confirmation (see `EDITING-GUIDE.md`).
 
 ## Notes
 
 - Prices are one flat daily rate per scooter. The pricing model supports duration bands: add more entries to `pricing` and every table on the site adapts. "From" appears in front of a price only when a scooter has several bands.
-- Delivery is available on Djerba Island only, for a flat fee set once in `content/site.ts` (`delivery.feeEur`, currently 10 €). It is always shown as its own line — never included in the daily price, never added to the dinar total and never converted.
+- Delivery is available in three areas only — the Tourist Zone, Aghir and Midoun (`content/zones.ts`) — for a flat fee set once in `content/site.ts` (`delivery.feeEur`, currently 10 €). It is always shown as its own line — never included in the daily price, never added to the dinar total and never converted.
+- Licence: only the 125cc's requirement (a valid driving licence) is shown. `licence` is optional on a vehicle; without it no licence line appears (see `EDITING-GUIDE.md`).
 - No deposit is taken, so deposit columns and copy are hidden automatically. Set `deposit` on a vehicle to bring them back.
 - Booking takes two steps and no payment: the visitor fills in the form and taps "Réserver sur WhatsApp". The button is a real `wa.me` link, rebuilt as they type; tapping it checks the required fields, then WhatsApp opens with every detail written (scooter, dates, duration, total, delivery fee, place, time, riders, contact details, language, message). A second link, and every other WhatsApp button on the site, opens WhatsApp directly without the form.
 - The contact form posts to the rate-limited handler in `src/app/api/booking/route.ts`, which emails the message.

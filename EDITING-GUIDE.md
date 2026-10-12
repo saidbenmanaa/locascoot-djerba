@@ -124,7 +124,7 @@ réservation et dans le plan du site pour Google.
 | `engineCc` | Cylindrée en cm³ |
 | `transmission` | `automatic` ou `manual` |
 | `seats` | Nombre de places |
-| `licence` | Ce que le client doit présenter, dans les quatre langues |
+| `licence` | Le permis exigé, dans les quatre langues. Facultatif : sans ce champ, aucune ligne de permis ne s'affiche |
 | `minAge` | Âge minimum du conducteur |
 | `images` | Les noms des fichiers photos |
 | `tagline` | Une phrase courte de présentation, dans les quatre langues |
@@ -239,8 +239,8 @@ nombres à recopier dans `geo`.
 
 ### Le prix de la livraison
 
-La livraison est proposée **uniquement sur l'île de Djerba** (l'aéroport de Djerba-Zarzis est sur
-l'île), au même prix partout :
+La livraison est proposée **uniquement dans trois zones** : la zone touristique, Aghir et Midoun
+(les zones de `content/zones.ts`), au même prix dans les trois :
 
 ```js
   delivery: {
@@ -250,7 +250,8 @@ l'île), au même prix partout :
 
 Changez ce nombre et tout le site suit : page d'accueil, tarifs, zones, FAQ, fiches des scooters,
 formulaire de réservation et message WhatsApp. La livraison s'affiche toujours **sur sa propre
-ligne** (« Livraison sur l'île de Djerba : 10 € ») : elle n'est jamais ajoutée au total en dinars.
+ligne** (« Livraison (zone touristique, Aghir, Midoun) : 10 € ») : elle n'est jamais ajoutée au
+total en dinars.
 
 ### Vos réseaux sociaux
 
@@ -292,7 +293,7 @@ Pour ajouter une question, copiez un bloc existant :
   },
 ```
 
-`topic` doit être l'un de : `booking`, `requirements`, `insurance`, `practical`.
+`topic` doit être l'un de : `booking`, `requirements`, `practical`.
 
 > 💡 Écrivez les questions **avec les mots de vos clients**, pas avec les vôtres.
 > « Quel permis pour louer un scooter à Djerba ? » fonctionne bien mieux que
@@ -410,16 +411,15 @@ Tout l'historique est conservé, rien n'est jamais perdu définitivement.
 
 ## En attente de vos informations
 
-**Les règles de permis (50cc et 125cc).** Le site affiche pour l'instant : *carte d'identité ou
-passeport* pour le 50cc, *permis de conduire valide* pour le 125cc. Dès que vous confirmez les
-règles exactes, ce texte est à mettre à jour aux endroits suivants (dans chaque langue) :
+**Les règles de permis (50cc et 125cc).** Le site indique uniquement qu'un *permis de conduire
+valide* est requis pour le 125cc ; rien n'est affiché pour le 50cc. Si ces règles changent, le
+texte est à mettre à jour aux endroits suivants (dans chaque langue) :
 
 | Où | Fichier |
 |---|---|
-| Fiche et carte de chaque scooter (`licence`) | `content/vehicles/<scooter>.ts` |
+| Fiche et carte du scooter (`licence`, facultatif) | `content/vehicles/<scooter>.ts` |
 | FAQ « Ai-je besoin d'un permis ? » et « Quels documents ? » | `content/faq.ts` |
 | Bloc « Documents requis » de la page Tarifs (`documentsText`) | `messages/<langue>.json` |
-| Page de la zone touristique (2ᵉ paragraphe) | `content/zones.ts` |
 
 **Les pages légales.** *Conditions générales*, *Confidentialité* et *Mentions légales* restent
 des modèles : elles ne sont liées nulle part et Google ne les indexe pas. Dès que vous fournissez
@@ -430,9 +430,9 @@ elles peuvent être complétées et remises dans le pied de page.
 
 ## À faire avant l'ouverture du site
 
-- [ ] Vérifier les prix : 60 DT pour le Zimota Tapo, 80 DT pour le Cappuccino S
+- [ ] Vérifier les prix : 60 DT pour le Zimota Tapo, 90 DT pour le Cappuccino S
 - [ ] Confirmer les règles de permis (voir ci-dessus)
 - [ ] Fournir les informations légales, puis faire relire les pages légales
 - [ ] Vérifier que chaque réponse de la FAQ correspond à vos conditions réelles
-- [ ] Créer et compléter votre fiche **Google Business Profile** (livraison : 10 €, île de Djerba uniquement)
+- [ ] Créer et compléter votre fiche **Google Business Profile** (livraison : 10 €, zone touristique, Aghir et Midoun uniquement)
 - [ ] Déclarer le site dans **Google Search Console** et y envoyer le `sitemap.xml`
